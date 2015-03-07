@@ -75,22 +75,25 @@ Postel's principle to the modern Internet.  It also proposes a replacement
 design principle.
 
 There is good evidence to suggest that designers of protocols in the IETF widely
-understand the limitations of Postel's principle.  This document merely serves
-to document the shortcomings of His principle to the wider community.
+understand the limitations of Postel's principle.  This document serves
+primarily as a record of the shortcomings of His principle for the wider
+community.
 
 
 # The Long Term Consequences of Liberal Acceptance {#time}
 
-Divergent implementations of a specification often arise when the specification
-fails to cover a particular case properly.  This can be a lack of specification,
-or a conflict in specification requirements.
+There a several reasons why situations where Postel's principle applies might arise:
 
-Aside from specification shortcomings, similar problems emerge when the protocol
-enjoys use outside of its original intended context, or when the protocol is
-extended to support new scenarios.
+* Divergent implementations of a specification often arise when the
+  specification fails to cover a particular case properly.  This can be a lack
+  of specification, or a conflict in specification requirements.
 
-Finally, if implementation flaws in protocols are not detected and fixed
-quickly, they can remain as a source of implementation variation.
+* Aside from specification shortcomings, similar problems emerge when the
+  protocol enjoys use outside of its original intended context, or when the
+  protocol is extended to support new scenarios.
+
+* Finally, if implementation flaws in protocols are not detected and fixed
+  quickly, they can remain as a source of implementation variation.
 
 Situations where two peers disagree about the exact interpretation of a
 specification are common, and should be expected over the lifetime of a
@@ -116,32 +119,33 @@ constructs that can be avoided to maximize interoperability
 
 # Creating Barriers to Implementation
 
-Once divergent implementations exists, interoperation with those implementations
-generally takes precedence over correcting the underlying flaws that produced
-the divergence.  This is both a natural consequence of applying Postel's
-principle, and a natural reluctance not to generate an error condition when
-the situation can be recovered.
+Once divergent implementations exist, interoperation with those implementations
+can take precedence over correcting the underlying flaws that produced the
+divergence.  This is both a natural consequence of applying Postel's principle,
+and a natural reluctance to avoid fatal error conditions.
 
-Once this process has begun and deviations become entrenched, there is little
-that can be done to reverse the process.
+Once deviations become entrenched, there is little that can be done to rectify
+the situation.
 
-Protocol maintenace can help by carefully documenting the various forms of
+Protocol maintenance can help by carefully documenting the various forms of
 divergence and recommending limits on what is acceptable.  This process can be
-tedious and time-consuming.  For instance, the revision to HTTP/1.1 took
-considerable effort over more than 6 years.  However, this sort of effort was
+tedious and time-consuming.  For instance, a revision to HTTP/1.1 [RFC7230] with
+an aim toward capturing widespread variations in implementations took
+considerable effort over more than 6 years.  However, this sort of effort can be
 crucial in supporting the interoperability of both existing and new protocol
 implementations.
 
 For widely used protocols, the current scale of the Internet makes large scale
 interoperability testing infeasible for all a privileged few.  Without good
-maintenance, new implementations can be restricted to niche uses, where
-interoperability concerns cause fewer problems.
+maintenance, new implementations can be restricted to niche uses, where the
+prolems arising from interoperability issues can be more closely managed.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
 of a protocol are important in ensuring the continued viability of a protocol.
 New protocol implementations are also more likely to be developed for new and
 diverse use cases and often are the origin of features and capabilities that can
-be of benefit to existing users.
+be of benefit to existing users.  These problems also reduce the ability of
+established implementations to change.
 
 
 # Extension: Elephants Out, Donkeys In
@@ -150,35 +154,37 @@ Many protocols are specifically designed to permit deviation from the basic
 protocol in constrained ways.  A well-defined extensibility framework in a
 protocol is often the most valuable asset a protocol has.  For instance,
 Diameter's comprehensive extensibility framework [RFC7423] is perhaps its most
-important feature; whereas the Session Description Protocol [RFC4566] has
-benefited greatly from the ability to extend with new attributes.
+important feature.  The Session Description Protocol [RFC4566] has likewise
+benefited greatly from the ability to define new attributes, of which there are
+now in excess of 100.
 
 It is recognized that designing and defining an extension framework is
 challenging [RFC6709].  In particular, it is difficult to anticipate the various
 ways in which future protocol users might wish to expand the protocol.
 
-Extension of a protocol without regard to the existing extension points -
-especially in an ad-hoc fashion - is a common source of implementation
-divergence.
+Extension of a protocol - either without regard to the existing extension
+points, or by using extension points in an unintended fashion - is a common
+source of implementation divergence.
 
 
-# A Fatalistic Interpretation of the Principle
+# A Fatalistic Interpretation of Postel's Principle
 
 As shown in {{time}}, an implementation that adheres closely to Postel's
 principle will, over time, be increasingly constrained in its behavior.  The
-messages it transmits will be more and more tighly proscribed and it will have
-increasingly promiscuous criteria for acceptance of incoming messages.
+messages it transmits will be more and more tighly proscribed and it will be
+increasingly promiscuous in accepting incoming messages.
 
-Thus, a more appropriate interpretation of Postel's principle might be as an
-observation that the Second Law of Thermodynamics applies to an unmaintained
-protocol.  That is:
+Thus, though it was most likely not the Postel's intention, the statement in RFC
+760 and subsequently RFC 1122 might be recast as an application of the Second
+Law of Thermodynamics to protocol design.  That is:
 
 > Over time, the pressure to favor interoperability over correctness leads to
-  constraints on transmission and a need to be tolerant in reception.
+  increased constraints on transmission and greater tolerance to variation in
+  reception.
 
 After all, even with the best intentions, the pressure to interoperate can be
-significant.  No implementation can hope to avoid having to make a decision
-regarding the trade-off between correctness and interoperability forever.
+significant.  No implementation can hope to avoid having to trade correctness
+for interoperability indefinitely.
 
 
 # A New Design Principle for the Internet
@@ -191,6 +197,7 @@ but to the design and specification of the protocol.
 Though perhaps a less pithy than Postel's formulation, this principle is based
 on the lessons of protocol deployment.  The principle is also based on valuing
 early feedback, a practice central to modern engineering discipline.
+
 
 ## Fail Fast and Hard
 
@@ -229,7 +236,7 @@ its own eventual replacement always has at least one option available to address
 even the most intractable of maintenance problems.
 
 
-## Implementer Guidance
+## Implementations Are Ultimately Responsible
 
 Implementers are encouraged to expose errors immediately and prominently in
 addition to what a specification mandates.
@@ -261,7 +268,8 @@ Being responsive to community needs demands an ongoing commitment to improving a
 protocol.  That means both addressing specification bugs and a willingness to
 consider the addition of features.  Outright rejection of a feature can force
 requesters to explore ad-hoc protocol changes.  A poorly designed ad-hoc change
-can do significant harm to interoperability if they turn out to be successful.
+can do significant harm to interoperability if the change proves to be
+successful.
 
 
 # IANA Considerations
@@ -281,5 +289,5 @@ Designers and implementers of security protocols generally understand these
 concerns.  General-purpose protocols are not exempt from careful consideration
 of security issues.  In fact, because general-purpose protocols have to deal
 with flaws or obsolescence in a less urgent fashion than security protocols,
-there can be fewer opportunities to correct problems in protocols that exhibit
-problems.
+there can be fewer opportunities to correct problems in protocols that develop
+these interoperability problems.
