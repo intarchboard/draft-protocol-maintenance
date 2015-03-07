@@ -1,6 +1,6 @@
 ---
-title: "Liberal Interpretations of Protocols Causes Long-Term Interoperability Issues"
-abbrev: On Implementation Liberality
+title: "A Proposed Evolution of Postel's Principle"
+abbrev: "A New Postel's Principle"
 docname: draft-thomson-postel-was-wrong-latest
 date: 2015
 category: info
@@ -19,17 +19,22 @@ author:
 
 informative:
   RFC0760:
+  RFC4566:
   RFC6709:
+  RFC7159:
   RFC7230:
+  RFC7423:
+  I-D.ietf-json-i-json:
 
 
 --- abstract
 
-Jon Postel's famous statement from RFC 1122 of "Be liberal in what you accept,
-and conservative in what you send" -- is a principle that has long guided the
-design of Internet protocols and implementations of those protocols.  The
-philosophy of liberally accepting inputs encourages divergent behavior that has
-harmful long-term consequences to protocol interoperability.
+Jon Postel's famous statement in RFC 1122 of "Be liberal in what you accept, and
+conservative in what you send" -- is a principle that has long guided the design
+of Internet protocols and implementations of those protocols.  The posture this
+statement advocates might promote interoperability in the short term, but that
+short term advantage is outweighed by negative consequences that affect the long
+term maintenance of a protocol and its ecosystem.
 
 
 --- middle
@@ -45,27 +50,29 @@ specification [RFC0760]:
   and liberal in its receiving behavior.
 
 In comparison, his contributions to the underpinnings of the Internet, which are
-in many respects more significant, enjoy less conscious recognition.
-
-Postel's principle has been hugely influential in shaping the Internet and the
-systems that use Internet protocols.  Many consider Postel's principle to have
-contributed significantly to the success of the Internet and critical in guiding
-the design of interoperable protocols.
+in many respects more significant, enjoy less conscious recognition.  Postel's
+principle has been hugely influential in shaping the Internet and the systems
+that use Internet protocols.  Many consider this principle to be instrumental in
+the success of the Internet as well as the design of interoperable protocols in
+general.
 
 Over time, considerable changes have occurred in both the scale of the Internet
 and the level of skill and experience available to protocol and software
-designers.  Part of that experience is with protocols that were designed in the
-early phases of the Internet.
+designers.  Part of that experience is with protocols that were designed,
+informed by Postel's principle, in the early phases of the Internet.
 
-That experience shows that there are significant long-term consequences to
-interoperability if an implementation is tolerant of variations in input data.
-Even in the presence of careful and studious maintenance from IETF custodians,
-the sorts of divergent behavior is virtually impossible to rectify.
+That experience shows that there are negative long-term consequences to
+interoperability if an implementation applies Postel's principle.  Correcting
+the problems caused by divergent behavior in implementations is extremely
+difficult or impossible.
 
-We might speculate that the sort of flexibility that Postel's principle
-advocates was indeed necessary during the formative years of the Internet.  Such
-speculation is not the aim of this document.  Rather this describes the negative
-consequences of the application of Postel's principle to the modern Internet.
+It might be suggested that the posture Postel's principle advocates was indeed
+necessary during the formative years of the Internet, and even key to its
+success.  This document takes no position on that claim.
+
+This document instead describes the negative consequences of the application of
+Postel's principle to the modern Internet.  It also proposes a replacement
+design principle.
 
 There is good evidence to suggest that designers of protocols in the IETF widely
 understand the limitations of Postel's principle.  This document merely serves
@@ -100,6 +107,12 @@ consequences:
   can become entrenched, forcing other implementations to be tolerant of those
   errors.
 
+For instance, a number of bugs (or quirks) in both specifications and
+implementations of the JSON format [RFC7159] mean that certain encodings can
+cause problems.  A safe subset of JSON has been defined that identifies
+constructs that can be avoided to maximize interoperability
+[I-D.ietf-json-i-json].
+
 
 # Creating Barriers to Implementation
 
@@ -110,9 +123,12 @@ principle, and a natural reluctance not to generate an error condition when
 the situation can be recovered.
 
 Once this process has begun and deviations become entrenched, there is little
-that can be done to reverse the process.  Protocol maintenace can help by
-carefully documenting the various forms of divergence and recommending limits on
-what is acceptable.  This process can be tedious and time-consuming, but it is
+that can be done to reverse the process.
+
+Protocol maintenace can help by carefully documenting the various forms of
+divergence and recommending limits on what is acceptable.  This process can be
+tedious and time-consuming.  For instance, the revision to HTTP/1.1 took
+considerable effort over more than 6 years.  However, this sort of effort was
 crucial in supporting the interoperability of both existing and new protocol
 implementations.
 
@@ -132,9 +148,10 @@ be of benefit to existing users.
 
 Many protocols are specifically designed to permit deviation from the basic
 protocol in constrained ways.  A well-defined extensibility framework in a
-protocol is often the most valuable asset a protocol has.  For instance, HTTP
-[RFC7230] would not enjoy the success it has without its excellent support for
-certain forms of extension.
+protocol is often the most valuable asset a protocol has.  For instance,
+Diameter's comprehensive extensibility framework [RFC7423] is perhaps its most
+important feature; whereas the Session Description Protocol [RFC4566] has
+benefited greatly from the ability to extend with new attributes.
 
 It is recognized that designing and defining an extension framework is
 challenging [RFC6709].  In particular, it is difficult to anticipate the various
@@ -169,11 +186,11 @@ regarding the trade-off between correctness and interoperability forever.
 The following principle applies not just to the implementation of a protocol,
 but to the design and specification of the protocol.
 
-> Protocols and implementations of protocols should be maximally strict.
+> Protocol designs and implementations should be maximally strict.
 
-This principle is based on the lessons of protocol deployment.  The principle is
-also based on valuing early feedback, a practice central to modern engineering
-discipline.
+Though perhaps a less pithy than Postel's formulation, this principle is based
+on the lessons of protocol deployment.  The principle is also based on valuing
+early feedback, a practice central to modern engineering discipline.
 
 ## Fail Fast and Hard
 
@@ -183,13 +200,14 @@ include error reporting mechanisms that ensure errors are surfaced in a visible
 and expedient fashion.
 
 Generating fatal errors for what would otherwise be a minor or recoverable error
-is generally advisible, especially if there is any risk that the error
-represents an implementation flaw.  A fatal error provides excellent motivation
-for an error to be addressed.
+is preferred, especially if there is any risk that the error represents an
+implementation flaw.  A fatal error provides excellent motivation for addressing
+problems.
 
 On the whole, implementations already have ample motivation to prefer
-interoperability over correctness.  The role of a specifications is to proscribe
-behavior in the interest of interoperability.
+interoperability over correctness.  The primary function of a specification is
+to proscribe behavior in the interest of interoperability.
+
 
 ## Extend Carefully
 
@@ -198,15 +216,17 @@ extension framework [RFC6709] can be the source of significant variation in
 implementations if it is poorly designed, but a well designed extension
 framework can relieve pressure on protocol maintainers.
 
-It is better to remove extension options than to risk providing an extension
-mechanism with unknown or uncertain characteristics.
+A protocol extension point carries both cost and risk.  It is better to remove
+extension options than to risk providing an extension mechanism with unknown or
+uncertain characteristics.
 
-When evolving a protocol, version negotiation is the single most important point
-of extensibility.  This provides a fallback option for protocol evolution,
-ensuring that changes that can't be accommodated within the protocol can be
-addressed by revising the entire protocol.  A protocol that includes provisions
-for its own eventual replacement is less likely to cause persistent and
-difficult maintenance problems.
+Version negotiation is perhaps the most critical extensibility point for any
+protocol, and even protocol extensions.  Version negotiation provides an option
+of last resort for any shortfalls in any originally conceived extensibility:
+changes that can't be accommodated within the protocol can be addressed by
+revising the entire protocol.  A protocol that includes robust provisions for
+its own eventual replacement always has at least one option available to address
+even the most intractable of maintenance problems.
 
 
 ## Implementer Guidance
