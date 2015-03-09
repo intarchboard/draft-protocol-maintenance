@@ -19,12 +19,8 @@ author:
 
 informative:
   RFC0760:
-  RFC4566:
   RFC6709:
-  RFC7159:
   RFC7230:
-  RFC7423:
-  I-D.ietf-json-i-json:
 
 
 --- abstract
