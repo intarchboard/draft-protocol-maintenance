@@ -121,7 +121,7 @@ the situation.
 For widely used protocols, the massive scale of the Internet makes large scale
 interoperability testing infeasible for all a privileged few.  Without good
 maintenance, new implementations can be restricted to niche uses, where the
-prolems arising from interoperability issues can be more closely managed.
+problems arising from interoperability issues can be more closely managed.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
 of a protocol are important in ensuring the continued viability of a protocol.
@@ -136,8 +136,8 @@ time-consuming process of documenting the actual protocol - rather than the
 protocol as it was originally conceived - can restore the ability to create and
 maintain interoperable implementations.
 
-Such a process was undertaken for HTTP/1.1 [RFC7230]. This this effort took more
-than 6 years, it has been successful in documenting protocol variations and
+Such a process was undertaken for HTTP/1.1 [RFC7230]. This effort took more than
+6 years, it has been successful in documenting protocol variations and
 describing what has over time become a far more complex protocol.
 
 
