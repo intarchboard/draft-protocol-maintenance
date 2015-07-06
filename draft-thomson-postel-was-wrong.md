@@ -29,8 +29,8 @@ Jon Postel's famous statement in RFC 1122 of "Be liberal in what you accept, and
 conservative in what you send" -- is a principle that has long guided the design
 of Internet protocols and implementations of those protocols.  The posture this
 statement advocates might promote interoperability in the short term, but that
-short term advantage is outweighed by negative consequences that affect the long
-term maintenance of a protocol and its ecosystem.
+short-term advantage is outweighed by negative consequences that affect the
+long-term maintenance of a protocol and its ecosystem.
 
 
 --- middle
@@ -96,7 +96,7 @@ An implementation that reacts to variations in the manner advised by Postel sets
 up a feedback cycle:
 
 * Over time, implementations progressively add new code to constrain how data is
-  transmitted, or to permit variations what is received.
+  transmitted, or to permit variations in what is received.
 
 * Errors in implementations, or confusion about semantics can thereby be masked.
 
@@ -118,8 +118,8 @@ Postel's maxim encourages a reaction that compounds this issue.
 Once deviations become entrenched, there is little that can be done to rectify
 the situation.
 
-For widely used protocols, the massive scale of the Internet makes large scale
-interoperability testing infeasible for all a privileged few.  Without good
+For widely used protocols, the massive scale of the Internet makes large-scale
+interoperability testing infeasible for all but a privileged few.  Without good
 maintenance, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
 
