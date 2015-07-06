@@ -137,8 +137,8 @@ protocol as it was originally conceived - can restore the ability to create and
 maintain interoperable implementations.
 
 Such a process was undertaken for HTTP/1.1 [RFC7230]. This effort took more than
-6 years, it has been successful in documenting protocol variations and
-describing what has over time become a far more complex protocol.
+6 years to document protocol variations and describe what has - over time -
+become a far more complex protocol.
 
 
 # A New Design Principle
