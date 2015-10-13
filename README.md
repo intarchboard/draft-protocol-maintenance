@@ -13,7 +13,7 @@ many claim that it is a foundational principle in the design of the Internet.
 This philosophy turns out to have serious and negative long term consequences
 for the interoperability of network protocols and other interconnected systems.
 
-* [Editor's copy](https://unicorn-wg.github.io/postel-was-wrong/)
+* [Editor's copy](https://martinthomson.github.io/postel-was-wrong/)
 
 
 ## Contributing
