@@ -1,25 +1,17 @@
-# Liberalism in Protocol Implementations Considered Harmful
+# The Harmful Consequences of Postel's Maxim
 
-Jon Postel wrote a great many remarkable things.  Of these, perhaps the most
-famous statement is this:
+This is the working area for the Individual internet-draft, "The Harmful Consequences of Postel's Maxim".
 
-> In general, an implementation must be conservative
-> in its sending behavior, and liberal in its receiving behavior.
-  -- Jon Postel, [RFC 791](https://tools.ietf.org/html/rfc791#section-3.2)
-
-This famous statement on interoperability has been paraphrased many times and
-many claim that it is a foundational principle in the design of the Internet.
-
-This philosophy turns out to have serious and negative long term consequences
-for the interoperability of network protocols and other interconnected systems.
-
-* [Editor's copy](https://martinthomson.github.io/postel-was-wrong/)
+* [Editor's copy](https://.github.io//)
+* [Individual Draft] (https://tools.ietf.org/html/draft-thomson-postel-was-wrong)
 
 
 ## Contributing
 
 Before submitting feedback, please familiarize yourself with our current issues
-list and review the [home page](https://ietf.org/) and contemplate your position carefully. If you're
+list and review the [working group
+documents](https://datatracker.ietf.org/wg/postel/documents/) and [mailing
+list discussion](https://mailarchive.ietf.org/arch/browse/postel/). If you're
 new to this, you may also want to read the [Tao of the
 IETF](https://www.ietf.org/tao.html).
 
@@ -27,10 +19,9 @@ Be aware that all contributions to the specification fall under the "NOTE WELL"
 terms outlined below.
 
 1. The best way to provide feedback (editorial or design) and ask questions is
-sending an e-mail to [our mailing
-list](https://www.ietf.org/mailman/listinfo/ietf). This will ensure that IETF
-participants who care (or at least those who haven't yet unsubscribed) see your
-input and can marvel at your wisdom.
+sending an e-mail to our mailing list
+([info](https://www.ietf.org/mailman/listinfo/postel)). This will ensure that
+the entire Working Group sees your input in a timely fashion.
 
 2. If you have **editorial** suggestions (i.e., those that do not change the
 meaning of the specification), you can either:
@@ -42,16 +33,77 @@ meaning of the specification), you can either:
   in the issue body. It is not necessary to notify the mailing list for
   editorial issues.
 
-  c) Make comments on individual commits in GitHub. Note that this feedback is
+  c) Make comments on individual commits in Github. Note that this feedback is
   processed only with best effort by the editors, so it should only be used for
   quick editorial suggestions or questions.
 
 3. For non-editorial (i.e., **design**) issues, you can also create an issue on
-GitHub. However, you **must notify the mailing list** when creating such issues,
+Github. However, you **must notify the mailing list** when creating such issues,
 providing a link to the issue in the message body.
 
-  Note that **GitHub issues are not for substantial discussions**; the only
+  Note that **github issues are not for substantial discussions**; the only
   appropriate place to discuss design issues is on the mailing list itself.
+
+
+## Building the Draft
+
+Formatted text and HTML versions of the draft can be built using `make`.
+
+```sh
+$ make
+```
+
+This requires that you have the necessary software installed.  There are several
+other tools that are enabled by make, check the Makefile for details, including
+links to the software those tools might require.
+
+
+## Installation and Setup
+
+Mac users will need to install
+[XCode](https://itunes.apple.com/us/app/xcode/id497799835) to get `make`, see
+[this answer](http://stackoverflow.com/a/11494872/1375574) for instructions.
+Some of the makefile targets need GNU make 4.0, which Apple doesn't ship yet;
+sorry, but if you want those, you can
+[download](https://www.gnu.org/software/make/) and build a copy for yourself.
+
+Windows users will need to use [Cygwin](http://cygwin.org/) to get `make`.
+
+All systems require [xml2rfc](http://xml2rfc.ietf.org/).  This requires [Python
+2.7](https://www.python.org/).  The easiest way to get `xml2rfc` is with `pip`.
+
+Using a `virtualenv`:
+
+```sh
+$ virtualenv --no-site-packages venv
+# remember also to activate the virtualenv before any 'make' run
+$ source venv/bin/activate
+$ pip install xml2rfc
+```
+
+To your local user account:
+
+```sh
+$ pip install --user xml2rfc
+```
+
+Or globally:
+
+```sh
+$ sudo pip install xml2rfc
+```
+
+xml2rfc depends on development versions of [libxml2](http://xmlsoft.org/) and
+[libxslt1](http://xmlsoft.org/XSLT).  These packages are named `libxml2-dev` and
+`libxslt1-dev` (Debian, Ubuntu) or `libxml2-devel` and `libxslt1-devel` (RedHat,
+Fedora).
+
+If you use markdown, you will also need to install `kramdown-xml2rfc`, which
+requires Ruby and can be installed using the roby package manager, `gem`:
+
+```sh
+$ gem install kramdown-xml2rfc
+```
 
 
 ## NOTE WELL
