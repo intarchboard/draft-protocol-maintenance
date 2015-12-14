@@ -7,7 +7,7 @@ category: info
 ipr: trust200902
 
 stand_alone: yes
-pi: [toc, sortrefs, symrefs]
+pi: [toc, sortrefs, symrefs, docmapping]
 
 author:
  -
