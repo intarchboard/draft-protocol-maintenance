@@ -54,13 +54,12 @@ general.
 
 Over time, considerable changes have occurred in both the scale of the Internet
 and the level of skill and experience available to protocol and software
-designers.  Part of that experience is with protocols that were designed,
+designers.  Much of that experience is with protocols that were designed,
 informed by Postel's maxim, in the early phases of the Internet.
 
 That experience shows that there are negative long-term consequences to
 interoperability if an implementation applies Postel's advice.  Correcting the
-problems caused by divergent behavior in implementations can be difficult or
-impossible.
+problems caused by divergent behavior in implementations can be difficult.
 
 It might be suggested that the posture Postel advocates was indeed necessary
 during the formative years of the Internet, and even key to its success.  This
@@ -76,7 +75,7 @@ primarily as a record of the shortcomings of His principle for the wider
 community.
 
 
-# The Protocol Decay Hypothesis {#time}
+# Protocol Decay {#time}
 
 Divergent implementations of a specification emerge over time.  When
 variations occur in the interpretation or expression of semantic components,
@@ -100,7 +99,7 @@ up a feedback cycle:
 
 * Errors in implementations, or confusion about semantics can thereby be masked.
 
-* As a result, errors can become entrenched, forcing other implementations to be
+* These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
 
 An entrenched flaw can become a de facto standard.  Any implementation of the
@@ -109,8 +108,8 @@ interoperable.  This is both a consequence of applying Postel's advice, and a
 product of a natural reluctance to avoid fatal error conditions.  This is
 colloquially referred to as being "bug for bug compatible".
 
-It is debatable as to whether such a process can be completely avoided, but
-Postel's maxim encourages a reaction that compounds this issue.
+It is debatable as to whether decay can be completely avoided, but Postel's
+maxim encourages a reaction that compounds this issue.
 
 
 # The Long Term Costs
@@ -124,10 +123,10 @@ maintenance, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
-of a protocol are important in ensuring the continued viability of a protocol.
-New protocol implementations are also more likely to be developed for new and
-diverse use cases and often are the origin of features and capabilities that can
-be of benefit to existing users.  These problems also reduce the ability of
+are important in ensuring the continued viability of a protocol.  New protocol
+implementations are also more likely to be developed for new and diverse use
+cases and often are the origin of features and capabilities that can be of
+benefit to existing users.  These problems also reduce the ability of
 established implementations to change.
 
 Protocol maintenance can help by carefully documenting divergence and
@@ -146,7 +145,8 @@ become a far more complex protocol.
 The following principle applies not just to the implementation of a protocol,
 but to the design and specification of the protocol.
 
-> Protocol designs and implementations should be maximally strict.
+> Protocol designs and implementations should fail noisily in response to
+  bad or undefined inputs.
 
 Though less pithy than Postel's formulation, this principle is based on the
 lessons of protocol deployment.  The principle is also based on valuing early
@@ -158,25 +158,31 @@ feedback, a practice central to modern engineering discipline.
 Protocols need to include error reporting mechanisms that ensure errors are
 surfaced in a visible and expedient fashion.
 
-Generating fatal errors for what would otherwise be a minor or recoverable error
-is preferred, especially if there is any risk that the error represents an
-implementation flaw.  A fatal error provides excellent motivation for addressing
-problems.
+Generating fatal errors in place of recovering from a possible fault is
+preferred, especially if there is any risk that the error represents an
+implementation flaw.  A fatal error provides excellent motivation for
+addressing problems.
+
+In contrast, generating warnings provide no incentive to fix a problem as the
+system remains operational.  Users can become inured to frequent use of
+warnings and thus systematically ignore them, whereas a fatal error can only
+happen once and will demand attention.
 
 On the whole, implementations already have ample motivation to prefer
 interoperability over correctness.  The primary function of a specification is
-to proscribe behavior in the interest of interoperability.
+to proscribe behavior in the interest of interoperability.  Specifications
+should mandate fast failure where possible.
 
 
 ## Implementations Are Ultimately Responsible
 
-Implementers are encouraged to expose errors immediately and prominently in
-addition to what a specification mandates.
+Implementers are encouraged to expose errors immediately and prominently,
+especially in cases of underspecification.
 
 Exposing errors is particularly important for early implementations of a
 protocol.  If preexisting implementations generate errors in response to
 divergent behaviour, then new implementations will be able to detect and correct
-flaws quickly.
+their own flaws quickly.
 
 An implementer that discovers a scenario that is not covered by the
 specification does the community a greater service by generating a fatal error
@@ -199,11 +205,6 @@ critical.  Good extensibility [RFC6709] can relieve some of the pressure on
 maintenance.
 
 
-# IANA Considerations
-
-This document has no IANA actions.
-
-
 # Security Considerations
 
 Sloppy implementations, lax interpretations of specifications, and uncoordinated
@@ -218,3 +219,8 @@ consideration of security issues.  Furthermore, because general-purpose
 protocols tend to deal with flaws or obsolescence in a less urgent fashion than
 security protocols, there can be fewer opportunities to correct problems in
 protocols that develop interoperability problems.
+
+
+# IANA Considerations
+
+This document has no IANA actions.
