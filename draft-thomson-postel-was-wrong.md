@@ -2,7 +2,6 @@
 title: "The Harmful Consequences of Postel's Maxim"
 abbrev: "Elephants Out, Donkeys In"
 docname: draft-thomson-postel-was-wrong-latest
-date: 2015
 category: info
 ipr: trust200902
 
@@ -101,6 +100,17 @@ up a feedback cycle:
 
 * These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
+
+For example, the original JSON specification {{?RFC4627}} omitted critical
+details on a range of points including Unicode handling, ordering and
+duplication of object members, and number encoding.  Consequently, a range of
+interpretations were used by implementations.  An update {{?RFC7159}} was
+unable to correct these errors, instead concentrating on defining the
+interoperable subset of JSON.  I-JSON {{?RFC7493}} defines a new format that is
+substantially similar to JSON without the interoperability flaws. I-JSON also
+intentionally omits some interoperability: an I-JSON implementation will fail
+to accept some valid JSON texts.  Consequently, most JSON parsers do not
+implement I-JSON.
 
 An entrenched flaw can become a de facto standard.  Any implementation of the
 protocol is required to replicate the aberrant behavior, or it is not
