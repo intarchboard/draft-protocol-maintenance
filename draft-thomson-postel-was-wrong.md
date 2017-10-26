@@ -16,12 +16,6 @@ author:
     email: martin.thomson@gmail.com
 
 
-informative:
-  RFC0760:
-  RFC6709:
-  RFC7230:
-
-
 --- abstract
 
 Jon Postel's famous statement in RFC 1122 of "Be liberal in what you accept, and
@@ -39,7 +33,7 @@ long-term maintenance of a protocol and its ecosystem.
 Of the great many contributions Jon Postel made to the Internet, his remarkable
 technical achievements are often ignored in favor of the design and
 implementation philosophy that he first captured in the original IPv4
-specification [RFC0760]:
+specification {{{?RFC0760}}:
 
 > In general, an implementation should be conservative in its sending behavior,
   and liberal in its receiving behavior.
@@ -128,42 +122,77 @@ Once deviations become entrenched, there is little that can be done to rectify
 the situation.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
-interoperability testing infeasible for all but a privileged few.  Without good
-maintenance, new implementations can be restricted to niche uses, where the
+interoperability testing infeasible for all but a privileged few.  As the set of
+changes needed to maintain interoperability grows in size, the cost of building
+a new implementation increases.  This is particularly relevant as the set of
+tweaks necessary for interoperability can be difficult to learn.
+
+Consequently, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
 are important in ensuring the continued viability of a protocol.  New protocol
 implementations are also more likely to be developed for new and diverse use
 cases and often are the origin of features and capabilities that can be of
-benefit to existing users.  These problems also reduce the ability of
-established implementations to change.
+benefit to existing users.
 
-Protocol maintenance can help by carefully documenting divergence and
-recommending limits on what is both acceptable and interoperable.  The
-time-consuming process of documenting the actual protocol - rather than the
-protocol as it was originally conceived - can restore the ability to create and
-maintain interoperable implementations.
-
-Such a process was undertaken for HTTP/1.1 [RFC7230]. This effort took more than
-6 years to document protocol variations and describe what has - over time -
-become a far more complex protocol.
+These problems also reduce the ability of established implementations to change.
+The accumulation of interoperability mitigations can be difficult to maintain,
+or even recognize in software.
 
 
-# A New Design Principle
+# Recognizing the Need for Protocol Maintenance
 
-The following principle applies not just to the implementation of a protocol,
-but to the design and specification of the protocol.
+Postel's maxim is particularly valuable if the specification of a protocol is
+intended to remain unchanged for an extended period of time.  Indeed, in the
+face of divergent interpretations, the only hope for an implementation to remain
+widely interoperable is to be tolerant of differences and even errors in
+interpretation.
 
-> Protocol designs and implementations should fail noisily in response to
-  bad or undefined inputs.
+Application of Postel's advice to the implementation of a protocol specification
+that does not change is logical, and often necessary.  But that suggests that a
+different approach to the development of protocols is appropriate.
 
-Though less pithy than Postel's formulation, this principle is based on the
-lessons of protocol deployment.  The principle is also based on valuing early
-feedback, a practice central to modern engineering discipline.
+Active maintenance of a protocol can ensure that it remains current.  A protocol
+specification is then no longer a static product that is completed at the time
+of publication.
+
+Protocol designers are strongly encouraged to continue to maintain and evolve
+protocols beyond their initial inception and definition.  Maintenance is needed
+in response to the discovery of errors in specification that might cause
+interoperability issues.  Maintenance is also critical for providing new
+specifications that enable the deployment of the protocol for use cases that
+were not envisaged in its original design, as might happen for a wildly
+successful protocol {{?RFC5218}}.
+
+Maintenance does not imply that core specifications are revised.  For instance,
+TCP is still defined in RFC 793 {{?TCP=RFC0793}}, but that document is the
+subject of a very large number of update and extension RFCs.  Good extensibility
+{{?EXT=RFC6709}} can make it easier to respond to new use cases or changes in the
+environment in which the protocol is deployed.
+
+The process of maintenance ideally begins even before the specification for a
+protocol is complete.  Neglect can quickly produce the negative consequences
+this document describes.  Restarting maintenance could involve first discovering
+the properties of the protocol as it is deployed, rather than the protocol as it
+was originally document.  This can be time-consuming, particularly if the
+protocol has a diverse set of implementations.  Such a process was undertaken
+for HTTP {{?HTTP=RFC7230}} after a period of minimal maintenance.  Restoring the
+specification to currency took significant effort over more than 6 years.
+
+
+
+##
+
+In most cases, the venue for the initial design and specification of a protocol is where questions, issues, or new use cases will be taken.  Ensuring that the venue remains available ensures that critical feedback is not lost for lack of a medium for providing it.  For the IETF, this means avoiding closing mailing lists and public Internet-Draft repositories.
+
 
 
 ## Fail Fast and Hard
+
+If protocol
+implementations are less tolerant of variation, protocol maintenance becomes
+critical.
 
 Protocols need to include error reporting mechanisms that ensure errors are
 surfaced in a visible and expedient fashion.
@@ -208,11 +237,6 @@ what is specified can avoid later issues.
 
 ## Protocol Maintenance is Important
 
-Protocol designers are strongly encouraged to continue to maintain and evolve
-protocols beyond their initial inception and definition.  If protocol
-implementations are less tolerant of variation, protocol maintenance becomes
-critical.  Good extensibility [RFC6709] can relieve some of the pressure on
-maintenance.
 
 
 # Security Considerations
