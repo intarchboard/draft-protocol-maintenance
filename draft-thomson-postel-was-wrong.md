@@ -67,8 +67,9 @@ during the formative years of the Internet, and even key to its success.  This
 document takes no position on that claim.
 
 This document instead describes the negative consequences of the application of
-Postel's principle to the modern Internet.  A replacement design principle is
-suggested.
+Postel's principle to the modern Internet.  In place of the principle, it is
+recommended that protocols receive continuing maintenance after their initial
+design and deployment.
 
 There is good evidence to suggest that designers of protocols in the IETF widely
 understand the limitations of Postel's principle.  This document serves
