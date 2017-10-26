@@ -15,6 +15,14 @@ author:
     org: Mozilla
     email: martin.thomson@gmail.com
 
+informative:
+  HTML:
+    title: "HTML"
+    date: 2017-10-25
+    seriesinfo:
+      WHATWG: Living Standard
+    target: "https://html.spec.whatwg.org/"
+
 
 --- abstract
 
@@ -33,7 +41,7 @@ long-term maintenance of a protocol and its ecosystem.
 Of the great many contributions Jon Postel made to the Internet, his remarkable
 technical achievements are often ignored in favor of the design and
 implementation philosophy that he first captured in the original IPv4
-specification {{{?RFC0760}}:
+specification {{?RFC0760}}:
 
 > In general, an implementation should be conservative in its sending behavior,
   and liberal in its receiving behavior.
@@ -109,8 +117,9 @@ implement I-JSON.
 An entrenched flaw can become a de facto standard.  Any implementation of the
 protocol is required to replicate the aberrant behavior, or it is not
 interoperable.  This is both a consequence of applying Postel's advice, and a
-product of a natural reluctance to avoid fatal error conditions.  This is
-colloquially referred to as being "bug for bug compatible".
+product of a natural reluctance to avoid fatal error conditions.  Ensuring
+interoperability in this environment is often colloquially referred to as aiming
+to be "bug for bug compatible".
 
 It is debatable as to whether decay can be completely avoided, but Postel's
 maxim encourages a reaction that compounds this issue.
@@ -143,33 +152,37 @@ or even recognize in software.
 
 # Recognizing the Need for Protocol Maintenance
 
-Postel's maxim is particularly valuable if the specification of a protocol is
+Postel's maxim is specifically valuable if the specification of a protocol is
 intended to remain unchanged for an extended period of time.  Indeed, in the
-face of divergent interpretations, the only hope for an implementation to remain
-widely interoperable is to be tolerant of differences and even errors in
-interpretation.
+face of divergent interpretations of an immutable specification, the only hope
+for an implementation to remain widely interoperable is to be tolerant of
+differences in interpretation and occasional outright implementation errors.
 
-Application of Postel's advice to the implementation of a protocol specification
-that does not change is logical, and often necessary.  But that suggests that a
-different approach to the development of protocols is appropriate.
+From this perspective, application of Postel's advice to the implementation of a
+protocol specification that does not change is logical, even necessary.  But
+that suggests that the problem is with the presumption of immutability of
+specifications.
 
-Active maintenance of a protocol can ensure that it remains current.  A protocol
-specification is then no longer a static product that is completed at the time
-of publication.
+Active maintenance of a protocol can ensure that specifications remain accurate
+and that new implementations are possible.  A maintained protocol is not a
+static construct, it improves and changes as it is used.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocols beyond their initial inception and definition.  Maintenance is needed
 in response to the discovery of errors in specification that might cause
-interoperability issues.  Maintenance is also critical for providing new
-specifications that enable the deployment of the protocol for use cases that
-were not envisaged in its original design, as might happen for a wildly
-successful protocol {{?RFC5218}}.
+interoperability issues.  Maintenance is also critical for ensuring that the
+protocol is viable for application to use cases that might not have been
+envisaged during its original design.  New use cases are an indicator that the
+protocol could be successful {{?SUCCESS=RFC5218}}.
 
-Maintenance does not imply that core specifications are revised.  For instance,
-TCP is still defined in RFC 793 {{?TCP=RFC0793}}, but that document is the
-subject of a very large number of update and extension RFCs.  Good extensibility
-{{?EXT=RFC6709}} can make it easier to respond to new use cases or changes in the
-environment in which the protocol is deployed.
+Maintenance does not demand the development of new versions of protocols or
+protocol specifications.  For instance, RFC 793 {{?TCP=RFC0793}} remains the
+canonical TCP reference, but that document alone is no longer sufficient to
+implement the protocol.  TCP is the subject of a very large number of update and
+extension RFCs that together document the deployed protocol.
+
+Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
+cases or changes in the environment in which the protocol is deployed.
 
 The process of maintenance ideally begins even before the specification for a
 protocol is complete.  Neglect can quickly produce the negative consequences
@@ -181,62 +194,101 @@ for HTTP {{?HTTP=RFC7230}} after a period of minimal maintenance.  Restoring the
 specification to currency took significant effort over more than 6 years.
 
 
+# The Role of Feedback
 
-##
+Protocol maintenance is only possible if there is sufficient information about
+the implementation, deployment and use of the protocol.  A such, feedback is
+critical to effective maintenance.
 
-In most cases, the venue for the initial design and specification of a protocol is where questions, issues, or new use cases will be taken.  Ensuring that the venue remains available ensures that critical feedback is not lost for lack of a medium for providing it.  For the IETF, this means avoiding closing mailing lists and public Internet-Draft repositories.
+For a protocol specification, the primary and most effective form of feedback
+comes from people who implement or deploy the protocol.  An active community
+around a particular protocol is the most valuable source of feedback.  It is the
+community that implements and deploys changes, in addition to contributing to
+the ongoing maintenance of protocol specifications.
 
-
-
-## Fail Fast and Hard
-
-If protocol
-implementations are less tolerant of variation, protocol maintenance becomes
-critical.
-
-Protocols need to include error reporting mechanisms that ensure errors are
-surfaced in a visible and expedient fashion.
-
-Generating fatal errors in place of recovering from a possible fault is
-preferred, especially if there is any risk that the error represents an
-implementation flaw.  A fatal error provides excellent motivation for
-addressing problems.
-
-In contrast, generating warnings provide no incentive to fix a problem as the
-system remains operational.  Users can become inured to frequent use of
-warnings and thus systematically ignore them, whereas a fatal error can only
-happen once and will demand attention.
-
-On the whole, implementations already have ample motivation to prefer
-interoperability over correctness.  The primary function of a specification is
-to proscribe behavior in the interest of interoperability.  Specifications
-should mandate fast failure where possible.
+A community benefits from having a venue for discussion.  An outlet where
+questions, issues, or new use cases can be taken can also be where maintenance
+occurs.  Ensuring that the venue remains available ensures that critical
+feedback is not lost for lack of a medium for providing it.  This might mean
+retaining mailing lists, specification repositories, and issue trackers past the
+point that a specification is initially published.  The easier it is for an
+individual to provide feedback on their own terms, the more likely they are to
+provide it.
 
 
-## Implementations Are Ultimately Responsible
+## Fault Reporting is Valuable
 
-Implementers are encouraged to expose errors immediately and prominently,
-especially in cases of underspecification.
+Protocol implementations should to include error reporting mechanisms that
+ensure errors are surfaced in a visible and expedient fashion.
+
+Exposing faults through operations and management systems is highly valuable,
+but it might be necessary to ensure that the information is propagated.
+Building telemetry and error logging systems that report faults to the
+developers of the implementation is superior in many respects.  However, this is
+only possible in deployments that are conducive to the collection of this type
+of information.  Due consideration to protecting the privacy of protocol
+participants is critical prior to deploying any such system.
+
+
+## The Role of Fatal Errors
+
+The primary failing of automated reporting systems is their inability to
+recognize and collect information about abberant conditions.  Generating fatal
+errors in place of attempting recovery can ensure that faults are immediately
+visible.  For instance, a practice of triggering a crash in response to
+unexpected conditions allows a generic crash reporting system to be used to
+identify faults.  Fatal errors or crashes are also preferable if there is any
+risk that the error might represent an implementation or security issue.
+
+A fatal error provides excellent motivation for addressing problems.  In
+contrast, generating warnings provide no incentive to fix a problem as the
+system remains operational.  Generating fatal errors is only feasible if such
+errors are sufficiently rare.  Users can become inured to problems if they are
+frequent and ignore them, whereas rare events demand greater attention.
 
 Exposing errors is particularly important for early implementations of a
-protocol.  If preexisting implementations generate errors in response to
-divergent behaviour, then new implementations will be able to detect and correct
-their own flaws quickly.
+protocol.  This helps validate a protocol during its design.  If early
+implementations are then used more widely, having those implementations generate
+errors in response to divergent behavior better enables the detection and
+correction of errors in new implementations.
 
-An implementer that discovers a scenario that is not covered by the
-specification does the community a greater service by generating a fatal error
-than by attempted to interpret and adapt.  Hiding errors can cause long-term
-problems.  Ideally, specification shortcomings are taken to protocol
-maintainers.
-
-Unreasoning strictness can be detrimental.  Protocol designers and implementers
-expected to exercise judgment in determining what level of strictness is
-ultimately appropriate.  In every case, documenting the decision to deviate from
-what is specified can avoid later issues.
+This doesn't mean that protocol implementations need to treat all inputs equally
+strictly.  A protocol might be intentionally designed to be tolerant of a wide
+range of inputs (see for example {{HTML}}).  As long as proper reactions to
+inputs are clearly and unambiguously specified, these considerations don't
+apply.
 
 
-## Protocol Maintenance is Important
+# Implementations Are Ultimately Responsible
 
+Implementations and deplotments are critical to the ongoing maintenance of a
+protocol.  Implementation, deployment and use of a protocol is the primary
+source of information about that protocol.  The application of any tool to real
+use cases is where problems and use cases are discovered.
+
+Implementations have ample motivation to prefer stability and interoperability
+over maintenance or correctness.  It is likely that - over time - an
+implementation will accumulate allowances for errors of specification or
+implementation.  This can lead to suppression of feedback about errors.
+
+Even when an implementation chooses to attempt to adapt to an abnormal
+condition, communicating that decision to the community minimally allows others
+to benefit from knowledge of the problem.  Discussion about problems might also
+lead to alternative strategies or protocol enhancements that can avoid further
+problems.
+
+Over time, mitigations for interoperability issues could become redundant.
+Occasional review of any special interoperability measures might reveal
+opportunities for an implementation to switch to stricter handling of
+exceptional conditions.  Removing special allowances in favor of stricter error
+reporting restores feedback measures that new implementations can then benefit
+from.
+
+Managing and deploying changes can be expensive.  However, it is widely
+recognized that maintenance is a critical part of the deployment of computer
+systems for security reasons {{?IOTSU=RFC8240}}.  Managing updates for
+interoperability problems represents a small additional cost in exchange for
+ensuring the ability to interoperate with other users of the network.
 
 
 # Security Considerations
@@ -258,3 +310,12 @@ protocols that develop interoperability problems.
 # IANA Considerations
 
 This document has no IANA actions.
+
+
+--- back
+
+# Acknowledgments
+
+Constructive feedback on this document has been provided by a surprising number
+of people including Mark Nottingham, Brian Trammell, and Anne Van Kesteren.
+Please excuse any omission.
