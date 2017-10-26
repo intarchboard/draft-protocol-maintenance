@@ -10,3 +10,5 @@
 venv/
 issues.json
 draft-thomson-postel-was-wrong.xml
+/lib
+.targets.mk
