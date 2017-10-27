@@ -16,6 +16,13 @@ author:
     email: martin.thomson@gmail.com
 
 informative:
+  ECMA262:
+    title: "ECMAScript(R) 2017 Language Specification"
+    date: 2017-06
+    seriesinfo:
+      ECMA-262: 8th Edition
+    target: "http://www.ecma-international.org/publications/standards/Ecma-262.htm"
+
   HTML:
     title: "HTML"
     date: 2017-10-25
@@ -27,11 +34,11 @@ informative:
 --- abstract
 
 Jon Postel's famous statement in RFC 1122 of "Be liberal in what you accept, and
-conservative in what you send" -- is a principle that has long guided the design
-of Internet protocols and implementations of those protocols.  The posture this
-statement advocates might promote interoperability in the short term, but that
-short-term advantage is outweighed by negative consequences that affect the
-long-term maintenance of a protocol and its ecosystem.
+conservative in what you send" is a principle that has long guided the design
+and implementation of Internet protocols.  The posture this statement advocates
+promotes interoperability, but can produce negative effects in the protocol
+ecosystem in the long term.  Those effects can be avoided by properly
+maintaining protocols.
 
 
 --- middle
@@ -40,11 +47,16 @@ long-term maintenance of a protocol and its ecosystem.
 
 Of the great many contributions Jon Postel made to the Internet, his remarkable
 technical achievements are often ignored in favor of the design and
-implementation philosophy that he first captured in the original IPv4
-specification {{?RFC0760}}:
+implementation philosophy of what is known as the robustness principle:
 
-> In general, an implementation should be conservative in its sending behavior,
-  and liberal in its receiving behavior.
+> Be strict when sending and tolerant when receiving.  Implementations must
+  follow specifications precisely when sending to the network, and tolerate
+  faulty input from the network. When in doubt, discard faulty input silently,
+  without returning an error message unless this is required by the
+  specification.
+
+This being the version of the text that appears in IAB RFC 1958
+{{?PRINCIPLES=RFC1958}}.
 
 In comparison, his contributions to the underpinnings of the Internet, which are
 in many respects more significant, enjoy less conscious recognition.  Postel's
@@ -76,27 +88,31 @@ of the robustness principle.
 # Fallibility of Specifications
 
 What is often missed in discussions of the robustness principle is the context
-in which it appears.  The sentence immediately preceding is critical to
-understanding that context:
+in which it appears.  The earliest form of the principle in the RFC series (in
+RFC 760 {{?RFC0760}}) is preceded by a sentence that reveals the motivation for
+the principle:
 
 > While the goal of this specification is to be explicit about the protocol
   there is the possibility of differing interpretations.  In general, an
   implementation should be conservative in its sending behavior, and liberal in
   its receiving behavior.
 
-This is a frank admission of fallibility.  Postel recognizes the possibility
-that the specification is imperfect.
+This motivating statement is a frank admission of fallibility and remarkable for
+it.  Here Postel recognizes the possibility that the specification could be
+imperfect.  This is an important statement, but inexplicably absent from the
+later versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 
 Indeed, an imperfect specification is natural, largely because it was - and
-still is - more important to proceed to implementation and deployment than it is
-to perfect the protocol specification.  A protocol, like software, benefits
-greatly from experience in deployment, and a deployed protocol is immeasurably
-more useful than a perfect protocol.
+remains thus - more important to proceed to implementation and deployment than
+it is to perfect the protocol specification.  A protocol, like software,
+benefits greatly from experience in deployment, and a deployed protocol is
+immeasurably more useful than a perfect protocol.
 
 As shown {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol
-depends far more on its usefulness than on on technical excellence.  Postel's
-timely publication of protocol specifications, even with the potential for
-flaws, had a significant effect in the eventual success of the Internet.
+depends far more on factors like usefulness than on on technical excellence.
+Postel's timely publication of protocol specifications, even with the potential
+for flaws, likely had a significant effect in the eventual success of the
+Internet.
 
 The problem is therefore not with the premise, but with its conclusion: the
 robustness principle itself.
@@ -111,12 +127,12 @@ implementations cease to be perfectly interoperable.
 Implementation bugs are often identified as the cause of variation, though it is
 often a combination of factors.  Application of a protocol to new and
 unanticipated uses, and ambiguities or errors in the specification are often
-confounding factors.
+confounding factors.  Situations where two peers disagree on interpretation
+should be expected over the lifetime of a protocol.
 
-Of course, situations where two peers disagree are common, and should be
-expected over the lifetime of a protocol.  Even with the best intentions, the
-pressure to interoperate can be significant.  No implementation can hope to
-avoid having to trade correctness for interoperability indefinitely.
+Even with the best intentions, the pressure to interoperate can be significant.
+No implementation can hope to avoid having to trade correctness for
+interoperability indefinitely.
 
 An implementation that reacts to variations in the manner advised by Postel sets
 up a feedback cycle:
@@ -129,22 +145,33 @@ up a feedback cycle:
 * These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
 
-In this way an entrenched flaw can become a de facto standard.  Any
+In this way an flaw can become entrenched as a de facto standard.  Any
 implementation of the protocol is required to replicate the aberrant behavior,
 or it is not interoperable.  This is both a consequence of applying Postel's
 advice, and a product of a natural reluctance to avoid fatal error conditions.
 Ensuring interoperability in this environment is often colloquially referred to
 as aiming to be "bug for bug compatible".
 
-For example, the original JSON specification {{?RFC4627}} omitted critical
-details on a range of points including Unicode handling, ordering and
-duplication of object members, and number encoding.  Consequently, a range of
-interpretations were used by implementations.  An update {{?RFC7159}} was unable
-to correct these errors, instead concentrating on defining the interoperable
-subset of JSON.  I-JSON {{?RFC7493}} defines a new format that is substantially
-similar to JSON without the interoperability flaws. I-JSON also intentionally
-omits some interoperability: an I-JSON implementation will fail to accept some
-valid JSON texts.  Consequently, most JSON parsers do not implement I-JSON.
+For example, in TLS {{?RFC5246}} messages use an extension format with a
+tag-length-value format.  TLS extensions can be added to handshake messages in
+any order.  However, some server implementations terminate connections if they
+encounter a TLS ClientHello message that ends with an empty extension.  Thus,
+client implementations are required to be aware of this incompatibility and
+ensure that a ClientHello message ends in a non-empty extension.
+
+While TLS highlights the potential for implementation error to cause problems,
+the original JSON specification {{?RFC4627}} demonstrates the effect of
+specification shortcomings.  RFC 4627 omitted critical details on a range of key
+details including Unicode handling, ordering and duplication of object members,
+and number encoding.  Consequently, a range of interpretations were used by
+implementations.  An updated JSON specification {{?RFC7159}} was unable to
+correct these errors, instead concentrating on defining the interoperable subset
+of JSON.  I-JSON {{?RFC7493}} defines a new format that is substantially similar
+to JSON while prohibiting the problematic variations.  However, that prohibition
+means that I-JSON is not fully interoperable: an I-JSON implementation will fail
+to accept some valid JSON texts.  Consequently, I-JSON is not widely implemented
+in parsers.  Many JSON parsers instead implement the more precise algorithm
+specified in {{ECMA262}}.
 
 It is debatable as to whether decay can be completely avoided, but the
 robustness principle encourages a reaction that compounds problems.
