@@ -1,5 +1,5 @@
 ---
-title: "The Harmful Consequences of Postel's Maxim"
+title: "The Harmful Consequences of the Robustness Principle"
 abbrev: "Elephants Out, Donkeys In"
 docname: draft-thomson-postel-was-wrong-latest
 category: info
@@ -48,10 +48,10 @@ specification {{?RFC0760}}:
 
 In comparison, his contributions to the underpinnings of the Internet, which are
 in many respects more significant, enjoy less conscious recognition.  Postel's
-principle has been hugely influential in shaping the Internet and the systems
-that use Internet protocols.  Many consider this principle to be instrumental in
-the success of the Internet as well as the design of interoperable protocols in
-general.
+robustness principle has been hugely influential in shaping the Internet and the
+systems that use Internet protocols.  Many consider this principle to be
+instrumental in the success of the Internet as well as the design of
+interoperable protocols in general.
 
 Over time, considerable changes have occurred in both the scale of the Internet
 and the level of skill and experience available to protocol and software
@@ -62,26 +62,50 @@ That experience shows that there are negative long-term consequences to
 interoperability if an implementation applies Postel's advice.  Correcting the
 problems caused by divergent behavior in implementations can be difficult.
 
-It might be suggested that the posture Postel advocates was indeed necessary
-during the formative years of the Internet, and even key to its success.  This
-document takes no position on that claim.
+This document describes the negative consequences of the application of Postel's
+principle to the modern Internet.  It recommends against following Postel's
+advice, instead recommending that protocols receive continuing maintenance after
+their initial design and deployment.  Active maintenance of protocols reduces or
+eliminates the opportunities to apply Postel's guidance.
 
-This document instead describes the negative consequences of the application of
-Postel's principle to the modern Internet.  In place of this principle, it is
-recommended that protocols receive continuing maintenance after their initial
-design and deployment.  Active protocol maintenance reduces or eliminates the
-opportunities to apply Postel's advice.
-
-There is good evidence to suggest that designers of protocols in the IETF widely
-understand the limitations of Postel's principle.  This document serves
-primarily as a record of the shortcomings of His principle for the wider
-community.
+There is good evidence to suggest that protocols are routinely maintained beyond
+their inception.  This document serves primarily as a record of the shortcomings
+of the robustness principle.
 
 
-# Protocol Decay {#time}
+# Fallibility of Specifications
 
-Divergent implementations of a specification emerge over time.  When
-variations occur in the interpretation or expression of semantic components,
+What is often missed in discussions of the robustness principle is the context
+in which it appears.  The sentence immediately preceding is critical to
+understanding that context:
+
+> While the goal of this specification is to be explicit about the protocol
+  there is the possibility of differing interpretations.  In general, an
+  implementation should be conservative in its sending behavior, and liberal in
+  its receiving behavior.
+
+This is a frank admission of fallibility.  Postel recognizes the possibility
+that the specification is imperfect.
+
+Indeed, an imperfect specification is natural, largely because it was - and
+still is - more important to proceed to implementation and deployment than it is
+to perfect the protocol specification.  A protocol, like software, benefits
+greatly from experience in deployment, and a deployed protocol is immeasurably
+more useful than a perfect protocol.
+
+As shown {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol
+depends far more on its usefulness than on on technical excellence.  Postel's
+timely publication of protocol specifications, even with the potential for
+flaws, had a significant effect in the eventual success of the Internet.
+
+The problem is therefore not with the premise, but with its conclusion: the
+robustness principle itself.
+
+
+# Protocol Decay
+
+Divergent implementations of a specification emerge over time.  When variations
+occur in the interpretation or expression of semantic components,
 implementations cease to be perfectly interoperable.
 
 Implementation bugs are often identified as the cause of variation, though it is
@@ -105,32 +129,31 @@ up a feedback cycle:
 * These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
 
+In this way an entrenched flaw can become a de facto standard.  Any
+implementation of the protocol is required to replicate the aberrant behavior,
+or it is not interoperable.  This is both a consequence of applying Postel's
+advice, and a product of a natural reluctance to avoid fatal error conditions.
+Ensuring interoperability in this environment is often colloquially referred to
+as aiming to be "bug for bug compatible".
+
 For example, the original JSON specification {{?RFC4627}} omitted critical
 details on a range of points including Unicode handling, ordering and
 duplication of object members, and number encoding.  Consequently, a range of
-interpretations were used by implementations.  An update {{?RFC7159}} was
-unable to correct these errors, instead concentrating on defining the
-interoperable subset of JSON.  I-JSON {{?RFC7493}} defines a new format that is
-substantially similar to JSON without the interoperability flaws. I-JSON also
-intentionally omits some interoperability: an I-JSON implementation will fail
-to accept some valid JSON texts.  Consequently, most JSON parsers do not
-implement I-JSON.
+interpretations were used by implementations.  An update {{?RFC7159}} was unable
+to correct these errors, instead concentrating on defining the interoperable
+subset of JSON.  I-JSON {{?RFC7493}} defines a new format that is substantially
+similar to JSON without the interoperability flaws. I-JSON also intentionally
+omits some interoperability: an I-JSON implementation will fail to accept some
+valid JSON texts.  Consequently, most JSON parsers do not implement I-JSON.
 
-An entrenched flaw can become a de facto standard.  Any implementation of the
-protocol is required to replicate the aberrant behavior, or it is not
-interoperable.  This is both a consequence of applying Postel's advice, and a
-product of a natural reluctance to avoid fatal error conditions.  Ensuring
-interoperability in this environment is often colloquially referred to as aiming
-to be "bug for bug compatible".
-
-It is debatable as to whether decay can be completely avoided, but Postel's
-maxim encourages a reaction that compounds this issue.
+It is debatable as to whether decay can be completely avoided, but the
+robustness principle encourages a reaction that compounds problems.
 
 
-# The Long Term Costs
+# Ecosystem Effects
 
-Once deviations become entrenched, there is little that can be done to rectify
-the situation.
+Once deviations become entrenched, it can be extremely difficult - if not
+impossible - to rectify the situation.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  As the set of
@@ -140,6 +163,9 @@ tweaks necessary for interoperability can be difficult to learn.
 
 Consequently, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
+Restricting new implementations to narrow contexts also risks causing forks in
+the protocol.  If implementations cannot interoperate, the chances of the
+addition of further incompatible changes is significant.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
 are important in ensuring the continued viability of a protocol.  New protocol
@@ -147,18 +173,20 @@ implementations are also more likely to be developed for new and diverse use
 cases and often are the origin of features and capabilities that can be of
 benefit to existing users.
 
-These problems also reduce the ability of established implementations to change.
-The accumulation of interoperability mitigations can be difficult to maintain,
-or even recognize in software.
+The need to work around interoperability problems also reduce the ability of
+established implementations to change.  For instance, an accumulation of
+mitigations for interoperability issues makes implementations more difficult to
+maintain.
 
 
-# Recognizing the Need for Protocol Maintenance
+# An Alternative Conclusion
 
-Postel's maxim is specifically valuable if the specification of a protocol is
-intended to remain unchanged for an extended period of time.  Indeed, in the
-face of divergent interpretations of an immutable specification, the only hope
-for an implementation to remain widely interoperable is to be tolerant of
-differences in interpretation and occasional outright implementation errors.
+The robustness principle is best suited to safeguarding against flaws in a
+specification that is intended to remain unchanged for an extended period of
+time.  Indeed, in the face of divergent interpretations of an immutable
+specification, the only hope for an implementation to remain interoperable is to
+be tolerant of differences in interpretation and occasional outright
+implementation errors.
 
 From this perspective, application of Postel's advice to the implementation of a
 protocol specification that does not change is logical, even necessary.  But
@@ -175,7 +203,7 @@ in response to the discovery of errors in specification that might cause
 interoperability issues.  Maintenance is also critical for ensuring that the
 protocol is viable for application to use cases that might not have been
 envisaged during its original design.  New use cases are an indicator that the
-protocol could be successful {{?SUCCESS=RFC5218}}.
+protocol could be successful {{?SUCCESS}}.
 
 Maintenance does not demand the development of new versions of protocols or
 protocol specifications.  For instance, RFC 793 {{?TCP=RFC0793}} remains the
@@ -188,96 +216,82 @@ cases or changes in the environment in which the protocol is deployed.
 
 The process of maintenance ideally begins even before the specification for a
 protocol is complete.  Neglect can quickly produce the negative consequences
-this document describes.  Restarting maintenance could involve first discovering
-the properties of the protocol as it is deployed, rather than the protocol as it
-was originally document.  This can be time-consuming, particularly if the
-protocol has a diverse set of implementations.  Such a process was undertaken
-for HTTP {{?HTTP=RFC7230}} after a period of minimal maintenance.  Restoring the
-specification to currency took significant effort over more than 6 years.
+this document describes.  Restoring the protocol to a state where it can be
+maintained involves first discovering the properties of the protocol as it is
+deployed, rather than the protocol as it was originally documented.  This can be
+difficult and time-consuming, particularly if the protocol has a diverse set of
+implementations.  Such a process was undertaken for HTTP {{?HTTP=RFC7230}} after
+a period of minimal maintenance.  Restoring the specification to currency took
+significant effort over more than 6 years.
 
 
 # The Role of Feedback
 
 Protocol maintenance is only possible if there is sufficient information about
-the implementation, deployment and use of the protocol.  A such, feedback is
-critical to effective maintenance.
+the deployment of the protocol.  Feedback from deployment is critical to
+effective protocol maintenance.
 
 For a protocol specification, the primary and most effective form of feedback
-comes from people who implement or deploy the protocol.  An active community
-around a particular protocol is the most valuable source of feedback.  It is the
-community that implements and deploys changes, in addition to contributing to
-the ongoing maintenance of protocol specifications.
-
-A community benefits from having a venue for discussion.  An outlet where
-questions, issues, or new use cases can be taken can also be where maintenance
-occurs.  Ensuring that the venue remains available ensures that critical
-feedback is not lost for lack of a medium for providing it.  This might mean
-retaining mailing lists, specification repositories, and issue trackers past the
-point that a specification is initially published.  The easier it is for an
-individual to provide feedback on their own terms, the more likely they are to
-provide it.
+comes from people who implement or deploy the protocol.  An active community of
+protocol implementers and users is the most valuable source of feedback.  It is
+this community that implements and deploys changes, in addition to contributing
+to the ongoing maintenance of protocol specifications.
 
 
 ## Fault Reporting is Valuable
 
-Protocol implementations should to include error reporting mechanisms that
-ensure errors are surfaced in a visible and expedient fashion.
+Protocol implementations should include automated error reporting mechanisms.
 
 Exposing faults through operations and management systems is highly valuable,
-but it might be necessary to ensure that the information is propagated.
+but it might be necessary to ensure that the information is propagated further.
+
 Building telemetry and error logging systems that report faults to the
 developers of the implementation is superior in many respects.  However, this is
 only possible in deployments that are conducive to the collection of this type
-of information.  Due consideration to protecting the privacy of protocol
+of information.  Giving consideration to protection of the privacy of protocol
 participants is critical prior to deploying any such system.
 
 
-## The Role of Fatal Errors
+## The Role of Strict Error Handling
 
-The primary failing of automated reporting systems is their inability to
-recognize and collect information about abberant conditions.  Generating fatal
-errors in place of attempting recovery can ensure that faults are immediately
-visible.  For instance, a practice of triggering a crash in response to
-unexpected conditions allows a generic crash reporting system to be used to
-identify faults.  Fatal errors or crashes are also preferable if there is any
-risk that the error might represent an implementation or security issue.
+Favoring strict error handling over attempting error recovery is an effective
+technique for ensuring that faults receive attention.
 
-A fatal error provides excellent motivation for addressing problems.  In
-contrast, generating warnings provide no incentive to fix a problem as the
-system remains operational.  Generating fatal errors is only feasible if such
-errors are sufficiently rare.  Users can become inured to problems if they are
-frequent and ignore them, whereas rare events demand greater attention.
+A fatal errors provide excellent motivation to address problems.  However,
+generating fatal errors is only feasible if such errors are sufficiently rare.
+Frequent problems can result in users to ignoring them or finding workarounds,
+whereas rare events demand greater attention.
+
+Fatal errors or crashes are also preferable if there is any risk that the error
+might represent an implementation or security issue.
 
 Exposing errors is particularly important for early implementations of a
-protocol.  This helps validate a protocol during its design.  If early
-implementations are then used more widely, having those implementations generate
-errors in response to divergent behavior better enables the detection and
-correction of errors in new implementations.
+protocol.  Enabling stricter error handling helps validate the design of both
+protocol and implementations.  If strict checks are retained when
+implementations are more widely deployed, those checks better enable the
+detection and correction of errors in new implementations.
 
 This doesn't mean that protocol implementations need to treat all inputs equally
-strictly.  A protocol might be intentionally designed to be tolerant of a wide
-range of inputs (see for example {{HTML}}).  As long as proper reactions to
+strictly.  A protocol could be designed with the explicit goal of accepting a
+wide range of inputs (see for example {{HTML}}).  As long as proper reactions to
 inputs are clearly and unambiguously specified, these considerations don't
 apply.
 
 
 # Implementations Are Ultimately Responsible
 
-Implementations and deplotments are critical to the ongoing maintenance of a
-protocol.  Implementation, deployment and use of a protocol is the primary
-source of information about that protocol.  The application of any tool to real
-use cases is where problems and use cases are discovered.
-
-Implementations have ample motivation to prefer stability and interoperability
-over maintenance or correctness.  It is likely that - over time - an
-implementation will accumulate allowances for errors of specification or
-implementation.  This can lead to suppression of feedback about errors.
+Implementations and deployments are critical to the ongoing maintenance of a
+protocol.  Implementations have ample motivation to prefer stability and
+interoperability over maintenance or correctness.  It is likely that - over time
+- an implementation will accumulate allowances for errors of specification or
+implementation.  Without care, this can lead to suppression of feedback about
+problems.
 
 Even when an implementation chooses to attempt to adapt to an abnormal
-condition, communicating that decision to the community minimally allows others
-to benefit from knowledge of the problem.  Discussion about problems might also
-lead to alternative strategies or protocol enhancements that can avoid further
-problems.
+condition, communicating that decision to the community is valuable.  At a
+minimum, it allows others to benefit from knowledge of the problem.  Discussion
+about problems might also lead to alternative strategies or protocol
+enhancements that can avoid further problems.
 
 Over time, mitigations for interoperability issues could become redundant.
 Occasional review of any special interoperability measures might reveal
