@@ -1,6 +1,6 @@
 ---
 title: "The Harmful Consequences of the Robustness Principle"
-abbrev: "Elephants Out, Donkeys In"
+abbrev: "Protocol Maintenance"
 docname: draft-thomson-postel-was-wrong-latest
 category: info
 ipr: trust200902
