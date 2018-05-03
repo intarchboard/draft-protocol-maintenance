@@ -1,10 +1,12 @@
-#  The Harmful Consequences of Postel's Maxim
+#  The Harmful Consequences of the Robustness Principle
 
-This is the working area for the individual Internet-Draft, " The Harmful Consequences of Postel's Maxim".
+This is the working area for the IAB Internet-Draft, "The Harmful Consequences
+of the Robustness Principle", formerly draft-thomson-postel-was-wrong
 
-* [Editor's Copy](https://martinthomson.github.io/postel-was-wrong/#go.draft-thomson-postel-was-wrong.html)
-* [Working Group Draft](https://tools.ietf.org/html/draft-thomson-postel-was-wrong)
-* [Compare Editor's Copy to Working Group Draft](https://martinthomson.github.io/postel-was-wrong/#go.draft-thomson-postel-was-wrong.diff)
+* [Editor's Copy](https://martinthomson.github.io/postel-was-wrong/#go.draft-iab-protocol-maintenance.html)
+* [IAB Draft](https://tools.ietf.org/html/draft-iab-protocol-maintenance)
+* [Compare Editor's Copy to Working Group
+   Draft](https://martinthomson.github.io/postel-was-wrong/#go.draft-iab-protocol-maintenance.diff)
 
 ## Building the Draft
 
