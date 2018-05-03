@@ -1,7 +1,7 @@
 ---
 title: "The Harmful Consequences of the Robustness Principle"
 abbrev: "Protocol Maintenance"
-docname: draft-thomson-postel-was-wrong-latest
+docname: draft-iab-protocol-maintenance-latest
 category: info
 ipr: trust200902
 
