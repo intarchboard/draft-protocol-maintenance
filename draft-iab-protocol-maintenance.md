@@ -99,8 +99,8 @@ later versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 Indeed, an imperfect specification is natural, largely because it is more
 important to proceed to implementation and deployment than it is to perfect a
 specification.  A protocol, like any complex system, benefits greatly from
-experience in deployment.  A deployed protocol is immeasurably more useful than
-a perfect protocol.
+experience with its use.  A deployed protocol is immeasurably more useful than a
+perfect protocol.
 
 As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
 far more on factors like usefulness than on on technical excellence.  Postel's
@@ -138,12 +138,12 @@ up a feedback cycle:
 * These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
 
-In this way an flaw can become entrenched as a de facto standard.  Any
-implementation of the protocol is required to replicate the aberrant behavior,
-or it is not interoperable.  This is both a consequence of applying Postel's
-advice, and a product of a natural reluctance to avoid fatal error conditions.
-Ensuring interoperability in this environment is often colloquially referred to
-as aiming to be "bug for bug compatible".
+A flaw can become entrenched as a de facto standard.  Any implementation of the
+protocol is required to replicate the aberrant behavior, or it is not
+interoperable.  This is both a consequence of applying Postel's advice, and a
+product of a natural reluctance to avoid fatal error conditions.  Ensuring
+interoperability in this environment is often colloquially referred to as aiming
+to be "bug for bug compatible".
 
 For example, TLS demonstrates the effect of bugs.  In TLS {{?TLS=RFC5246}}
 extensions use a tag-length-value format, and they can be added to messages in
@@ -203,8 +203,8 @@ The robustness principle is best suited to safeguarding against flaws in a
 specification that is intended to remain unchanged for an extended period of
 time.  Indeed, in the face of divergent interpretations of an immutable
 specification, the only hope for an implementation to remain interoperable is to
-be tolerant of differences in interpretation and occasional outright
-implementation errors.
+be tolerant of differences in interpretation and an occasional outright
+implementation error.
 
 From this perspective, application of Postel's advice to the implementation of a
 protocol specification that does not change is logical, even necessary.  But
@@ -237,7 +237,7 @@ protocol as it was originally documented.  This can be difficult and
 time-consuming, particularly if the protocol has a diverse set of
 implementations.  Such a process was undertaken for HTTP {{?HTTP=RFC7230}} after
 a period of minimal maintenance.  Restoring HTTP specifications to currency took
-significant effort over more than 6 years.
+significant effort.
 
 
 # The Role of Feedback
