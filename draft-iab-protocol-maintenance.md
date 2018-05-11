@@ -245,6 +245,30 @@ a period of minimal maintenance.  Restoring HTTP specifications to currency took
 significant effort.
 
 
+# Extensibility
+
+Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
+cases or changes in the environment in which the protocol is deployed.
+
+Extensibility is sometimes mistaken for an application of the robustness
+principle.  After all, if one party wants to start using a new feature before
+another party is prepared to receive it, it might be assumed that the receiving
+party is being tolerant of unexpected inputs.
+
+Relying on implementations consistently applying the robustness principle is not
+a good strategy for extensibility.  Using undocumented or accidental features of
+a protocol to an extensibility mechanism to an existing protocol can be
+extremely difficult, as is demonstrated by the TLS case study in Appendix A.3 of
+{{?EXT}}.
+
+While it is difficult to anticipate every potential way in which a protocol
+might need to be extended, a well-designed extensibility mechanism establishes
+clear rules for the handling of things like new messages or parameters.  If an
+extension mechanism is designed and implemented correctly, the user of a new
+protocol feature can confidently predict the effect that feature will have on
+existing implementations.
+
+
 # The Role of Feedback
 
 Protocol maintenance is only possible if there is sufficient information about
