@@ -74,6 +74,9 @@ robustness principle, this document recommends continuing maintenance for
 protocols beyond their initial design and deployment.  Active maintenance of
 protocols reduces or eliminates the opportunities to apply Postel's guidance.
 
+The cooperation between those implementating and specifying the protocol is
+necessary for effective maintenance.
+
 There is good evidence to suggest that protocols are routinely maintained beyond
 their inception.  This document serves primarily as a record of the shortcomings
 of the robustness principle.
@@ -199,36 +202,38 @@ maintain.
 
 # Active Protocol Maintenance
 
-The robustness principle is best suited to safeguarding against flaws in a
-specification that is intended to remain unchanged for an extended period of
-time.  Indeed, in the face of divergent interpretations of an immutable
-specification, the only hope for an implementation to remain interoperable is to
-be tolerant of differences in interpretation and an occasional outright
-implementation error.
+The robustness principle can be highly effective in safeguarding against flaws
+in the implementation of a protocol by peers.  Especially when a specification
+remains unchanged for an extended period of time, the inclination to be tolerant
+accumulates over time.  Indeed, when faced with divergent interpretations of an
+immutable specification, the best way for an implementation to remain
+interoperable is to be tolerant of differences in interpretation and an
+occasional outright implementation error.
 
 From this perspective, application of Postel's advice to the implementation of a
 protocol specification that does not change is logical, even necessary.  But
 that suggests that the problem is with the presumption of immutability of
 specifications.
 
-Active maintenance of a protocol can ensure that specifications remain accurate
-and that new implementations are possible.  Protocol designers are strongly
-encouraged to continue to maintain and evolve protocols beyond their initial
-inception and definition.
+As already established, this is not a sustainable.  For a protocol to be viable,
+it is necessary for both specifications and implementations to be responsive to
+changes, along with new and old problems that arise.
 
-Maintenance is needed in response to the discovery of errors in specification
-that might cause interoperability issues.  Maintenance is also critical for
-ensuring that the protocol is viable for application to use cases that might not
-have been envisaged during its original design.  New use cases are an indicator
-that the protocol could be successful {{?SUCCESS}}.
+Active maintenance of a protocol is critical in ensuring that specifications
+correctly reflect the requirements for interoperability with existing
+implementation.  This enables both new implementations and the continued
+improvement of the protocol.  New use cases are an indicator that the protocol
+could be successful {{?SUCCESS}}.
+
+Protocol designers are strongly encouraged to continue to maintain and evolve
+protocols beyond their initial inception and definition.  Involvement of
+protocol implementers is a critical part of this process, as they provide input
+on their experience with implementation and deployment of the protocol.
 
 Maintenance does not necessarily involve the development of new versions of
 protocols or protocol specifications.  For instance, RFC 793 {{?TCP=RFC0793}}
 remains the canonical TCP reference, but a large number of update and extension
 RFCs together document the protocol as deployed.
-
-Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
-cases or changes in the environment in which the protocol is deployed.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
@@ -268,7 +273,7 @@ sufficiently rare.
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 allow a wide range of inputs (see for example {{HTML}}).  Specifying and
-implementing a more flexible protocol is more difficult, allowing less variation
+implementing a more flexible protocol is more difficult; allowing less variation
 is preferable in the absence of strong reasons to be flexible.
 
 
@@ -305,5 +310,5 @@ This document has no IANA actions.
 # Acknowledgments
 
 Constructive feedback on this document has been provided by a surprising number
-of people including Mark Nottingham, Brian Trammell, and Anne Van Kesteren.
-Please excuse any omission.
+of people including Brian Carpenter, Mark Nottingham, Brian Trammell, and Anne
+Van Kesteren.  Please excuse any omission.
