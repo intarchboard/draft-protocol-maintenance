@@ -257,9 +257,8 @@ party is being tolerant of unexpected inputs.
 
 Relying on implementations consistently applying the robustness principle is not
 a good strategy for extensibility.  Using undocumented or accidental features of
-a protocol to an extensibility mechanism to an existing protocol can be
-extremely difficult, as is demonstrated by the TLS case study in Appendix A.3 of
-{{?EXT}}.
+a protocol as the basis of an extensibility mechanism can be extremely
+difficult, as is demonstrated by the TLS case study in Appendix A.3 of {{?EXT}}.
 
 While it is difficult to anticipate every potential way in which a protocol
 might need to be extended, a well-designed extensibility mechanism establishes
