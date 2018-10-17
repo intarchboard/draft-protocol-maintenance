@@ -351,5 +351,6 @@ This document has no IANA actions.
 # Acknowledgments
 
 Constructive feedback on this document has been provided by a surprising number
-of people including Brian Carpenter, Mark Nottingham, Brian Trammell, and Anne
-Van Kesteren.  Please excuse any omission.
+of people including Bernard Aboba, Brian Carpenter, Mark Nottingham, Russ
+Housley, Henning Schulzrinne, Robert Sparks, Brian Trammell, and Anne Van
+Kesteren.  Please excuse any omission.
