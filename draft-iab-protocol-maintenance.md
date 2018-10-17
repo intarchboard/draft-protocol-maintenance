@@ -36,9 +36,9 @@ informative:
 Jon Postel's famous statement of "Be liberal in what you accept, and
 conservative in what you send" is a principle that has long guided the design
 and implementation of Internet protocols.  The posture this statement advocates
-promotes interoperability, but can produce negative effects in the protocol
-ecosystem in the long term.  Those effects can be avoided by maintaining
-protocols.
+promotes interoperability in the short term, but can negatively affect the
+protocol ecosystem.  For a protocol that is actively maintained, the
+Postel's robustness principle can, and should, be avoided.
 
 
 --- middle
