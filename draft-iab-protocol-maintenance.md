@@ -306,18 +306,6 @@ is widely recognized that maintenance is a critical part of the deployment of
 computer systems for security reasons (see for example {{?IOTSU=RFC8240}}).
 
 
-## Error Handling
-
-Ideally, specifications include rules for consistent handling of aberrant
-conditions as well as expected.  This increases the changes that implementations
-have interoperable handling of unusual conditions.
-
-Choosing to generate fatal error for unspecified conditions instead of
-attempting error recovery can ensure that faults receive attention.  Fatal
-errors can provide excellent motivation to address a problem if they are
-sufficiently rare.
-
-
 ## Feedback from Implementations
 
 Automated error reporting mechanisms in protocol implementations allows for
@@ -328,8 +316,38 @@ the information is propagated further.
 Building telemetry and error logging systems that report faults to the
 developers of the implementation is superior in many respects.  However, this is
 only possible in deployments that are conducive to the collection of this type
-of information.  Giving consideration to protection of the privacy of protocol
-participants is critical prior to deploying any such system.
+of information.  Giving due consideration to protection of the privacy of
+protocol participants is critical prior to deploying any such system.
+
+
+## Virtuous Intolerance
+
+A well-specified protocol includes rules for consistent handling of aberrant
+conditions.  This increases the changes that implementations have interoperable
+handling of unusual conditions.
+
+Intolerance of any deviation from specification, where implementations generate
+fatal errors in response to observing undefined or unusal behaviour, can be
+harnessed to reduce occurrences of abherrent implementations.  Choosing to
+generate fatal error for unspecified conditions instead of attempting error
+recovery can ensure that faults receive attention.
+
+This improves feedback for new implementations in particular.  When a new
+implementation encounters a virtuously intolerant implementation, it receives
+strong feedback that allows problems to be discovered quickly.
+
+To be effective, virtuously intolerant implementations need to be sufficiently
+widely deployed that they are encountered by new implementations with high
+probability.  This could depend on having multiple implementations.  Any
+intolerance also needs to be strongly supported by specifications, otherwise
+they encourage fracturing of the protocol community or proliferation of
+workarounds.
+
+Virtuous intolerance can be used to force new implementations and deployments to
+conform to requirements beyond those necessary for interoperability.  For
+instance, the INADEQUATE_SECURITY error code and associated requirements in
+HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the security of the
+deployed base.
 
 
 # Security Considerations
