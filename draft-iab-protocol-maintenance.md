@@ -343,11 +343,10 @@ intolerance also needs to be strongly supported by specifications, otherwise
 they encourage fracturing of the protocol community or proliferation of
 workarounds.
 
-Virtuous intolerance can be used to force new implementations and deployments to
-conform to requirements beyond those necessary for interoperability.  For
-instance, the INADEQUATE_SECURITY error code and associated requirements in
-HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the security of the
-deployed base.
+Virtuous intolerance can be used to motivate compliance with any protocol
+requirement.  For instance, the INADEQUATE_SECURITY error code and associated
+requirements in HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the
+security of the deployed base.
 
 
 # Security Considerations
@@ -357,6 +356,10 @@ extrapolation of requirements to cover gaps in specification can result in
 security problems.  Hiding the consequences of protocol variations encourages
 the hiding of issues, which can conceal bugs and make them difficult to
 discover.
+
+The consequences of the problems described in this document are especially acute
+for any protocol where security depends on agreement about semantics of protocol
+elements.
 
 
 # IANA Considerations
