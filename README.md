@@ -1,12 +1,12 @@
 #  The Harmful Consequences of the Robustness Principle
 
 This is the working area for the IAB Internet-Draft, "The Harmful Consequences
-of the Robustness Principle", formerly draft-thomson-postel-was-wrong
+of the Robustness Principle", formerly draft-thomson-postel-was-wrong.
 
-* [Editor's Copy](https://martinthomson.github.io/postel-was-wrong/#go.draft-iab-protocol-maintenance.html)
+* [Editor's Copy](https://intarchboard.github.io/protocol-maintenance/#go.draft-iab-protocol-maintenance.html)
 * [IAB Draft](https://tools.ietf.org/html/draft-iab-protocol-maintenance)
 * [Compare Editor's Copy to Working Group
-   Draft](https://martinthomson.github.io/postel-was-wrong/#go.draft-iab-protocol-maintenance.diff)
+   Draft](https://intarchboard.github.io/protocol-maintenance/#go.draft-iab-protocol-maintenance.diff)
 
 ## Building the Draft
 
