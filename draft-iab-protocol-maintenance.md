@@ -68,42 +68,48 @@ designed by the application of Postel's maxim.  That experience shows that there
 are negative long-term consequences to interoperability if an implementation
 applies Postel's advice.
 
-This document shows that flaw in Postel's logic originates from the presumption
-of immutability of protocol specifications.  Thus rather than apply the
-robustness principle, this document recommends continuing maintenance for
-protocols beyond their initial design and deployment.  Active maintenance of
-protocols reduces or eliminates the opportunities to apply Postel's guidance.
+This document shows that flaw in Postel's logic originates from the presumed
+inability to affect change in a system the size of the Internet.  That is, once
+a protocol specification is published, changes that might be different to the
+practice of existing implementations are not feasible.
 
-The cooperation between those implementating and specifying the protocol is
-necessary for effective maintenance.
+Many of the shortcomings that lead to applications of the robustness principle
+are avoided for protocols under active maintenance.  Active protocol maintenance
+is where a community of protocol designers, implementers, and deployers
+continuously improve and evolve protocols.  A community that takes an active
+role in the maintenance of protocols can greatly reduce and even eliminate
+opportunities to apply Postel's guidance.
 
-There is good evidence to suggest that protocols are routinely maintained beyond
-their inception.  This document serves primarily as a record of the shortcomings
-of the robustness principle.
+There is good evidence to suggest that many important protocols are routinely
+maintained beyond their inception.  This document serves primarily as a record
+of the hazards inherent in applying the robustness principle and to offer an
+alternative strategy for handling interoperability problems in deployments.
+
+Ideally, protocol implementations never have to apply the robustness princple.
+Or, where it is unavoidable, any application can be quickly reverted.
 
 
 # Fallibility of Specifications
 
-What is often missed in discussions of the robustness principle is the context
-in which it appears.  The earliest form of the principle in the RFC series (in
-RFC 760 {{?IP=RFC0760}}) is preceded by a sentence that reveals the motivation
-for the principle:
+The context from which the robustness principle was developed provides valuable
+insights into its intent and purpose.  The earliest form of the principle in the
+RFC series (in RFC 760 {{?IP=RFC0760}}) is preceded by a sentence that reveals
+the motivation for the principle:
 
 > While the goal of this specification is to be explicit about the protocol
   there is the possibility of differing interpretations.  In general, an
   implementation should be conservative in its sending behavior, and liberal in
   its receiving behavior.
 
-This motivating statement is a frank admission of fallibility and remarkable for
-it.  Here Postel recognizes the possibility that the specification could be
-imperfect.  This is an important statement, but inexplicably absent from the
-later versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
+Here Postel recognizes the possibility that the specification could be
+imperfect.  As a frank admission of fallibility it is a significant statement.
+However, the same statement is inexplicably absent from the later versions in
+{{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 
-Indeed, an imperfect specification is natural, largely because it is more
-important to proceed to implementation and deployment than it is to perfect a
-specification.  A protocol, like any complex system, benefits greatly from
-experience with its use.  A deployed protocol is immeasurably more useful than a
-perfect protocol.
+An imperfect specification is natural, largely because it is more important to
+proceed to implementation and deployment than it is to perfect a specification.
+A protocol, like any complex system, benefits greatly from experience with its
+use.  A deployed protocol is immeasurably more useful than a perfect protocol.
 
 As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
 far more on factors like usefulness than on on technical excellence.  Postel's
@@ -199,6 +205,17 @@ established implementations to change.  For instance, an accumulation of
 mitigations for interoperability issues makes implementations more difficult to
 maintain.
 
+Sometimes what appear to be interoperability problems are symptomatic of issues
+in protocol design.  A community that is willing to make changes to the
+protocol, by revising or extending it, makes the protocol better in the process.
+Applying the robustness principle might conceal the problem.  That can make it
+harder, or even impossible, to fix later.
+
+A similar class of problems are described in RFC 5704
+{{?UNCOORDINATED=RFC5704}}, which addresses conflict or competition in the
+maintenance of protocols.  This document concerns itself primarily with the
+absence of maintenance, though the problems are similar.
+
 
 # Active Protocol Maintenance
 
@@ -231,9 +248,10 @@ protocol implementers is a critical part of this process, as they provide input
 on their experience with implementation and deployment of the protocol.
 
 Maintenance does not necessarily involve the development of new versions of
-protocols or protocol specifications.  For instance, RFC 793 {{?TCP=RFC0793}}
-remains the canonical TCP reference, but a large number of update and extension
-RFCs together document the protocol as deployed.
+protocols or protocol specifications.  For instance, the most effective means of
+dealing with a defective implementation in a peer is often to email the
+developer of the stack.  It is far more efficient in the long term to fix one
+isolated bug than it is to deal with the consequences of workarounds.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
@@ -267,6 +285,11 @@ extension mechanism is designed and implemented correctly, the user of a new
 protocol feature can confidently predict the effect that feature will have on
 existing implementations.
 
+A protocol could be designed to permit a narrow set of valid inputs, or it could
+allow a wide range of inputs (see for example {{HTML}}).  Specifying and
+implementing a more flexible protocol is more difficult; allowing less variation
+is preferable in the absence of strong reasons to be flexible.
+
 
 # The Role of Feedback
 
@@ -280,7 +303,7 @@ of new requirements, or in experience with the protocol as it is deployed.
 
 Managing and deploying changes to implementations can be expensive.  However, it
 is widely recognized that maintenance is a critical part of the deployment of
-computer systems for security reasons {{?IOTSU=RFC8240}}.
+computer systems for security reasons (see for example {{?IOTSU=RFC8240}}).
 
 
 ## Error Handling
@@ -293,11 +316,6 @@ Choosing to generate fatal error for unspecified conditions instead of
 attempting error recovery can ensure that faults receive attention.  Fatal
 errors can provide excellent motivation to address a problem if they are
 sufficiently rare.
-
-A protocol could be designed to permit a narrow set of valid inputs, or it could
-allow a wide range of inputs (see for example {{HTML}}).  Specifying and
-implementing a more flexible protocol is more difficult; allowing less variation
-is preferable in the absence of strong reasons to be flexible.
 
 
 ## Feedback from Implementations
