@@ -234,7 +234,8 @@ specifications.
 
 As already established, this is not a sustainable.  For a protocol to be viable,
 it is necessary for both specifications and implementations to be responsive to
-changes, along with new and old problems that arise.
+changes, in addition to handling new and old problems that might arise over
+time.
 
 Active maintenance of a protocol is critical in ensuring that specifications
 correctly reflect the requirements for interoperability with existing
