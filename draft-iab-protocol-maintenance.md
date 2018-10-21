@@ -85,7 +85,7 @@ maintained beyond their inception.  This document serves primarily as a record
 of the hazards inherent in applying the robustness principle and to offer an
 alternative strategy for handling interoperability problems in deployments.
 
-Ideally, protocol implementations never have to apply the robustness princple.
+Ideally, protocol implementations never have to apply the robustness principle.
 Or, where it is unavoidable, any application can be quickly reverted.
 
 
