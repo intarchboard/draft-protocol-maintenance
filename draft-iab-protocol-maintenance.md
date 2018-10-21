@@ -239,7 +239,7 @@ time.
 
 Active maintenance of a protocol is critical in ensuring that specifications
 correctly reflect the requirements for interoperability with existing
-implementation.  This enables both new implementations and the continued
+implementations.  Maintenance enables both new implementations and the continued
 improvement of the protocol.  New use cases are an indicator that the protocol
 could be successful {{?SUCCESS}}.
 
@@ -287,9 +287,9 @@ protocol feature can confidently predict the effect that feature will have on
 existing implementations.
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
-allow a wide range of inputs (see for example {{HTML}}).  Specifying and
-implementing a more flexible protocol is more difficult; allowing less variation
-is preferable in the absence of strong reasons to be flexible.
+allow a wide range of inputs as a core feature (see for example {{HTML}}).
+Specifying and implementing a more flexible protocol is more difficult; allowing
+less variation is preferable in the absence of strong reasons to be flexible.
 
 
 # The Role of Feedback
@@ -303,7 +303,7 @@ comes from people who implement and deploy the protocol.  This comes in the form
 of new requirements, or in experience with the protocol as it is deployed.
 
 Managing and deploying changes to implementations can be expensive.  However, it
-is widely recognized that maintenance is a critical part of the deployment of
+is widely recognized that regular updates are a vital part of the deployment of
 computer systems for security reasons (see for example {{?IOTSU=RFC8240}}).
 
 
