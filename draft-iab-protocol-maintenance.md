@@ -211,10 +211,10 @@ protocol, by revising or extending it, makes the protocol better in the process.
 Applying the robustness principle might conceal the problem.  That can make it
 harder, or even impossible, to fix later.
 
-A similar class of problems are described in RFC 5704
-{{?UNCOORDINATED=RFC5704}}, which addresses conflict or competition in the
-maintenance of protocols.  This document concerns itself primarily with the
-absence of maintenance, though the problems are similar.
+A similar class of problems is described in RFC 5704 {{?UNCOORDINATED=RFC5704}},
+which addresses conflict or competition in the maintenance of protocols.  This
+document concerns itself primarily with the absence of maintenance, though the
+problems are similar.
 
 
 # Active Protocol Maintenance
