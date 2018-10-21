@@ -68,10 +68,10 @@ designed by the application of Postel's maxim.  That experience shows that there
 are negative long-term consequences to interoperability if an implementation
 applies Postel's advice.
 
-This document shows that flaw in Postel's logic originates from the presumed
-inability to affect change in a system the size of the Internet.  That is, once
-a protocol specification is published, changes that might be different to the
-practice of existing implementations are not feasible.
+The flaw in Postel's logic originates from the presumption of an inability to
+affect change in a system the size of the Internet.  That is, once a protocol
+specification is published, changes that might be different to the practice of
+existing implementations are not feasible.
 
 Many of the shortcomings that lead to applications of the robustness principle
 are avoided for protocols under active maintenance.  Active protocol maintenance
