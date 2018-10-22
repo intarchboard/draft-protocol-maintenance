@@ -229,8 +229,8 @@ occasional outright implementation error.
 
 From this perspective, application of Postel's advice to the implementation of a
 protocol specification that does not change is logical, even necessary.  But
-that suggests that the problem is with the presumption of immutability of
-specifications.
+that suggests that the problem is with the assumption that the situation -
+existing specifications and implementations - are unable to change.
 
 As already established, this is not a sustainable.  For a protocol to be viable,
 it is necessary for both specifications and implementations to be responsive to
@@ -274,17 +274,16 @@ principle.  After all, if one party wants to start using a new feature before
 another party is prepared to receive it, it might be assumed that the receiving
 party is being tolerant of unexpected inputs.
 
+A well-designed extensibility mechanism establishes clear rules for the handling
+of things like new messages or parameters.  If an extension mechanism is
+designed and implemented correctly, the user of a new protocol feature can
+confidently predict the effect that feature will have on existing
+implementations.
+
 Relying on implementations consistently applying the robustness principle is not
 a good strategy for extensibility.  Using undocumented or accidental features of
 a protocol as the basis of an extensibility mechanism can be extremely
-difficult, as is demonstrated by the TLS case study in Appendix A.3 of {{?EXT}}.
-
-While it is difficult to anticipate every potential way in which a protocol
-might need to be extended, a well-designed extensibility mechanism establishes
-clear rules for the handling of things like new messages or parameters.  If an
-extension mechanism is designed and implemented correctly, the user of a new
-protocol feature can confidently predict the effect that feature will have on
-existing implementations.
+difficult, as is demonstrated by the case study in Appendix A.3 of {{?EXT}}.
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 allow a wide range of inputs as a core feature (see for example {{HTML}}).
@@ -339,10 +338,10 @@ strong feedback that allows problems to be discovered quickly.
 
 To be effective, virtuously intolerant implementations need to be sufficiently
 widely deployed that they are encountered by new implementations with high
-probability.  This could depend on having multiple implementations.  Any
-intolerance also needs to be strongly supported by specifications, otherwise
-they encourage fracturing of the protocol community or proliferation of
-workarounds.
+probability.  This could depend on multiple implementations of the same strict
+checks.  Any intolerance also needs to be strongly supported by specifications,
+otherwise they encourage fracturing of the protocol community or proliferation
+of workarounds.
 
 Virtuous intolerance can be used to motivate compliance with any protocol
 requirement.  For instance, the INADEQUATE_SECURITY error code and associated
