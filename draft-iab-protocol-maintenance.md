@@ -17,15 +17,15 @@ author:
 
 informative:
   ECMA262:
-    title: "ECMAScript(R) 2017 Language Specification"
-    date: 2017-06
+    title: "ECMAScript(R) 2018 Language Specification"
+    date: 2018-06
     seriesinfo:
-      ECMA-262: 8th Edition
-    target: "http://www.ecma-international.org/publications/standards/Ecma-262.htm"
+      ECMA-262: 9th Edition
+    target: "https://www.ecma-international.org/publications/standards/Ecma-262.htm"
 
   HTML:
     title: "HTML"
-    date: 2017-10-25
+    date: 2019-03-08
     seriesinfo:
       WHATWG: Living Standard
     target: "https://html.spec.whatwg.org/"
@@ -154,12 +154,12 @@ product of a natural reluctance to avoid fatal error conditions.  Ensuring
 interoperability in this environment is often colloquially referred to as aiming
 to be "bug for bug compatible".
 
-For example, TLS demonstrates the effect of bugs.  In TLS {{?TLS=RFC5246}}
-extensions use a tag-length-value format, and they can be added to messages in
-any order.  However, some server implementations terminate connections if they
-encounter a TLS ClientHello message that ends with an empty extension.  To
-maintain interoperability, client implementations are required to be aware of
-this bug and ensure that a ClientHello message ends in a non-empty extension.
+For example, in TLS {{?TLS=RFC5246}} extensions use a tag-length-value format,
+and they can be added to messages in any order.  However, some server
+implementations terminate connections if they encounter a TLS ClientHello
+message that ends with an empty extension.  To maintain interoperability, client
+implementations are required to be aware of this bug and ensure that a
+ClientHello message ends in a non-empty extension.
 
 The original JSON specification {{?JSON=RFC4627}} demonstrates the effect of
 specification shortcomings.  RFC 4627 omitted critical details on a range of key
@@ -185,8 +185,8 @@ impossible - to rectify the situation.
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  The cost of
 building a new implementation increases as the number of implementations and
-bugs increases.  Worse, the set of tweaks necessary for interoperability can be
-difficult to learn.
+bugs increases.  Worse, the set of tweaks necessary for wide interoperability
+can be difficult to discover.
 
 Consequently, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
@@ -232,27 +232,26 @@ protocol specification that does not change is logical, even necessary.  But
 that suggests that the problem is with the assumption that the situation -
 existing specifications and implementations - are unable to change.
 
-As already established, this is not a sustainable.  For a protocol to be viable,
+As already established, this is not sustainable.  For a protocol to be viable,
 it is necessary for both specifications and implementations to be responsive to
 changes, in addition to handling new and old problems that might arise over
 time.
 
 Active maintenance of a protocol is critical in ensuring that specifications
-correctly reflect the requirements for interoperability with existing
-implementations.  Maintenance enables both new implementations and the continued
-improvement of the protocol.  New use cases are an indicator that the protocol
-could be successful {{?SUCCESS}}.
+correctly reflect the requirements for interoperability.  Maintenance enables
+both new implementations and the continued improvement of the protocol.  New use
+cases are an indicator that the protocol could be successful {{?SUCCESS}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocols beyond their initial inception and definition.  Involvement of
 protocol implementers is a critical part of this process, as they provide input
 on their experience with implementation and deployment of the protocol.
 
-Maintenance does not necessarily involve the development of new versions of
-protocols or protocol specifications.  For instance, the most effective means of
-dealing with a defective implementation in a peer is often to email the
-developer of the stack.  It is far more efficient in the long term to fix one
-isolated bug than it is to deal with the consequences of workarounds.
+Most interoperability problems do not require revision of protocols or protocol
+specifications.  For instance, the most effective means of dealing with a
+defective implementation in a peer could be to email the developer of the stack.
+It is far more efficient in the long term to fix one isolated bug than it is to
+deal with the consequences of workarounds.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
@@ -328,8 +327,8 @@ handling of unusual conditions.
 
 Intolerance of any deviation from specification, where implementations generate
 fatal errors in response to observing undefined or unusal behaviour, can be
-harnessed to reduce occurrences of abherrent implementations.  Choosing to
-generate fatal error for unspecified conditions instead of attempting error
+harnessed to reduce occurrences of aberrant implementations.  Choosing to
+generate fatal errors for unspecified conditions instead of attempting error
 recovery can ensure that faults receive attention.
 
 This improves feedback for new implementations in particular.  When a new
@@ -338,10 +337,10 @@ strong feedback that allows problems to be discovered quickly.
 
 To be effective, virtuously intolerant implementations need to be sufficiently
 widely deployed that they are encountered by new implementations with high
-probability.  This could depend on multiple implementations of the same strict
-checks.  Any intolerance also needs to be strongly supported by specifications,
-otherwise they encourage fracturing of the protocol community or proliferation
-of workarounds.
+probability.  This could depend on multiple implementations of strict checks.
+Any intolerance also needs to be strongly supported by specifications, otherwise
+they encourage fracturing of the protocol community or proliferation of
+workarounds.
 
 Virtuous intolerance can be used to motivate compliance with any protocol
 requirement.  For instance, the INADEQUATE_SECURITY error code and associated
