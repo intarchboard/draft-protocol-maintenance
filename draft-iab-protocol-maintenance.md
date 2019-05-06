@@ -38,7 +38,7 @@ conservative in what you send" is a principle that has long guided the design
 and implementation of Internet protocols.  The posture this statement advocates
 promotes interoperability in the short term, but can negatively affect the
 protocol ecosystem.  For a protocol that is actively maintained, the
-Postel's robustness principle can, and should, be avoided.
+robustness principle can, and should, be avoided.
 
 
 --- middle
@@ -58,27 +58,25 @@ implementation philosophy known as the robustness principle:
 This being the version of the text that appears in IAB RFC 1958
 {{?PRINCIPLES=RFC1958}}.
 
-Postel's robustness principle has been hugely influential in shaping the
-Internet and the systems that use Internet protocols.  Many consider the
-application of the robustness principle to be instrumental in the success of the
-Internet as well as the design of interoperable protocols in general.
+The robustness principle has been hugely influential in shaping the Internet and
+the systems that use Internet protocols.  Many consider the application of the
+robustness principle to be instrumental in the success of the Internet as well
+as the design of interoperable protocols in general.
 
-Over time, considerable experience has been accumulated with protocols that were
-designed by the application of Postel's maxim.  That experience shows that there
-are negative long-term consequences to interoperability if an implementation
-applies Postel's advice.
+Time and experience shows that negative consequences to interoperability
+accumulate over time if an implementations apply the robustness principle.
 
-The flaw in Postel's logic originates from the presumption of an inability to
-affect change in a system the size of the Internet.  That is, once a protocol
-specification is published, changes that might be different to the practice of
-existing implementations are not feasible.
+The problem with the robustness principle originates from an assumption that
+assumes an inability to affect change in a system the size of the Internet.
+That is, the idea that once a protocol specification is published, changes that
+might require existing implementations to change are not feasible.
 
 Many of the shortcomings that lead to applications of the robustness principle
 are avoided for protocols under active maintenance.  Active protocol maintenance
-is where a community of protocol designers, implementers, and deployers
-continuously improve and evolve protocols.  A community that takes an active
-role in the maintenance of protocols can greatly reduce and even eliminate
-opportunities to apply Postel's guidance.
+is where a community of protocol designers, implementers, and deployers work
+together to continuously improve and evolve protocols.  A community that takes
+an active role in the maintenance of protocols can greatly reduce and even
+eliminate opportunities to apply the robustness principle.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  This document serves primarily as a record
@@ -102,9 +100,9 @@ the motivation for the principle:
   its receiving behavior.
 
 Here Postel recognizes the possibility that the specification could be
-imperfect.  As a frank admission of fallibility it is a significant statement.
-However, the same statement is inexplicably absent from the later versions in
-{{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
+imperfect.  As a frank recognition of potential fallibility it is a significant
+statement.  However, the same statement is inexplicably absent from the later
+versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 
 An imperfect specification is natural, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
@@ -112,9 +110,9 @@ A protocol, like any complex system, benefits greatly from experience with its
 use.  A deployed protocol is immeasurably more useful than a perfect protocol.
 
 As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
-far more on factors like usefulness than on on technical excellence.  Postel's
-timely publication of protocol specifications, even with the potential for
-flaws, likely had a significant effect in the eventual success of the Internet.
+far more on factors like usefulness than on on technical excellence.  Timely
+publication of protocol specifications, even with the potential for flaws,
+likely contributed significantly to the eventual success of the Internet.
 
 The problem is therefore not with the premise, but with its conclusion: the
 robustness principle itself.
@@ -127,34 +125,36 @@ occur in the interpretation or expression of semantic components,
 implementations cease to be perfectly interoperable.
 
 Implementation bugs are often identified as the cause of variation, though it is
-often a combination of factors.  Application of a protocol to new and
-unanticipated uses, and ambiguities or errors in the specification are often
-confounding factors.  Situations where two peers disagree on interpretation
-should be expected over the lifetime of a protocol.
+often a combination of factors.  Application of a protocol to uses that were not
+anticipated in the original design, or ambiguities and errors in the
+specification are often confounding factors.  Disagreements on the
+interpretation of specifications should be expected over the lifetime of a
+protocol.
 
 Even with the best intentions, the pressure to interoperate can be significant.
 No implementation can hope to avoid having to trade correctness for
 interoperability indefinitely.
 
-An implementation that reacts to variations in the manner advised by Postel sets
-up a feedback cycle:
+An implementation that reacts to variations in the manner recommended in the
+robustness principle sets up a feedback cycle.  Over time:
 
-* Over time, implementations progressively add new code to constrain how data is
+* Implementations progressively add new code to constrain how data is
   transmitted, or to permit variations in what is received.
 
-* Errors in implementations, or confusion about semantics can thereby be masked.
+* Errors in implementations or confusion about semantics are permitted or
+  ignored.
 
 * These errors can become entrenched, forcing other implementations to be
   tolerant of those errors.
 
 A flaw can become entrenched as a de facto standard.  Any implementation of the
 protocol is required to replicate the aberrant behavior, or it is not
-interoperable.  This is both a consequence of applying Postel's advice, and a
-product of a natural reluctance to avoid fatal error conditions.  Ensuring
-interoperability in this environment is often colloquially referred to as aiming
-to be "bug for bug compatible".
+interoperable.  This is both a consequence of applying the robustness principle,
+and a product of a natural reluctance to avoid fatal error conditions.  Ensuring
+interoperability in this environment is often referred to as aiming to be "bug
+for bug compatible".
 
-For example, in TLS {{?TLS=RFC5246}} extensions use a tag-length-value format,
+For example, in TLS {{?TLS=RFC8446}} extensions use a tag-length-value format,
 and they can be added to messages in any order.  However, some server
 implementations terminate connections if they encounter a TLS ClientHello
 message that ends with an empty extension.  To maintain interoperability, client
@@ -190,9 +190,9 @@ can be difficult to discover.
 
 Consequently, new implementations can be restricted to niche uses, where the
 problems arising from interoperability issues can be more closely managed.
-Restricting new implementations to narrow contexts also risks causing forks in
-the protocol.  If implementations do not interoperate, little prevents those
-implementations from diverging more over time.
+However, restricting new implementations into limited deployments risks causing
+forks in the protocol.  If implementations do not interoperate, little prevents
+those implementations from diverging more over time.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
 are important in ensuring the continued viability of a protocol.  New protocol
@@ -201,15 +201,15 @@ cases and often are the origin of features and capabilities that can be of
 benefit to existing users.
 
 The need to work around interoperability problems also reduces the ability of
-established implementations to change.  For instance, an accumulation of
-mitigations for interoperability issues makes implementations more difficult to
-maintain.
+established implementations to change.  An accumulation of mitigations for
+interoperability issues makes implementations more difficult to maintain and can
+constrain extensibility (see also {{?USE-IT=I-D.thomson-use-it-or-lose-it}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design.  A community that is willing to make changes to the
 protocol, by revising or extending it, makes the protocol better in the process.
-Applying the robustness principle might conceal the problem.  That can make it
-harder, or even impossible, to fix later.
+Applying the robustness principle instead conceals problems, making it harder,
+or even impossible, to fix them later.
 
 A similar class of problems is described in RFC 5704 {{?UNCOORDINATED=RFC5704}},
 which addresses conflict or competition in the maintenance of protocols.  This
@@ -224,16 +224,16 @@ in the implementation of a protocol by peers.  Especially when a specification
 remains unchanged for an extended period of time, the inclination to be tolerant
 accumulates over time.  Indeed, when faced with divergent interpretations of an
 immutable specification, the best way for an implementation to remain
-interoperable is to be tolerant of differences in interpretation and an
-occasional outright implementation error.
+interoperable is to be tolerant of differences in interpretation and
+implementation errors.
 
-From this perspective, application of Postel's advice to the implementation of a
-protocol specification that does not change is logical, even necessary.  But
-that suggests that the problem is with the assumption that the situation -
-existing specifications and implementations - are unable to change.
+From this perspective, application of the robustness principle to the
+implementation of a protocol specification that does not change is logical, even
+necessary.  But that suggests that the problem is with the assumption that the
+situation - existing specifications and implementations - are unable to change.
 
-As already established, this is not sustainable.  For a protocol to be viable,
-it is necessary for both specifications and implementations to be responsive to
+As established, this is not sustainable.  For a protocol to be viable, it is
+necessary for both specifications and implementations to be responsive to
 changes, in addition to handling new and old problems that might arise over
 time.
 
@@ -243,13 +243,13 @@ both new implementations and the continued improvement of the protocol.  New use
 cases are an indicator that the protocol could be successful {{?SUCCESS}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
-protocols beyond their initial inception and definition.  Involvement of
-protocol implementers is a critical part of this process, as they provide input
-on their experience with implementation and deployment of the protocol.
+protocols beyond their initial inception and definition.  Involvement of those
+who implement and deploy the protcol is a critical part of this process, as they
+provide input on their experience with how the protocol is used.
 
 Most interoperability problems do not require revision of protocols or protocol
 specifications.  For instance, the most effective means of dealing with a
-defective implementation in a peer could be to email the developer of the stack.
+defective implementation in a peer could be to email the developer responsible.
 It is far more efficient in the long term to fix one isolated bug than it is to
 deal with the consequences of workarounds.
 
@@ -309,8 +309,8 @@ computer systems for security reasons (see for example {{?IOTSU=RFC8240}}).
 
 Automated error reporting mechanisms in protocol implementations allows for
 better feedback from deployments.  Exposing faults through operations and
-management systems is highly valuable, but it might be necessary to ensure that
-the information is propagated further.
+management interfaces is highly valuable, but it might be necessary to ensure
+that the information is propagated further.
 
 Building telemetry and error logging systems that report faults to the
 developers of the implementation is superior in many respects.  However, this is
@@ -337,10 +337,10 @@ strong feedback that allows problems to be discovered quickly.
 
 To be effective, virtuously intolerant implementations need to be sufficiently
 widely deployed that they are encountered by new implementations with high
-probability.  This could depend on multiple implementations of strict checks.
-Any intolerance also needs to be strongly supported by specifications, otherwise
-they encourage fracturing of the protocol community or proliferation of
-workarounds.
+probability.  This could require multiple implementation to deploy strict
+checks.  Any intolerance also needs to be strongly supported by specifications,
+otherwise they encourage fracturing of the protocol community or proliferation
+of workarounds.
 
 Virtuous intolerance can be used to motivate compliance with any protocol
 requirement.  For instance, the INADEQUATE_SECURITY error code and associated
