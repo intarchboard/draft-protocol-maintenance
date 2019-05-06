@@ -45,9 +45,9 @@ robustness principle can, and should, be avoided.
 
 # Introduction
 
-Of the great many contributions Jon Postel made to the Internet, his remarkable
-technical achievements are often shadowed by his contribution of a design and
-implementation philosophy known as the robustness principle:
+Jon Postel's famous formulation the robustness principle has shaped the way that
+many interoperable systems are designed.  As stated in IAB RFC 1958
+{{?PRINCIPLES=RFC1958}}, the robustness principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
@@ -55,28 +55,24 @@ implementation philosophy known as the robustness principle:
   without returning an error message unless this is required by the
   specification.
 
-This being the version of the text that appears in IAB RFC 1958
-{{?PRINCIPLES=RFC1958}}.
-
-The robustness principle has been hugely influential in shaping the Internet and
-the systems that use Internet protocols.  Many consider the application of the
-robustness principle to be instrumental in the success of the Internet as well
-as the design of interoperable protocols in general.
+The robustness principle has been hugely influential in shaping the design of
+the Internet and the systems that use Internet protocols.  Many consider the
+application of the robustness principle to be instrumental in the success of the
+Internet as well as the design of interoperable protocols in general.
 
 Time and experience shows that negative consequences to interoperability
-accumulate over time if an implementations apply the robustness principle.
+accumulate over time if an implementations apply the robustness principle.  This
+problem originates from an assumption implicit in the priciple that it is not
+possible to affect change in a system the size of the Internet.  That is, the
+idea that once a protocol specification is published, changes that might require
+existing implementations to change are not feasible.
 
-The problem with the robustness principle originates from an assumption that
-assumes an inability to affect change in a system the size of the Internet.
-That is, the idea that once a protocol specification is published, changes that
-might require existing implementations to change are not feasible.
-
-Many of the shortcomings that lead to applications of the robustness principle
-are avoided for protocols under active maintenance.  Active protocol maintenance
-is where a community of protocol designers, implementers, and deployers work
-together to continuously improve and evolve protocols.  A community that takes
-an active role in the maintenance of protocols can greatly reduce and even
-eliminate opportunities to apply the robustness principle.
+Many of the shortcomings that could lead to applications of the robustness
+principle are avoided for protocols under active maintenance.  Active protocol
+maintenance is where a community of protocol designers, implementers, and
+deployers work together to continuously improve and evolve protocols.  A
+community that takes an active role in the maintenance of protocols can greatly
+reduce and even eliminate opportunities to apply the robustness principle.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  This document serves primarily as a record
