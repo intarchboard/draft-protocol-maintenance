@@ -56,7 +56,7 @@ robustness principle advises to:
   specification.
 
 The robustness principle has been hugely influential in shaping the design of
-the Internet and the systems that use Internet protocols.  Many consider the
+the Internet and systems that use Internet protocols.  Many consider the
 application of the robustness principle to be instrumental in the success of the
 Internet as well as the design of interoperable protocols in general.
 
@@ -96,14 +96,16 @@ the motivation for the principle:
   its receiving behavior.
 
 Here Postel recognizes the possibility that the specification could be
-imperfect.  As a frank recognition of potential fallibility it is a significant
-statement.  However, the same statement is inexplicably absent from the later
-versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
+imperfect.  This contextualizes the principle in an important way.  However,
+that context is inexplicably absent from the later versions in
+{{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 
 An imperfect specification is natural, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
 A protocol, like any complex system, benefits greatly from experience with its
 use.  A deployed protocol is immeasurably more useful than a perfect protocol.
+The robustness principle is a tool that is suited to early phases of system
+design.
 
 As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
 far more on factors like usefulness than on on technical excellence.  Timely
@@ -115,6 +117,12 @@ robustness principle itself.
 
 
 # Protocol Decay
+
+The application of the robustness principle to the early Internet, or any system
+that is in early phases of deployment, was expedient and likely even necessary.
+The consequence of applying the principle is deferring the effort of dealing
+with interoperability problems, which can amplify the ultimate cost of handling
+those problems.
 
 Divergent implementations of a specification emerge over time.  When variations
 occur in the interpretation or expression of semantic components,
@@ -206,11 +214,6 @@ in protocol design.  A community that is willing to make changes to the
 protocol, by revising or extending it, makes the protocol better in the process.
 Applying the robustness principle instead conceals problems, making it harder,
 or even impossible, to fix them later.
-
-A similar class of problems is described in RFC 5704 {{?UNCOORDINATED=RFC5704}},
-which addresses conflict or competition in the maintenance of protocols.  This
-document concerns itself primarily with the absence of maintenance, though the
-problems are similar.
 
 
 # Active Protocol Maintenance
@@ -349,7 +352,9 @@ deployed base.
 
 Any protocol participant that is affected by changes arising from maintenance
 might be excluded if they are unwilling or unable to implement or deploy changes
-that are made to the protocol.
+that are made to the protocol.  RFC 5704 {{?UNCOORDINATED=RFC5704}} describes
+how conflict or competition in the maintenance of protocols can lead to the same
+sorts of problems.
 
 The effect on existing systems is an important design criterion when considering
 changes to a protocol.  While compatible changes are always preferable to
@@ -357,11 +362,12 @@ incompatible ones, it is not always possible to produce a design that allow all
 current protocol participants to continue to participate.
 
 Excluding implementations or deployments can lead to a fracturing of the
-protocol system that could be as harmful as the divergence resulting from
+protocol system that could be more harmful than any divergence resulting from
 following the robustness principle.  Any change to a protocol carries a risk of
 exclusion, but exclusion is a direct goal when choosing to be intolerant of
-errors (see {{intolerance}}).  Thus, any change needs careful consideration with
-respect to the consequences for existing deployments.
+errors (see {{intolerance}}).  Any change that excludes implementations needs
+extraordinary care to ensure that the effect on existing deployments is
+understood and accepted.
 
 
 # Security Considerations
