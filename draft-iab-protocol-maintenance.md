@@ -37,7 +37,7 @@ Jon Postel's famous statement of "Be liberal in what you accept, and
 conservative in what you send" is a principle that has long guided the design
 and implementation of Internet protocols.  The posture this statement advocates
 promotes interoperability in the short term, but can negatively affect the
-protocol ecosystem.  For a protocol that is actively maintained, the
+protocol ecosystem over time.  For a protocol that is actively maintained, the
 robustness principle can, and should, be avoided.
 
 
@@ -45,9 +45,9 @@ robustness principle can, and should, be avoided.
 
 # Introduction
 
-Jon Postel's famous formulation the robustness principle has shaped the way that
-many interoperable systems are designed.  As stated in IAB RFC 1958
-{{?PRINCIPLES=RFC1958}}, the robustness principle advises to:
+Jon Postel's robustness principle has shaped the way that many interoperable
+systems are designed.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the
+robustness principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
