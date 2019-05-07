@@ -315,7 +315,7 @@ of information.  Giving due consideration to protection of the privacy of
 protocol participants is critical prior to deploying any such system.
 
 
-## Virtuous Intolerance
+## Virtuous Intolerance {#intolerance}
 
 A well-specified protocol includes rules for consistent handling of aberrant
 conditions.  This increases the changes that implementations have interoperable
@@ -328,20 +328,40 @@ generate fatal errors for unspecified conditions instead of attempting error
 recovery can ensure that faults receive attention.
 
 This improves feedback for new implementations in particular.  When a new
-implementation encounters a virtuously intolerant implementation, it receives
-strong feedback that allows problems to be discovered quickly.
+implementation encounters an intolerant implementation, it receives strong
+feedback that allows problems to be discovered quickly.
 
-To be effective, virtuously intolerant implementations need to be sufficiently
-widely deployed that they are encountered by new implementations with high
-probability.  This could require multiple implementation to deploy strict
-checks.  Any intolerance also needs to be strongly supported by specifications,
-otherwise they encourage fracturing of the protocol community or proliferation
-of workarounds.
+To be effective, intolerant implementations need to be sufficiently widely
+deployed that they are encountered by new implementations with high probability.
+This could depend on multiple implementations deploying strict checks.
 
-Virtuous intolerance can be used to motivate compliance with any protocol
-requirement.  For instance, the INADEQUATE_SECURITY error code and associated
-requirements in HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the
-security of the deployed base.
+Any intolerance also needs to be strongly supported by specifications, otherwise
+they encourage fracturing of the protocol community or proliferation of
+workarounds (see {{exclusion}}).
+
+Intolerance can be used to motivate compliance with any protocol requirement.
+For instance, the INADEQUATE_SECURITY error code and associated requirements in
+HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the security of the
+deployed base.
+
+
+# Risk of Exclusion {#exclusion}
+
+Any protocol participant that is affected by changes arising from maintenance
+might be excluded if they are unwilling or unable to implement or deploy changes
+that are made to the protocol.
+
+The effect on existing systems is an important design criterion when considering
+changes to a protocol.  While compatible changes are always preferable to
+incompatible ones, it is not always possible to produce a design that allow all
+current protocol participants to continue to participate.
+
+Excluding implementations or deployments can lead to a fracturing of the
+protocol system that could be as harmful as the divergence resulting from
+following the robustness principle.  Any change to a protocol carries a risk of
+exclusion, but exclusion is a direct goal when choosing to be intolerant of
+errors (see {{intolerance}}).  Thus, any change needs careful consideration with
+respect to the consequences for existing deployments.
 
 
 # Security Considerations
