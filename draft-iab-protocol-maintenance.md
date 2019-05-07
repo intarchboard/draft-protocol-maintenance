@@ -45,34 +45,34 @@ robustness principle can, and should, be avoided.
 
 # Introduction
 
-Jon Postel's robustness principle has shaped the way that many interoperable
-systems are designed.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the
+Jon Postel's robustness principle has been hugely influential in shaping the
+design of the Internet.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the
 robustness principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
-  faulty input from the network. When in doubt, discard faulty input silently,
+  faulty input from the network.  When in doubt, discard faulty input silently,
   without returning an error message unless this is required by the
   specification.
 
-The robustness principle has been hugely influential in shaping the design of
-the Internet and systems that use Internet protocols.  Many consider the
-application of the robustness principle to be instrumental in the success of the
-Internet as well as the design of interoperable protocols in general.
+This simple statement captures a significant concept in the design of
+interoperable systems.  Many consider the application of the robustness
+principle to be instrumental in the success of the Internet as well as the
+design of interoperable protocols in general.
 
 Time and experience shows that negative consequences to interoperability
 accumulate over time if an implementations apply the robustness principle.  This
-problem originates from an assumption implicit in the priciple that it is not
+problem originates from an assumption implicit in the principle that it is not
 possible to affect change in a system the size of the Internet.  That is, the
 idea that once a protocol specification is published, changes that might require
 existing implementations to change are not feasible.
 
-Many of the shortcomings that could lead to applications of the robustness
-principle are avoided for protocols under active maintenance.  Active protocol
-maintenance is where a community of protocol designers, implementers, and
-deployers work together to continuously improve and evolve protocols.  A
-community that takes an active role in the maintenance of protocols can greatly
-reduce and even eliminate opportunities to apply the robustness principle.
+Many problems that might lead to applications of the robustness principle are
+avoided for protocols under active maintenance.  Active protocol maintenance is
+where a community of protocol designers, implementers, and deployers work
+together to continuously improve and evolve protocols.  A community that takes
+an active role in the maintenance of protocols can greatly reduce and even
+eliminate opportunities to apply the robustness principle.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  This document serves primarily as a record
@@ -80,7 +80,8 @@ of the hazards inherent in applying the robustness principle and to offer an
 alternative strategy for handling interoperability problems in deployments.
 
 Ideally, protocol implementations never have to apply the robustness principle.
-Or, where it is unavoidable, any application can be quickly reverted.
+Or, where it is unavoidable, use of the robustness principle is viewed as a
+short term workaround that needs to be quickly reverted.
 
 
 # Fallibility of Specifications
