@@ -119,10 +119,9 @@ robustness principle itself.
 # Protocol Decay
 
 The application of the robustness principle to the early Internet, or any system
-that is in early phases of deployment, was expedient and likely even necessary.
-The consequence of applying the principle is deferring the effort of dealing
-with interoperability problems, which can amplify the ultimate cost of handling
-those problems.
+that is in early phases of deployment, is expedient.  The consequence of
+applying the principle is deferring the effort of dealing with interoperability
+problems, which can amplify the ultimate cost of handling those problems.
 
 Divergent implementations of a specification emerge over time.  When variations
 occur in the interpretation or expression of semantic components,
@@ -142,8 +141,8 @@ interoperability indefinitely.
 An implementation that reacts to variations in the manner recommended in the
 robustness principle sets up a feedback cycle.  Over time:
 
-* Implementations progressively add new code to constrain how data is
-  transmitted, or to permit variations in what is received.
+* Implementations progressively add logic to constrain how data is transmitted,
+  or to permit variations in what is received.
 
 * Errors in implementations or confusion about semantics are permitted or
   ignored.
@@ -243,7 +242,7 @@ cases are an indicator that the protocol could be successful {{?SUCCESS}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocols beyond their initial inception and definition.  Involvement of those
-who implement and deploy the protcol is a critical part of this process, as they
+who implement and deploy the protocol is a critical part of this process, as they
 provide input on their experience with how the protocol is used.
 
 Most interoperability problems do not require revision of protocols or protocol
@@ -274,19 +273,20 @@ party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
 of things like new messages or parameters.  If an extension mechanism is
-designed and implemented correctly, the user of a new protocol feature can
-confidently predict the effect that feature will have on existing
+designed and implemented correctly, new protocol features can be deployed with
+confidence in the understanding of the effect they have on existing
 implementations.
 
-Relying on implementations consistently applying the robustness principle is not
-a good strategy for extensibility.  Using undocumented or accidental features of
-a protocol as the basis of an extensibility mechanism can be extremely
-difficult, as is demonstrated by the case study in Appendix A.3 of {{?EXT}}.
+In contrast, relying on implementations to consistently apply the robustness
+principle is not a good strategy for extensibility.  Using undocumented or
+accidental features of a protocol as the basis of an extensibility mechanism can
+be extremely difficult, as is demonstrated by the case study in Appendix A.3 of
+{{?EXT}}.
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 allow a wide range of inputs as a core feature (see for example {{HTML}}).
 Specifying and implementing a more flexible protocol is more difficult; allowing
-less variation is preferable in the absence of strong reasons to be flexible.
+less variability is preferable in the absence of strong reasons to be flexible.
 
 
 # The Role of Feedback
