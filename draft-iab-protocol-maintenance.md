@@ -326,7 +326,7 @@ conditions.  This increases the changes that implementations have interoperable
 handling of unusual conditions.
 
 Intolerance of any deviation from specification, where implementations generate
-fatal errors in response to observing undefined or unusal behaviour, can be
+fatal errors in response to observing undefined or unusual behaviour, can be
 harnessed to reduce occurrences of aberrant implementations.  Choosing to
 generate fatal errors for unspecified conditions instead of attempting error
 recovery can ensure that faults receive attention.
