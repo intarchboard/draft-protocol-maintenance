@@ -186,13 +186,18 @@ entrenches interoperability problems.
 Once deviations become entrenched, it can be extremely difficult - if not
 impossible - to rectify the situation.
 
+Interoperability requirements for protocol implementations are set by other
+deployments.  Specifications and - where they exist - conformance test suites
+might guide the initial development of implementations, but implementations
+ultimately need to interoperate with deployed implementations.
+
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  The cost of
-building a new implementation increases as the number of implementations and
-bugs increases.  Worse, the set of tweaks necessary for wide interoperability
-can be difficult to discover.
+building a new implementation using reverse engineering increases as the number
+of implementations and bugs increases.  Worse, the set of tweaks necessary for
+wide interoperability can be difficult to discover.
 
-Consequently, new implementations can be restricted to niche uses, where the
+Consequently, new implementations might be forced into niche uses, where the
 problems arising from interoperability issues can be more closely managed.
 However, restricting new implementations into limited deployments risks causing
 forks in the protocol.  If implementations do not interoperate, little prevents
