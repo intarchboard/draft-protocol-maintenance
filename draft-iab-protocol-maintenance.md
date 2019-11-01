@@ -70,9 +70,10 @@ existing implementations to change are not feasible.
 Many problems that might lead to applications of the robustness principle are
 avoided for protocols under active maintenance.  Active protocol maintenance is
 where a community of protocol designers, implementers, and deployers work
-together to continuously improve and evolve protocols.  A community that takes
-an active role in the maintenance of protocols can greatly reduce and even
-eliminate opportunities to apply the robustness principle.
+together to continuously improve and evolve protocols long with implementations
+and deployments of those protocols.  A community that takes an active role in
+the maintenance of protocols can greatly reduce and even eliminate opportunities
+to apply the robustness principle.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  In particular, a sizeable proportion of IETF
