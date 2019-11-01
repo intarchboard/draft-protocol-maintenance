@@ -33,21 +33,21 @@ informative:
 
 --- abstract
 
-Jon Postel's famous statement of "Be liberal in what you accept, and
-conservative in what you send" is a principle that has long guided the design
-and implementation of Internet protocols.  The posture this statement advocates
-promotes interoperability in the short term, but can negatively affect the
-protocol ecosystem over time.  For a protocol that is actively maintained, the
-robustness principle can, and should, be avoided.
+The robustness principle, often phrased as "be conservative in what you send,
+and liberal in what you accept", has long guided the design and implementation
+of Internet protocols.  The posture this statement advocates promotes
+interoperability in the short term, but can negatively affect the protocol
+ecosystem over time.  For a protocol that is actively maintained, the robustness
+principle can, and should, be avoided.
 
 
 --- middle
 
 # Introduction
 
-Jon Postel's robustness principle has been hugely influential in shaping the
-design of the Internet.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the
-robustness principle advises to:
+The robustness principle has been hugely influential in shaping the design of
+the Internet.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the robustness
+principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
@@ -96,10 +96,10 @@ the motivation for the principle:
   implementation should be conservative in its sending behavior, and liberal in
   its receiving behavior.
 
-Here Postel recognizes the possibility that the specification could be
-imperfect.  This contextualizes the principle in an important way.  However,
-that context is inexplicably absent from the later versions in
-{{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
+This formulation of the principle expressly recognizes the possibility that the
+specification could be imperfect.  This contextualizes the principle in an
+important way.  However, that context is inexplicably absent from the later
+versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
 
 An imperfect specification is natural, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
@@ -322,8 +322,8 @@ protocol participants is critical prior to deploying any such system.
 ## Virtuous Intolerance {#intolerance}
 
 A well-specified protocol includes rules for consistent handling of aberrant
-conditions.  This increases the changes that implementations have interoperable
-handling of unusual conditions.
+conditions.  This increases the chances that implementations will have
+interoperable handling of unusual conditions.
 
 Intolerance of any deviation from specification, where implementations generate
 fatal errors in response to observing undefined or unusual behaviour, can be
