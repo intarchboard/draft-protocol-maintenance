@@ -75,9 +75,11 @@ an active role in the maintenance of protocols can greatly reduce and even
 eliminate opportunities to apply the robustness principle.
 
 There is good evidence to suggest that many important protocols are routinely
-maintained beyond their inception.  This document serves primarily as a record
-of the hazards inherent in applying the robustness principle and to offer an
-alternative strategy for handling interoperability problems in deployments.
+maintained beyond their inception.  In particular, a sizeable proportion of IETF
+activity is dedicated to the stewardship of existing protocols.  This document
+serves primarily as a record of the hazards inherent in applying the robustness
+principle and to offer an alternative strategy for handling interoperability
+problems in deployments.
 
 Ideally, protocol implementations never have to apply the robustness principle.
 Or, where it is unavoidable, use of the robustness principle is viewed as a
@@ -98,8 +100,7 @@ the motivation for the principle:
 
 This formulation of the principle expressly recognizes the possibility that the
 specification could be imperfect.  This contextualizes the principle in an
-important way.  However, that context is inexplicably absent from the later
-versions in {{?HOSTS=RFC1122}} and {{?PRINCIPLES}}.
+important way.
 
 An imperfect specification is natural, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
