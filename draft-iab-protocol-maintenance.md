@@ -253,7 +253,9 @@ protocol.  New use cases are an indicator that the protocol could be successful
 {{?SUCCESS}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
-protocol specificationss beyond their initial inception and definition.
+protocol specificationss beyond their initial inception and definition.  This
+might require the development of revised specifications, extensions, or other
+supporting material that documents the current state of the protocol.
 Involvement of those who implement and deploy the protocol is a critical part of
 this process, as they provide input on their experience with how the protocol is
 used.
