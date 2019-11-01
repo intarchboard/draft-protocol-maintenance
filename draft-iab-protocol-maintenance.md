@@ -178,12 +178,10 @@ is not fully interoperable with JSON.  Consequently, I-JSON is not widely
 implemented in parsers.  Many JSON parsers now implement the more precise
 algorithm specified in {{ECMA262}}.
 
-The application of the robustness principle is particularly deleterious for
-early implementations of new protocols as it can hide problems in subsequent
-deployments.
-
-The robustness principle therefore encourages a reaction that compounds and
-entrenches interoperability problems.
+The robustness principle therefore encourages a reaction that can create
+interoperability problems.  In particular, the application of the robustness
+principle is particularly deleterious for early implementations of new protocols
+as quirks in early implementations can affect all subsequent deployments.
 
 
 # Ecosystem Effects
