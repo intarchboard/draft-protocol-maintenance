@@ -357,26 +357,30 @@ HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the security of the
 deployed base.
 
 
-# Risk of Exclusion {#exclusion}
+# Exclusion {#exclusion}
 
 Any protocol participant that is affected by changes arising from maintenance
 might be excluded if they are unwilling or unable to implement or deploy changes
-that are made to the protocol.  RFC 5704 {{?UNCOORDINATED=RFC5704}} describes
-how conflict or competition in the maintenance of protocols can lead to the same
-sorts of problems.
+that are made to the protocol.
 
-The effect on existing systems is an important design criterion when considering
-changes to a protocol.  While compatible changes are always preferable to
-incompatible ones, it is not always possible to produce a design that allow all
-current protocol participants to continue to participate.
+Deliberate exclusion of problematic implementations is an important tool that
+can ensure that the interoperability of a protocol remains viable.  While
+compatible changes are always preferable to incompatible ones, it is not always
+possible to produce a design that protects the ability of all current and future
+protocol participants to interoperate.  Developing and deploying changes that
+risk exclusion of previously interoperating implementations requires some care,
+but changes to a protocol should not be blocked on the grounds of the risk of
+exclusion alone.
+
+Exclusion is a direct goal when choosing to be intolerant of errors (see
+{{intolerance}}), which is deployed with the intent of protecting future
+interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
 protocol system that could be more harmful than any divergence resulting from
-following the robustness principle.  Any change to a protocol carries a risk of
-exclusion, but exclusion is a direct goal when choosing to be intolerant of
-errors (see {{intolerance}}).  Any change that excludes implementations needs
-extraordinary care to ensure that the effect on existing deployments is
-understood and accepted.
+following the robustness principle.  RFC 5704 {{?UNCOORDINATED=RFC5704}}
+describes how conflict or competition in the maintenance of protocols can lead
+to similar problems.
 
 
 # Security Considerations
@@ -389,7 +393,9 @@ discover.
 
 The consequences of the problems described in this document are especially acute
 for any protocol where security depends on agreement about semantics of protocol
-elements.
+elements.  For instance, use of unsafe security mechanisms, such as weak
+primitives {{?MD5=RFC6151}} or obsolete mechanisms {{?SSL3=RFC7568}}, are good
+examples of where forcing exclusion ({{exclusion}}) can be desirable.
 
 
 # IANA Considerations
@@ -402,6 +408,6 @@ This document has no IANA actions.
 # Acknowledgments
 
 Constructive feedback on this document has been provided by a surprising number
-of people including Bernard Aboba, Brian Carpenter, Mark Nottingham, Russ
-Housley, Henning Schulzrinne, Robert Sparks, Brian Trammell, and Anne Van
-Kesteren.  Please excuse any omission.
+of people including Bernard Aboba, Brian Carpenter, Stuart Cheshire, Mark
+Nottingham, Russ Housley, Henning Schulzrinne, Robert Sparks, Brian Trammell,
+and Anne Van Kesteren.  Please excuse any omission.
