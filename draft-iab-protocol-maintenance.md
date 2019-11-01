@@ -269,7 +269,7 @@ deal with the consequences of workarounds.
 Early implementations of protocols have a stronger obligation to closely follow
 specifications as their behavior will affect all subsequent implementations.
 Protocol specifications might need more frequent revision during early
-deployments to capture feedback from early rounds deployment.
+deployments to capture feedback from early rounds of deployment.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
@@ -279,6 +279,14 @@ time-consuming, particularly if the protocol has a diverse set of
 implementations.  Such a process was undertaken for HTTP {{?HTTP=RFC7230}} after
 a period of minimal maintenance.  Restoring HTTP specifications to currency took
 significant effort.
+
+Maintenance is most effective if it is responsive, which is greatly affected by
+how rapidly protocol changes can be deployed.  For protocol deployments that
+operate on longer time scales, temporary workarounds following the spirit of the
+robustness principle might be necessary.  In these cases, updates to
+specifications can capture the workaround, the desired form of the protocols
+once the need for workarounds no longer exists, and how that situation will be
+identified.
 
 
 # Extensibility
