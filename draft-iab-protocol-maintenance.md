@@ -177,6 +177,10 @@ is not fully interoperable with JSON.  Consequently, I-JSON is not widely
 implemented in parsers.  Many JSON parsers now implement the more precise
 algorithm specified in {{ECMA262}}.
 
+The application of the robustness principle is particularly deleterious for
+early implementations of new protocols as it can hide problems in subsequent
+deployments.
+
 The robustness principle therefore encourages a reaction that compounds and
 entrenches interoperability problems.
 
@@ -259,6 +263,11 @@ specifications.  For instance, the most effective means of dealing with a
 defective implementation in a peer could be to email the developer responsible.
 It is far more efficient in the long term to fix one isolated bug than it is to
 deal with the consequences of workarounds.
+
+Early implementations of protocols have a stronger obligation to closely follow
+specifications as their behavior will affect all subsequent implementations.
+Protocol specifications might need more frequent revision during early
+deployments to capture feedback from early rounds deployment.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
