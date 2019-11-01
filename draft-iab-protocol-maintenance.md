@@ -61,7 +61,7 @@ principle to be instrumental in the success of the Internet as well as the
 design of interoperable protocols in general.
 
 Time and experience shows that negative consequences to interoperability
-accumulate over time if an implementations apply the robustness principle.  This
+accumulate over time if implementations apply the robustness principle.  This
 problem originates from an assumption implicit in the principle that it is not
 possible to affect change in a system the size of the Internet.  That is, the
 idea that once a protocol specification is published, changes that might require
