@@ -233,23 +233,26 @@ implementation errors.
 
 From this perspective, application of the robustness principle to the
 implementation of a protocol specification that does not change is logical, even
-necessary.  But that suggests that the problem is with the assumption that the
-situation - existing specifications and implementations - are unable to change.
+necessary.  But that suggests that the problem is with the assumption that
+existing specifications and implementations are unable to change.  Applying the
+robustness principle in this way disproportionately values short-term gains over
+the negative effects on future implementations and the protocol as a whole.
 
-As established, this is not sustainable.  For a protocol to be viable, it is
-necessary for both specifications and implementations to be responsive to
-changes, in addition to handling new and old problems that might arise over
-time.
+For a protocol to have sustained viability, it is necessary for both
+specifications and implementations to be responsive to changes, in addition to
+handling new and old problems that might arise over time.
 
-Active maintenance of a protocol is critical in ensuring that specifications
-correctly reflect the requirements for interoperability.  Maintenance enables
-both new implementations and the continued improvement of the protocol.  New use
-cases are an indicator that the protocol could be successful {{?SUCCESS}}.
+Maintaining specifications so that they closely match deployments ensures that
+implementations are consistently interoperable and removes needless barriers for
+new implementations.  Maintenance also enables continued improvement of the
+protocol.  New use cases are an indicator that the protocol could be successful
+{{?SUCCESS}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
-protocols beyond their initial inception and definition.  Involvement of those
-who implement and deploy the protocol is a critical part of this process, as they
-provide input on their experience with how the protocol is used.
+protocol specificationss beyond their initial inception and definition.
+Involvement of those who implement and deploy the protocol is a critical part of
+this process, as they provide input on their experience with how the protocol is
+used.
 
 Most interoperability problems do not require revision of protocols or protocol
 specifications.  For instance, the most effective means of dealing with a
