@@ -70,7 +70,7 @@ existing implementations to change are not feasible.
 Many problems that might lead to applications of the robustness principle are
 avoided for protocols under active maintenance.  Active protocol maintenance is
 where a community of protocol designers, implementers, and deployers work
-together to continuously improve and evolve protocols long with implementations
+together to continuously improve and evolve protocols along with implementations
 and deployments of those protocols.  A community that takes an active role in
 the maintenance of protocols can greatly reduce and even eliminate opportunities
 to apply the robustness principle.
@@ -317,36 +317,7 @@ Specifying and implementing a more flexible protocol is more difficult; allowing
 less variability is preferable in the absence of strong reasons to be flexible.
 
 
-# The Role of Feedback
-
-Protocol maintenance is only possible if there is sufficient information about
-the deployment of the protocol.  Feedback from deployment is critical to
-effective protocol maintenance.
-
-For a protocol specification, the primary and most effective form of feedback
-comes from people who implement and deploy the protocol.  This comes in the form
-of new requirements, or in experience with the protocol as it is deployed.
-
-Managing and deploying changes to implementations can be expensive.  However, it
-is widely recognized that regular updates are a vital part of the deployment of
-computer systems for security reasons (see for example {{?IOTSU=RFC8240}}).
-
-
-## Feedback from Implementations
-
-Automated error reporting mechanisms in protocol implementations allows for
-better feedback from deployments.  Exposing faults through operations and
-management interfaces is highly valuable, but it might be necessary to ensure
-that the information is propagated further.
-
-Building telemetry and error logging systems that report faults to the
-developers of the implementation is superior in many respects.  However, this is
-only possible in deployments that are conducive to the collection of this type
-of information.  Giving due consideration to protection of the privacy of
-protocol participants is critical prior to deploying any such system.
-
-
-## Virtuous Intolerance {#intolerance}
+# Virtuous Intolerance {#intolerance}
 
 A well-specified protocol includes rules for consistent handling of aberrant
 conditions.  This increases the chances that implementations will have
