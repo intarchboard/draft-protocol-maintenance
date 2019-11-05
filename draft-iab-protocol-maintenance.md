@@ -300,10 +300,12 @@ another party is prepared to receive it, it might be assumed that the receiving
 party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters.  If an extension mechanism is
-designed and implemented correctly, new protocol features can be deployed with
-confidence in the understanding of the effect they have on existing
-implementations.
+of things like new messages or parameters.  This depends on having clear rules
+for the handling of malformed or illegal inputs so that implementations behave
+consistently in all cases that might affect interoperation.  If extension
+mechanisms and error handling are designed and implemented correctly, new
+protocol features can be deployed with confidence in the understanding of the
+effect they have on existing implementations.
 
 In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility.  Using undocumented or
