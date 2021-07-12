@@ -122,9 +122,10 @@ robustness principle itself.
 # Protocol Decay
 
 The application of the robustness principle to the early Internet, or any system
-that is in early phases of deployment, is expedient.  The consequence of
-applying the principle is deferring the effort of dealing with interoperability
-problems, which can amplify the ultimate cost of handling those problems.
+that is in early phases of deployment, is expedient.  Applying the principle
+defers the effort of dealing with interoperability problems, which prioritizes
+progress.  However, deferral can amplify the ultimate cost of handling
+interoperability problems.
 
 Divergent implementations of a specification emerge over time.  When variations
 occur in the interpretation or expression of semantic components,
@@ -216,7 +217,7 @@ benefit to existing users.
 The need to work around interoperability problems also reduces the ability of
 established implementations to change.  An accumulation of mitigations for
 interoperability issues makes implementations more difficult to maintain and can
-constrain extensibility (see also {{?USE-IT=I-D.thomson-use-it-or-lose-it}}).
+constrain extensibility (see also {{?USE-IT=I-D.iab-use-it-or-lose-it}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design.  A community that is willing to make changes to the
@@ -229,16 +230,16 @@ or even impossible, to fix them later.
 
 The robustness principle can be highly effective in safeguarding against flaws
 in the implementation of a protocol by peers.  Especially when a specification
-remains unchanged for an extended period of time, the inclination to be tolerant
-accumulates over time.  Indeed, when faced with divergent interpretations of an
-immutable specification, the best way for an implementation to remain
+remains unchanged for an extended period of time, incentive to be tolerant of
+errors accumulates over time.  Indeed, when faced with divergent interpretations
+of an immutable specification, the only way for an implementation to remain
 interoperable is to be tolerant of differences in interpretation and
 implementation errors.
 
 From this perspective, application of the robustness principle to the
 implementation of a protocol specification that does not change is logical, even
-necessary.  But that suggests that the problem is with the assumption that
-existing specifications and implementations are unable to change.  Applying the
+necessary.  But that conclusion relies on an assumption that existing
+specifications and implementations are unable to change.  Applying the
 robustness principle in this way disproportionately values short-term gains over
 the negative effects on future implementations and the protocol as a whole.
 
@@ -267,9 +268,12 @@ It is far more efficient in the long term to fix one isolated bug than it is to
 deal with the consequences of workarounds.
 
 Early implementations of protocols have a stronger obligation to closely follow
-specifications as their behavior will affect all subsequent implementations.
-Protocol specifications might need more frequent revision during early
-deployments to capture feedback from early rounds of deployment.
+specifications as their behavior will affect all subsequent implementations.  In
+addition to specifications, later implementations will be guided by what
+existing deployments accept.  Tolerance of errors in early deployments is most
+likely to result in problems.  Protocol specifications might need more frequent
+revision during early deployments to capture feedback from early rounds of
+deployment.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
@@ -277,8 +281,8 @@ discovering the properties of the protocol as it is deployed, rather than the
 protocol as it was originally documented.  This can be difficult and
 time-consuming, particularly if the protocol has a diverse set of
 implementations.  Such a process was undertaken for HTTP {{?HTTP=RFC7230}} after
-a period of minimal maintenance.  Restoring HTTP specifications to currency took
-significant effort.
+a period of minimal maintenance.  Restoring HTTP specifications to relevance
+took significant effort.
 
 Maintenance is most effective if it is responsive, which is greatly affected by
 how rapidly protocol changes can be deployed.  For protocol deployments that
@@ -289,15 +293,15 @@ the desired form of the protocols once the need for workarounds no longer exists
 and plans for removing the workaround.
 
 
-# Extensibility
+# Extensibility {#extensibility}
 
 Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
 cases or changes in the environment in which the protocol is deployed.
 
-Extensibility is sometimes mistaken for an application of the robustness
-principle.  After all, if one party wants to start using a new feature before
-another party is prepared to receive it, it might be assumed that the receiving
-party is being tolerant of unexpected inputs.
+The ability to extend a protocol is sometimes mistaken for an application of the
+robustness principle.  After all, if one party wants to start using a new
+feature before another party is prepared to receive it, it might be assumed that
+the receiving party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
 of things like new messages or parameters.  This depends on having clear rules
@@ -310,8 +314,8 @@ effect they have on existing implementations.
 In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility.  Using undocumented or
 accidental features of a protocol as the basis of an extensibility mechanism can
-be extremely difficult, as is demonstrated by the case study in Appendix A.3 of
-{{?EXT}}.
+be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
+of EXT}}.
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 allow a wide range of inputs as a core feature (see for example {{HTML}}).
@@ -323,7 +327,7 @@ less variability is preferable in the absence of strong reasons to be flexible.
 
 A well-specified protocol includes rules for consistent handling of aberrant
 conditions.  This increases the chances that implementations will have
-interoperable handling of unusual conditions.
+consistent and interoperable handling of unusual conditions.
 
 Intolerance of any deviation from specification, where implementations generate
 fatal errors in response to observing undefined or unusual behaviour, can be
@@ -332,16 +336,22 @@ generate fatal errors for unspecified conditions instead of attempting error
 recovery can ensure that faults receive attention.
 
 This improves feedback for new implementations in particular.  When a new
-implementation encounters an intolerant implementation, it receives strong
-feedback that allows problems to be discovered quickly.
+implementation encounters a peer that is intolerant of an error, it receives
+strong feedback that allows the problem to be discovered quickly.
 
 To be effective, intolerant implementations need to be sufficiently widely
 deployed that they are encountered by new implementations with high probability.
 This could depend on multiple implementations deploying strict checks.
 
+This does not mean that intolerance of errors in early deployments of protocols
+have the effect of preventing interoperability.  On the contrary, when existing
+implementations follow clearly specified error handling, new implementations or
+features can be introduced more readily as the effect on existing
+implementations can be easily predicted; see also {{extensibility}}.
+
 Any intolerance also needs to be strongly supported by specifications, otherwise
 they encourage fracturing of the protocol community or proliferation of
-workarounds (see {{exclusion}}).
+workarounds; see {{exclusion}}.
 
 Intolerance can be used to motivate compliance with any protocol requirement.
 For instance, the INADEQUATE_SECURITY error code and associated requirements in
@@ -365,8 +375,8 @@ but changes to a protocol should not be blocked on the grounds of the risk of
 exclusion alone.
 
 Exclusion is a direct goal when choosing to be intolerant of errors (see
-{{intolerance}}), which is deployed with the intent of protecting future
-interoperability.
+{{intolerance}}).  Exclusionary actions are employed with the deliberate intent
+of protecting future interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
 protocol system that could be more harmful than any divergence resulting from
