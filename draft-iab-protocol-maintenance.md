@@ -288,7 +288,7 @@ Maintenance is most effective if it is responsive, which is greatly affected by
 how rapidly protocol changes can be deployed.  For protocol deployments that
 operate on longer time scales, temporary workarounds following the spirit of the
 robustness principle might be necessary.  If specifications can be updated more
-readily than deployments, details of the workaround can be document, including
+readily than deployments, details of the workaround can be documented, including
 the desired form of the protocols once the need for workarounds no longer exists
 and plans for removing the workaround.
 
