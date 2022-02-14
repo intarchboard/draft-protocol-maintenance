@@ -111,7 +111,7 @@ The robustness principle is a tool that is suited to early phases of system
 design.
 
 As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
-far more on factors like usefulness than on on technical excellence.  Timely
+far more on factors like usefulness than on technical excellence.  Timely
 publication of protocol specifications, even with the potential for flaws,
 likely contributed significantly to the eventual success of the Internet.
 
