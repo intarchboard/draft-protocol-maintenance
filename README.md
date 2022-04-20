@@ -3,10 +3,10 @@
 This is the working area for the IAB Internet-Draft, "The Harmful Consequences
 of the Robustness Principle", formerly draft-thomson-postel-was-wrong.
 
-* [Editor's Copy](https://intarchboard.github.io/protocol-maintenance/#go.draft-iab-protocol-maintenance.html)
-* [IAB Draft](https://tools.ietf.org/html/draft-iab-protocol-maintenance)
+* [Editor's Copy](https://intarchboard.github.io/draft-protocol-maintenance/draft-iab-protocol-maintenance.html)
+* [IAB Draft](https://datatracker.ietf.org/doc/draft-iab-protocol-maintenance/)
 * [Compare Editor's Copy to Working Group
-   Draft](https://intarchboard.github.io/protocol-maintenance/#go.draft-iab-protocol-maintenance.diff)
+   Draft](https://www.ietf.org/rfcdiff?url1=draft-iab-protocol-maintenance&url2=https://intarchboard.github.io/draft-protocol-maintenance/draft-iab-protocol-maintenance.txt)
 
 ## Building the Draft
 
@@ -23,4 +23,4 @@ This requires that you have the necessary software installed.  See
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/martinthomson/postel-was-wrong/blob/master/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/intarchboard/draft-protocol-maintenance/blob/main/CONTRIBUTING.md).
