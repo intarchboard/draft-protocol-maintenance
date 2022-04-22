@@ -188,13 +188,24 @@ as quirks in early implementations can affect all subsequent deployments.
 
 # Ecosystem Effects
 
-Once deviations become entrenched, it can be extremely difficult - if not
-impossible - to rectify the situation.
+From observing widely deployed protocols, it appears there are two stable points
+on the spectrum between being strict versus permissive in the presence of
+protocol errors:
 
-Interoperability requirements for protocol implementations are set by other
-deployments.  Specifications and - where they exist - conformance test suites
-might guide the initial development of implementations, but implementations
-ultimately need to interoperate with deployed implementations.
+* If there is a majority of strict implementations, newer implementations will
+  experience failures if they do not conform to the protocol and will fix them
+  before deploying, adding a new strict implementation to the majority.
+
+* Conversely, if there is a majority of non-conformant implementations, newer
+  implementations will accumulate protocol non-conformant deviations to the
+  protocol in order to interoperate before they are deployed, adding a new
+  non-conformant implementation to the majority.
+
+This happens because interoperability requirements for protocol implementations
+are set by other deployments. Specifications and - where they exist -
+conformance test suites might guide the initial development of implementations,
+but implementations ultimately need to interoperate with deployed
+implementations.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  The cost of
@@ -412,5 +423,5 @@ This document has no IANA actions.
 
 Constructive feedback on this document has been provided by a surprising number
 of people including Bernard Aboba, Brian Carpenter, Stuart Cheshire, Mark
-Nottingham, Russ Housley, Henning Schulzrinne, Robert Sparks, Brian Trammell,
-and Anne Van Kesteren.  Please excuse any omission.
+Nottingham, Russ Housley, Eric Rescorla, Henning Schulzrinne, Robert Sparks,
+Brian Trammell, and Anne Van Kesteren.  Please excuse any omission.
