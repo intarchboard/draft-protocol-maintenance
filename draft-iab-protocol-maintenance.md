@@ -217,7 +217,7 @@ benefit to existing users.
 The need to work around interoperability problems also reduces the ability of
 established implementations to change.  An accumulation of mitigations for
 interoperability issues makes implementations more difficult to maintain and can
-constrain extensibility (see also {{?USE-IT=I-D.iab-use-it-or-lose-it}}).
+constrain extensibility (see also {{?USE-IT=RFC9170}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design.  A community that is willing to make changes to the
