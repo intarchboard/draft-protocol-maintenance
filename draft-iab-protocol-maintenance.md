@@ -161,7 +161,7 @@ and a product of a natural reluctance to avoid fatal error conditions.  Ensuring
 interoperability in this environment is often referred to as aiming to be "bug
 for bug compatible".
 
-For example, in TLS {{?TLS=RFC8446}} extensions use a tag-length-value format,
+For example, in TLS {{?TLS=RFC8446}}, extensions use a tag-length-value format
 and they can be added to messages in any order.  However, some server
 implementations terminate connections if they encounter a TLS ClientHello
 message that ends with an empty extension.  To maintain interoperability, client
@@ -169,7 +169,7 @@ implementations are required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
 
 The original JSON specification {{?JSON=RFC4627}} demonstrates the effect of
-specification shortcomings.  RFC 4627 omitted critical details on a range of key
+specification shortcomings.  RFC 4627 failed to tightly specify some important
 details including Unicode handling, ordering and duplication of object members,
 and number encoding.  Consequently, a range of interpretations were used by
 implementations.  An updated specification {{?JSON-BIS=RFC7159}} did not correct
@@ -180,7 +180,7 @@ is not fully interoperable with JSON.  Consequently, I-JSON is not widely
 implemented in parsers.  Many JSON parsers now implement the more precise
 algorithm specified in {{ECMA262}}.
 
-The robustness principle therefore encourages a reaction that can create
+The robustness principle therefore encourages a chain reaction that can create
 interoperability problems.  In particular, the application of the robustness
 principle is particularly deleterious for early implementations of new protocols
 as quirks in early implementations can affect all subsequent deployments.
