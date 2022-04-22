@@ -245,7 +245,10 @@ the negative effects on future implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
-handling new and old problems that might arise over time.
+handling new and old problems that might arise over time. Additionally,
+since implementations now already benefit from periodic updates to mitigate
+security vulnerabilities, the cost of reacting to changes is much lower than it
+was in the past.
 
 Maintaining specifications so that they closely match deployments ensures that
 implementations are consistently interoperable and removes needless barriers for
