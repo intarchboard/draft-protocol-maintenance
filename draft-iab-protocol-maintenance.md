@@ -408,6 +408,7 @@ This document has no IANA actions.
 --- back
 
 # Acknowledgments
+{:numbered="false"}
 
 Constructive feedback on this document has been provided by a surprising number
 of people including Bernard Aboba, Brian Carpenter, Stuart Cheshire, Mark
