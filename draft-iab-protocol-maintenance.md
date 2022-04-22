@@ -4,6 +4,7 @@ abbrev: "Protocol Maintenance"
 docname: draft-iab-protocol-maintenance-latest
 category: info
 ipr: trust200902
+submissiontype: IAB
 
 stand_alone: yes
 pi: [toc, sortrefs, symrefs, docmapping]
