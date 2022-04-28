@@ -201,7 +201,7 @@ interoperability testing infeasible for all but a privileged few.  The cost of
 building a new implementation using reverse engineering increases as the number
 of implementations and bugs increases.  Worse, the set of tweaks necessary for
 wide interoperability can be difficult to discover. In the worst case, a new
-implementor might have to pick between two deployments that have diverged so far
+implementer might have to pick between two deployments that have diverged so far
 as to no longer be interoperable.
 
 Consequently, new implementations might be forced into niche uses, where the
