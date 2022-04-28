@@ -169,7 +169,7 @@ implementations are required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
 
 The original JSON specification {{?JSON=RFC4627}} demonstrates the effect of
-specification shortcomings.  RFC 4627 failed to tightly specify some important
+specification shortcomings.  RFC 4627 did not tightly specify some important
 details including Unicode handling, ordering and duplication of object members,
 and number encoding.  Consequently, a range of interpretations were used by
 implementations.  An updated specification {{?JSON-BIS=RFC7159}} did not correct
