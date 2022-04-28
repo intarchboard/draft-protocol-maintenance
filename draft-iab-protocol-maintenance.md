@@ -192,14 +192,16 @@ From observing widely deployed protocols, it appears there are two stable points
 on the spectrum between being strict versus permissive in the presence of
 protocol errors:
 
-* If there is a majority of strict implementations, newer implementations will
-  experience failures if they do not conform to the protocol and will fix them
-  before deploying, adding a new strict implementation to the majority.
+* If implementations predominantly enforce strict compliance with specifications, newer implementations will
+  experience failures if they do not comply with protocol requirements. Newer implementations need to
+  fix compliance issues in order to be successfully deployed. This ensures
+  that most deployments are compliant.
 
-* Conversely, if there is a majority of non-conformant implementations, newer
-  implementations will accumulate protocol non-conformant deviations to the
-  protocol in order to interoperate before they are deployed, adding a new
-  non-conformant implementation to the majority.
+* Conversely, if non-compliance is tolerated by existing implementations, non-compliant
+  implementations can be deployed successfully.  Newer implementations then
+  have strong incentive to tolerate any existing non-compliance in order to be
+  successfully deployed.  This ensures that most deployments are tolerant of the same
+  non-compliant behavior.
 
 This happens because interoperability requirements for protocol implementations
 are set by other deployments. Specifications and - where they exist -
