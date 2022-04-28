@@ -189,13 +189,27 @@ as quirks in early implementations can affect all subsequent deployments.
 
 # Ecosystem Effects
 
-Once deviations become entrenched, it can be extremely difficult - if not
-impossible - to rectify the situation.
+From observing widely deployed protocols, it appears there are two stable points
+on the spectrum between being strict versus permissive in the presence of
+protocol errors:
 
-Interoperability requirements for protocol implementations are set by other
-deployments.  Specifications and - where they exist - conformance test suites
-might guide the initial development of implementations, but implementations
-ultimately need to interoperate with deployed implementations.
+* If implementations predominantly enforce strict compliance with
+  specifications, newer implementations will experience failures if they do not
+  comply with protocol requirements. Newer implementations need to fix
+  compliance issues in order to be successfully deployed. This ensures that most
+  deployments are compliant.
+
+* Conversely, if non-compliance is tolerated by existing implementations,
+  non-compliant implementations can be deployed successfully. Newer
+  implementations then have strong incentive to tolerate any existing
+  non-compliance in order to be successfully deployed. This ensures that most
+  deployments are tolerant of the same non-compliant behavior.
+
+This happens because interoperability requirements for protocol implementations
+are set by other deployments. Specifications and - where they exist -
+conformance test suites might guide the initial development of implementations,
+but implementations ultimately need to interoperate with deployed
+implementations.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  The cost of
@@ -415,5 +429,5 @@ This document has no IANA actions.
 
 Constructive feedback on this document has been provided by a surprising number
 of people including Bernard Aboba, Brian Carpenter, Stuart Cheshire, Mark
-Nottingham, Russ Housley, Henning Schulzrinne, Robert Sparks, Brian Trammell,
-and Anne Van Kesteren.  Please excuse any omission.
+Nottingham, Russ Housley, Eric Rescorla, Henning Schulzrinne, Robert Sparks,
+Brian Trammell, and Anne Van Kesteren.  Please excuse any omission.
