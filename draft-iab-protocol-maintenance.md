@@ -30,6 +30,9 @@ informative:
     seriesinfo:
       WHATWG: Living Standard
     target: "https://html.spec.whatwg.org/"
+  H2:
+    =: RFC7540
+    display: HTTP/2
 
 
 --- abstract
@@ -47,8 +50,8 @@ principle can, and should, be avoided.
 # Introduction
 
 The robustness principle has been hugely influential in shaping the design of
-the Internet.  As stated in IAB RFC 1958 {{?PRINCIPLES=RFC1958}}, the robustness
-principle advises to:
+the Internet. As stated in the IAB document on Architectural Principles of the
+Internet {{?RFC1958}}, the robustness principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
@@ -91,9 +94,9 @@ short term workaround that needs to be quickly reverted.
 # Fallibility of Specifications
 
 The context from which the robustness principle was developed provides valuable
-insights into its intent and purpose.  The earliest form of the principle in the
-RFC series (in RFC 760 {{?IP=RFC0760}}) is preceded by a sentence that reveals
-the motivation for the principle:
+insights into its intent and purpose. The earliest form of the principle in the
+RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
+sentence that reveals the motivation for the principle:
 
 > While the goal of this specification is to be explicit about the protocol
   there is the possibility of differing interpretations.  In general, an
@@ -111,10 +114,11 @@ use.  A deployed protocol is immeasurably more useful than a perfect protocol.
 The robustness principle is a tool that is suited to early phases of system
 design.
 
-As {{?SUCCESS=RFC5218}} demonstrates, success or failure of a protocol depends
-far more on factors like usefulness than on technical excellence.  Timely
-publication of protocol specifications, even with the potential for flaws,
-likely contributed significantly to the eventual success of the Internet.
+As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
+success or failure of a protocol depends far more on factors like usefulness
+than on technical excellence. Timely publication of protocol specifications,
+even with the potential for flaws, likely contributed significantly to the
+eventual success of the Internet.
 
 The problem is therefore not with the premise, but with its conclusion: the
 robustness principle itself.
@@ -169,13 +173,13 @@ message that ends with an empty extension.  To maintain interoperability, client
 implementations are required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
 
-The original JSON specification {{?JSON=RFC4627}} demonstrates the effect of
-specification shortcomings.  RFC 4627 did not tightly specify some important
+The original JSON specification {{?RFC4627}} demonstrates the effect of
+specification shortcomings: it did not tightly specify some important
 details including Unicode handling, ordering and duplication of object members,
 and number encoding.  Consequently, a range of interpretations were used by
-implementations.  An updated specification {{?JSON-BIS=RFC7159}} did not correct
+implementations.  An updated JSON specification {{?RFC7159}} did not correct
 these errors, concentrating instead on identifying the interoperable subset of
-JSON.  I-JSON {{?I-JSON=RFC7493}} takes that subset and defines a new format
+JSON.  I-JSON {{?RFC7493}} takes that subset and defines a new format
 that prohibits the problematic parts of JSON.  Of course, that means that I-JSON
 is not fully interoperable with JSON.  Consequently, I-JSON is not widely
 implemented in parsers.  Many JSON parsers now implement the more precise
@@ -232,9 +236,10 @@ cases and often are the origin of features and capabilities that can be of
 benefit to existing users.
 
 The need to work around interoperability problems also reduces the ability of
-established implementations to change.  An accumulation of mitigations for
+established implementations to change. An accumulation of mitigations for
 interoperability issues makes implementations more difficult to maintain and can
-constrain extensibility (see also {{?USE-IT=RFC9170}}).
+constrain extensibility (see also the IAB document on the Long-Term Viability of
+Protocol Extension Mechanisms {{?RFC9170}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design.  A community that is willing to make changes to the
@@ -271,7 +276,7 @@ Maintaining specifications so that they closely match deployments ensures that
 implementations are consistently interoperable and removes needless barriers for
 new implementations.  Maintenance also enables continued improvement of the
 protocol.  New use cases are an indicator that the protocol could be successful
-{{?SUCCESS}}.
+{{RFC5218}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocol specifications beyond their initial inception and definition.  This
@@ -375,7 +380,7 @@ workarounds; see {{exclusion}}.
 
 Intolerance can be used to motivate compliance with any protocol requirement.
 For instance, the INADEQUATE_SECURITY error code and associated requirements in
-HTTP/2 {{?HTTP2=RFC7540}} resulted in improvements in the security of the
+HTTP/2 {{H2}} resulted in improvements in the security of the
 deployed base.
 
 
@@ -400,9 +405,9 @@ of protecting future interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
 protocol system that could be more harmful than any divergence resulting from
-following the robustness principle.  RFC 5704 {{?UNCOORDINATED=RFC5704}}
-describes how conflict or competition in the maintenance of protocols can lead
-to similar problems.
+following the robustness principle. The IAB document on Uncoordinated Protocol
+Development Considered Harmful {{?RFC5704}} describes how conflict or
+competition in the maintenance of protocols can lead to similar problems.
 
 
 # Security Considerations
