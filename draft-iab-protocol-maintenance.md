@@ -14,12 +14,10 @@ venue:
 
 author:
  -
-    ins: M. Thomson
     name: Martin Thomson
     org: Mozilla
     email: mt@lowentropy.net
  -
-    ins: D. Schinazi
     name: David Schinazi
     org: Google LLC
     street: 1600 Amphitheatre Parkway
@@ -449,6 +447,7 @@ This document has no IANA actions.
 {:numbered="false"}
 
 Constructive feedback on this document has been provided by a surprising number
-of people including Bernard Aboba, Brian Carpenter, Stuart Cheshire, Mark
-Nottingham, Russ Housley, Eric Rescorla, Henning Schulzrinne, Robert Sparks,
-Brian Trammell, and Anne Van Kesteren.  Please excuse any omission.
+of people including {{{Bernard Aboba}}}, {{{Brian Carpenter}}}, {{{Stuart
+Cheshire}}}, {{{Mark Nottingham}}}, {{{Russ Housley}}}, {{{Eric Rescorla}}},
+{{{Henning Schulzrinne}}}, {{{Robert Sparks}}}, {{{Brian Trammell}}}, and
+{{{Anne Van Kesteren}}}.  Please excuse any omission.
