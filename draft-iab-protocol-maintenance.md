@@ -3,11 +3,14 @@ title: "The Harmful Consequences of the Robustness Principle"
 abbrev: "Protocol Maintenance"
 docname: draft-iab-protocol-maintenance-latest
 category: info
-ipr: trust200902
 submissiontype: IAB
-
-stand_alone: yes
-pi: [toc, sortrefs, symrefs, docmapping]
+v: 3
+venue:
+  group: EDM
+  type: IAB Program
+  mail: edm@iab.org
+  arch: https://www.iab.org/mailman/listinfo/edm
+  repo: https://github.com/intarchboard/draft-protocol-maintenance
 
 author:
  -
