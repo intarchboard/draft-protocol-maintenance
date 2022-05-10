@@ -120,10 +120,9 @@ important way.
 
 An imperfect specification is natural, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
-A protocol, like any complex system, benefits greatly from experience with its
-use.  A deployed protocol is immeasurably more useful than a perfect protocol.
-The robustness principle is a tool that is suited to early phases of system
-design.
+A protocol benefits greatly from experience with its use.  A deployed protocol
+is immeasurably more useful than a perfect protocol.  The robustness principle
+is a tool that is suited to early phases of system design.
 
 As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
 success or failure of a protocol depends far more on factors like usefulness
@@ -179,9 +178,9 @@ for bug compatible".
 
 For example, in TLS {{?TLS=RFC8446}}, extensions use a tag-length-value format
 and they can be added to messages in any order.  However, some server
-implementations terminate connections if they encounter a TLS ClientHello
+implementations terminated connections if they encounter a TLS ClientHello
 message that ends with an empty extension.  To maintain interoperability, client
-implementations are required to be aware of this bug and ensure that a
+implementations were required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
 
 The original JSON specification {{?RFC4627}} demonstrates the effect of
@@ -231,7 +230,7 @@ interoperability testing infeasible for all but a privileged few.  The cost of
 building a new implementation using reverse engineering increases as the number
 of implementations and bugs increases.  Worse, the set of tweaks necessary for
 wide interoperability can be difficult to discover. In the worst case, a new
-implementer might have to pick between two deployments that have diverged so far
+implementer might have to choose between deployments that have diverged so far
 as to no longer be interoperable.
 
 Consequently, new implementations might be forced into niche uses, where the
@@ -241,10 +240,10 @@ forks in the protocol.  If implementations do not interoperate, little prevents
 those implementations from diverging more over time.
 
 This has a negative impact on the ecosystem of a protocol.  New implementations
-are important in ensuring the continued viability of a protocol.  New protocol
-implementations are also more likely to be developed for new and diverse use
-cases and often are the origin of features and capabilities that can be of
-benefit to existing users.
+are key to the continued viability of a protocol.  New protocol implementations
+are also more likely to be developed for new and diverse use cases and are often
+the origin of features and capabilities that can be of benefit to existing
+users.
 
 The need to work around interoperability problems also reduces the ability of
 established implementations to change. An accumulation of mitigations for
@@ -272,16 +271,13 @@ implementation errors.
 From this perspective, application of the robustness principle to the
 implementation of a protocol specification that does not change is logical, even
 necessary.  But that conclusion relies on an assumption that existing
-specifications and implementations are unable to change.  Applying the
-robustness principle in this way disproportionately values short-term gains over
-the negative effects on future implementations and the protocol as a whole.
+specifications and implementations cannot change.  Applying the robustness
+principle in this way disproportionately values short-term gains over the
+negative effects on future implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
-handling new and old problems that might arise over time. Additionally, software
-update mechanisms are much more common now than they were when the robustness
-principle was written; therefore, the cost of reacting to changes is much lower
-than it was in the past.
+handling new and old problems that might arise over time.
 
 Maintaining specifications so that they closely match deployments ensures that
 implementations are consistently interoperable and removes needless barriers for
@@ -323,7 +319,9 @@ took significant effort.
 Maintenance is most effective if it is responsive, which is greatly affected by
 how rapidly protocol changes can be deployed.  For protocol deployments that
 operate on longer time scales, temporary workarounds following the spirit of the
-robustness principle might be necessary.  If specifications can be updated more
+robustness principle might be necessary.  For this, improvements in software
+update mechanisms ensure that the cost of reacting to changes is much lower than
+it was in the past.  Alternatively, if specifications can be updated more
 readily than deployments, details of the workaround can be documented, including
 the desired form of the protocols once the need for workarounds no longer exists
 and plans for removing the workaround.
@@ -340,12 +338,12 @@ feature before another party is prepared to receive it, it might be assumed that
 the receiving party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters.  This depends on having clear rules
-for the handling of malformed or illegal inputs so that implementations behave
-consistently in all cases that might affect interoperation.  If extension
-mechanisms and error handling are designed and implemented correctly, new
-protocol features can be deployed with confidence in the understanding of the
-effect they have on existing implementations.
+of things like new messages or parameters.  This depends on having precise
+specification for handling of malformed or illegal inputs so that
+implementations behave consistently in all cases that might affect
+interoperation.  If extension mechanisms and error handling are designed and
+implemented correctly, new protocol features can be deployed with confidence in
+the understanding of the effect they have on existing implementations.
 
 In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility.  Using undocumented or
@@ -365,15 +363,14 @@ A well-specified protocol includes rules for consistent handling of aberrant
 conditions.  This increases the chances that implementations will have
 consistent and interoperable handling of unusual conditions.
 
-Intolerance of any deviation from specification, where implementations generate
-fatal errors in response to observing undefined or unusual behaviour, can be
-harnessed to reduce occurrences of aberrant implementations.  Choosing to
-generate fatal errors for unspecified conditions instead of attempting error
-recovery can ensure that faults receive attention.
+Choosing to generate fatal errors for unspecified conditions instead of
+attempting error recovery can ensure that faults receive attention.  This
+intolerance can be harnessed to reduce occurrences of aberrant implementations.
 
-This improves feedback for new implementations in particular.  When a new
-implementation encounters a peer that is intolerant of an error, it receives
-strong feedback that allows the problem to be discovered quickly.
+Intolerance toward violations of specification improves feedback for new
+implementations in particular.  When a new implementation encounters a peer that
+is intolerant of an error, it receives strong feedback that allows the problem
+to be discovered quickly.
 
 To be effective, intolerant implementations need to be sufficiently widely
 deployed that they are encountered by new implementations with high probability.
