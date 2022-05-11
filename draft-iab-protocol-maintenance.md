@@ -338,8 +338,8 @@ feature before another party is prepared to receive it, it might be assumed that
 the receiving party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters.  This depends on having precise
-specification for handling of malformed or illegal inputs so that
+of things like new messages or parameters.  This depends on precisely
+specifying the handling of malformed or illegal inputs so that
 implementations behave consistently in all cases that might affect
 interoperation.  If extension mechanisms and error handling are designed and
 implemented correctly, new protocol features can be deployed with confidence in
