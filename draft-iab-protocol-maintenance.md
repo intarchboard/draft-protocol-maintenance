@@ -12,6 +12,7 @@ venue:
   mail: edm@iab.org
   arch: https://www.iab.org/mailman/listinfo/edm
   repo: https://github.com/intarchboard/draft-protocol-maintenance
+  latest: https://intarchboard.github.io/draft-protocol-maintenance/draft-iab-protocol-maintenance.html
 
 author:
  -
