@@ -5,6 +5,7 @@ docname: draft-iab-protocol-maintenance-latest
 category: info
 submissiontype: IAB
 v: 3
+wg: EDM
 venue:
   group: EDM
   type: IAB Program
