@@ -99,13 +99,13 @@ serves primarily as a record of the hazards in applying the robustness principle
 too broadly, and offers an alternative strategy for handling interoperability
 problems in deployments.
 
-Ideally, protocol implementations that can be actively maintained never have
+Ideally, protocol implementations can be actively maintained and never have
 to apply the robustness principle.  The robustness principle may still need
 to used as a short-term mitigation for deployments that cannot yet be easily
 updated and do not yet have documented specifications for workarounds, but
 such cases need not be permanent. This is discussed further in {{active}}.
 
-It is important to note that not applying the robustness principle does
+Avoiding use of the robustness principle does
 not mean that implementations will be inflexible to new input. As discussed
 in {{extensibility}}, the flexibility to handle future extensions is better
 supported by specifications being very clear about their extension mechanisms,
