@@ -80,12 +80,12 @@ design of interoperable protocols in general.
 Time and experience shows that negative consequences to interoperability
 accumulate over time if implementations apply the robustness principle.  This
 problem originates from an assumption implicit in the principle that it is not
-possible to affect change in a system the size of the Internet.  That is, the
-idea that once a protocol specification is published, changes that might require
-existing implementations to change are not feasible.
+possible to effect change in a system the size of the Internet.  It assumes
+that once a protocol specification is published, changes that might
+require existing implementations to change are not feasible.
 
-Many problems that might lead to applications of the robustness principle are
-avoided for protocols under active maintenance.  Active protocol maintenance is
+Many problems that the robustness principle was intended to solve can instead
+be better addressed by active maintenance.  Active protocol maintenance is
 where a community of protocol designers, implementers, and deployers work
 together to continuously improve and evolve protocol specifications alongside
 implementations and deployments of those protocols.  A community that takes an
@@ -95,13 +95,22 @@ robustness principle to avoid interoperability issues.
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  In particular, a sizeable proportion of IETF
 activity is dedicated to the stewardship of existing protocols.  This document
-serves primarily as a record of the hazards inherent in applying the robustness
-principle and to offer an alternative strategy for handling interoperability
+serves primarily as a record of the hazards in applying the robustness principle
+too broadly, and offers an alternative strategy for handling interoperability
 problems in deployments.
 
-Ideally, protocol implementations never have to apply the robustness principle.
-Or, where it is unavoidable, use of the robustness principle is viewed as a
-short term workaround that needs to be quickly reverted.
+Ideally, protocol implementations that can be actively maintained never have
+to apply the robustness principle.  The robustness principle may still need
+to used as a short-term mitigation for deployments that cannot yet be easily
+updated and do not yet have documented specifications for workarounds, but
+such cases need not be permanent. This is discussed further in {{active}}.
+
+It is important to note that not applying the robustness principle does
+not mean that implementations will be inflexible to new input. As discussed
+in {{extensibility}}, the flexibility to handle future extensions is better
+supported by specifications being very clear about their extension mechanisms,
+and implementations being strict in following the requirements of
+those specifications.
 
 
 # Fallibility of Specifications
@@ -120,11 +129,12 @@ This formulation of the principle expressly recognizes the possibility that the
 specification could be imperfect.  This contextualizes the principle in an
 important way.
 
-An imperfect specification is natural, largely because it is more important to
+Imperfect specifications are unavoidable, largely because it is more important to
 proceed to implementation and deployment than it is to perfect a specification.
 A protocol benefits greatly from experience with its use.  A deployed protocol
-is immeasurably more useful than a perfect protocol.  The robustness principle
-is a tool that is suited to early phases of system design.
+is immeasurably more useful than a perfect protocol specification.  This is
+particularly true in early phases of system design, to which the robustness
+principle is best suited.
 
 As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
 success or failure of a protocol depends far more on factors like usefulness
@@ -132,35 +142,36 @@ than on technical excellence. Timely publication of protocol specifications,
 even with the potential for flaws, likely contributed significantly to the
 eventual success of the Internet.
 
-The problem is therefore not with the premise, but with its conclusion: the
-robustness principle itself.
+This premise that specifications will be imperfect is correct — however,
+the robustness principle is almost always the incorrect solution to the
+problem.
 
 
 # Protocol Decay
 
-The application of the robustness principle to the early Internet, or any system
-that is in early phases of deployment, is expedient.  Applying the principle
-defers the effort of dealing with interoperability problems, which prioritizes
-progress.  However, deferral can amplify the ultimate cost of handling
-interoperability problems.
+The application of the robustness principle to any system that is in early
+phases of deployment, such as the early Internet, is expedient.  Applying the
+principle defers the effort of dealing with interoperability problems and 
+prioritizes progress.  However, this deferral can amplify the ultimate cost
+of handling interoperability problems.
 
 Divergent implementations of a specification emerge over time.  When variations
 occur in the interpretation or expression of semantic components,
 implementations cease to be perfectly interoperable.
 
 Implementation bugs are often identified as the cause of variation, though it is
-often a combination of factors.  Application of a protocol to uses that were not
+often a combination of factors.  Using a protocol in ways that were not
 anticipated in the original design, or ambiguities and errors in the
-specification are often confounding factors.  Disagreements on the
+specification are often contributing factors.  Disagreements on the
 interpretation of specifications should be expected over the lifetime of a
 protocol.
 
-Even with the best intentions, the pressure to interoperate can be significant.
-No implementation can hope to avoid having to trade correctness for
-interoperability indefinitely.
+Even with the best intentions to maintain protocol correctness, the pressure
+to interoperate can be significant. No implementation can hope to avoid
+having to trade correctness for interoperability indefinitely.
 
 An implementation that reacts to variations in the manner recommended in the
-robustness principle sets up a feedback cycle.  Over time:
+robustness principle enters a pathological feedback cycle.  Over time:
 
 * Implementations progressively add logic to constrain how data is transmitted,
   or to permit variations in what is received.
@@ -179,7 +190,7 @@ interoperability in this environment is often referred to as aiming to be "bug
 for bug compatible".
 
 For example, in TLS {{?TLS=RFC8446}}, extensions use a tag-length-value format
-and they can be added to messages in any order.  However, some server
+and can be added to messages in any order.  However, some server
 implementations terminated connections if they encountered a TLS ClientHello
 message that ends with an empty extension.  To maintain interoperability, client
 implementations were required to be aware of this bug and ensure that a
@@ -198,7 +209,7 @@ implemented in parsers.  Many JSON parsers now implement the more precise
 algorithm specified in {{ECMA262}}.
 
 The robustness principle therefore encourages a chain reaction that can create
-interoperability problems.  In particular, the application of the robustness
+interoperability problems over time.  In particular, the application of the robustness
 principle is particularly deleterious for early implementations of new protocols
 as quirks in early implementations can affect all subsequent deployments.
 
@@ -260,7 +271,7 @@ Applying the robustness principle instead conceals problems, making it harder,
 or even impossible, to fix them later.
 
 
-# Active Protocol Maintenance
+# Active Protocol Maintenance {#active}
 
 The robustness principle can be highly effective in safeguarding against flaws
 in the implementation of a protocol by peers.  Especially when a specification
@@ -297,7 +308,7 @@ used.
 
 Most interoperability problems do not require revision of protocols or protocol
 specifications.  For instance, the most effective means of dealing with a
-defective implementation in a peer could be to email the developer responsible.
+defective implementation in a peer could be to contact the developer responsible.
 It is far more efficient in the long term to fix one isolated bug than it is to
 deal with the consequences of workarounds.
 
@@ -379,8 +390,8 @@ deployed that they are encountered by new implementations with high probability.
 This could depend on multiple implementations deploying strict checks.
 
 This does not mean that intolerance of errors in early deployments of protocols
-have the effect of preventing interoperability.  On the contrary, when existing
-implementations follow clearly specified error handling, new implementations or
+has the effect of preventing interoperability.  On the contrary, when existing
+implementations follow clearly-specified error handling, new implementations or
 features can be introduced more readily as the effect on existing
 implementations can be easily predicted; see also {{extensibility}}.
 
