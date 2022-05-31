@@ -151,7 +151,7 @@ problem.
 
 The application of the robustness principle to any system that is in early
 phases of deployment, such as the early Internet, is expedient.  Applying the
-principle defers the effort of dealing with interoperability problems and 
+principle defers the effort of dealing with interoperability problems and
 prioritizes progress.  However, this deferral can amplify the ultimate cost
 of handling interoperability problems.
 
