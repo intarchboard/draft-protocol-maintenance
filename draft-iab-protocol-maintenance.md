@@ -214,7 +214,7 @@ principle is particularly deleterious for early implementations of new protocols
 as quirks in early implementations can affect all subsequent deployments.
 
 
-# Ecosystem Effects
+# Ecosystem Effects {#ecosystem}
 
 From observing widely deployed protocols, it appears there are two stable points
 on the spectrum between being strict versus permissive in the presence of
@@ -364,10 +364,40 @@ accidental features of a protocol as the basis of an extensibility mechanism can
 be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
 of EXT}}.
 
+
+# Flexible Protocols
+
 A protocol could be designed to permit a narrow set of valid inputs, or it could
-allow a wide range of inputs as a core feature (see for example {{HTML}}).
-Specifying and implementing a more flexible protocol is more difficult; allowing
-less variability is preferable in the absence of strong reasons to be flexible.
+be designed to treat a wide range of inputs as valid.
+
+A more flexible protocol is more complex to specify and implement: variations -
+especially those that are not commonly used - can create potential
+interoperability hazards.  In the absence of strong reasons to be flexible, a
+simpler protocol is more likely to successfully interoperate.
+
+Where input is provided by users, allowing flexibility might serve to make the
+protocol more accessible, especially for non-expert users.  HTML authoring
+{{HTML}} is an example of this sort of design.
+
+In protocols where there are many participants that might generate messages
+based on data from other participants - such as routing protocols - some
+flexibility might contribute to resilience of the system.
+
+For example, a BGP peer {{?BGP=RFC4271}} generates UPDATE messages based on
+messages it receives from other peers.  Peers can copy attributes without
+validation, potentially propagating invalid values.  RFC 4271 mandated a session
+reset for invalid UPDATE messages, a requirement that was not widely
+implemented.  In many deployments, peers would treat a malformed UPDATE in less
+stringent ways, such as by treating the affected route as having been withdrawn.
+Ultimately, RFC 7606 {{?BGP-REH=RFC7606}} documented this practice and provided
+precise rules, including mandatory actions for different error conditions.
+
+A protocol can explicitly allows for a range of valid expressions of the same
+semantics, with precise definitions for error handling.  This is distinct from a
+protocol that relies on the application of the robustness principle.  With the
+former, interoperation depends on specifications that capture all relevant
+details; whereas - as noted in {{ecosystem}} - interoperation in the latter
+depends more extensively on implementations making compatible decisions.
 
 
 # Virtuous Intolerance {#intolerance}
@@ -457,7 +487,7 @@ This document has no IANA actions.
 {:numbered="false"}
 
 Constructive feedback on this document has been provided by a surprising number
-of people including {{{Bernard Aboba}}}, {{{Brian Carpenter}}}, {{{Stuart
-Cheshire}}}, {{{Mark Nottingham}}}, {{{Russ Housley}}}, {{{Eric Rescorla}}},
-{{{Henning Schulzrinne}}}, {{{Robert Sparks}}}, {{{Brian Trammell}}}, and
-{{{Anne Van Kesteren}}}.  Please excuse any omission.
+of people including, but not limited to: {{{Bernard Aboba}}}, {{{Brian
+Carpenter}}}, {{{Stuart Cheshire}}}, {{{Mark Nottingham}}}, {{{Russ Housley}}},
+{{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}, {{{Robert
+Sparks}}}, {{{Brian Trammell}}}, and {{{Anne Van Kesteren}}}.
