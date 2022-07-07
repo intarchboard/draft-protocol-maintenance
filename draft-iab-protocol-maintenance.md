@@ -113,6 +113,19 @@ and implementations being strict in following the requirements of
 those specifications.
 
 
+## Applicability
+
+The guidance in this document applies to many types of networking protocols and
+areas of deployment, however there are exist unusual circumstances where it does
+not. In particular, the guidance here relies on the ability to update software
+implementations over time. While the majority of networked devices ought to have
+that ability because software updates are often required to mitigate security
+vulnerabilities, in practice not all implementations are updated. In such cases,
+Virtuous Intolerance (see {{intolerance}}) does not lead to implementation
+improvements. Therefore the guidance in this document does not apply in those
+scenarios.
+
+
 # Fallibility of Specifications
 
 The context from which the robustness principle was developed provides valuable
