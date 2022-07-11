@@ -141,9 +141,8 @@ than on technical excellence. Timely publication of protocol specifications,
 even with the potential for flaws, likely contributed significantly to the
 eventual success of the Internet.
 
-This premise that specifications will be imperfect is correct — however,
-the robustness principle is almost always the incorrect solution to the
-problem.
+This premise that specifications will be imperfect is correct.  However, the
+robustness principle is almost always the incorrect solution to the problem.
 
 
 # Protocol Decay
