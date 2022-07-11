@@ -105,12 +105,11 @@ to used as a short-term mitigation for deployments that cannot yet be easily
 updated and do not yet have documented specifications for workarounds, but
 such cases need not be permanent. This is discussed further in {{active}}.
 
-Avoiding use of the robustness principle does
-not mean that implementations will be inflexible to new input. As discussed
-in {{extensibility}}, the flexibility to handle future extensions is better
-supported by specifications being very clear about their extension mechanisms,
-and implementations being strict in following the requirements of
-those specifications.
+Avoiding use of the robustness principle does not mean that implementations will
+be unchanging or inflexible.  As discussed in {{design}}, the ability to handle
+future extensions is better supported by specifications being very clear about
+their extension mechanisms and implementations complying with the requirements
+of those specifications.
 
 
 # Fallibility of Specifications
@@ -340,7 +339,14 @@ the desired form of the protocols once the need for workarounds no longer exists
 and plans for removing the workaround.
 
 
-# Extensibility {#extensibility}
+# Design Features {#design}
+
+Protocols can allow for a range of inputs in order to support extensions or
+flexibility.  A well-specified protocol has no need to rely on the robustness
+principle in either case.
+
+
+## Extensibility {#extensibility}
 
 Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
 cases or changes in the environment in which the protocol is deployed.
@@ -351,12 +357,12 @@ feature before another party is prepared to receive it, it might be assumed that
 the receiving party is being tolerant of unexpected inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters.  This depends on precisely
-specifying the handling of malformed or illegal inputs so that
-implementations behave consistently in all cases that might affect
-interoperation.  If extension mechanisms and error handling are designed and
-implemented correctly, new protocol features can be deployed with confidence in
-the understanding of the effect they have on existing implementations.
+of things like new messages or parameters.  This depends on specifying the
+handling of malformed or illegal inputs so that implementations behave
+consistently in all cases that might affect interoperation.  If extension
+mechanisms and error handling are designed and implemented correctly, new
+protocol features can be deployed with confidence in the understanding of the
+effect they have on existing implementations.
 
 In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility.  Using undocumented or
@@ -365,7 +371,7 @@ be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
 of EXT}}.
 
 
-# Flexible Protocols
+## Flexible Protocols {#flexibility}
 
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 be designed to treat a wide range of inputs as valid.
@@ -380,17 +386,18 @@ protocol more accessible, especially for non-expert users.  HTML authoring
 {{HTML}} is an example of this sort of design.
 
 In protocols where there are many participants that might generate messages
-based on data from other participants - such as routing protocols - some
-flexibility might contribute to resilience of the system.
+based on data from other participants some flexibility might contribute to
+resilience of the system.  A routing protocol is a good example of where this
+might be necessary.
 
-For example, a BGP peer {{?BGP=RFC4271}} generates UPDATE messages based on
-messages it receives from other peers.  Peers can copy attributes without
-validation, potentially propagating invalid values.  RFC 4271 mandated a session
-reset for invalid UPDATE messages, a requirement that was not widely
-implemented.  In many deployments, peers would treat a malformed UPDATE in less
-stringent ways, such as by treating the affected route as having been withdrawn.
-Ultimately, RFC 7606 {{?BGP-REH=RFC7606}} documented this practice and provided
-precise rules, including mandatory actions for different error conditions.
+In BGP {{?BGP=RFC4271}}, a peer generates UPDATE messages based on messages it
+receives from other peers.  Peers can copy attributes without validation,
+potentially propagating invalid values.  RFC 4271 mandated a session reset for
+invalid UPDATE messages, a requirement that was not widely implemented.  In many
+deployments, peers would treat a malformed UPDATE in less stringent ways, such
+as by treating the affected route as having been withdrawn.  Ultimately, RFC
+7606 {{?BGP-REH=RFC7606}} documented this practice and provided precise rules,
+including mandatory actions for different error conditions.
 
 A protocol can explicitly allows for a range of valid expressions of the same
 semantics, with precise definitions for error handling.  This is distinct from a
