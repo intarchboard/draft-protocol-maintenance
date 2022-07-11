@@ -130,6 +130,10 @@ protocol maintenance and evolution. Employing this guidance is therefore only
 applicable where there is the possibility of improving deployments through
 updates of their implementations.
 
+Problems in other implementations can create an unavoidable need to temporarily
+apply the robustness principle.  However, even temporary use carries risks,
+which are explored in {{decay}}.
+
 
 # Fallibility of Specifications
 
@@ -164,7 +168,7 @@ This premise that specifications will be imperfect is correct.  However, the
 robustness principle is almost always the incorrect solution to the problem.
 
 
-# Protocol Decay
+# Protocol Decay {#decay}
 
 The application of the robustness principle to any system that is in early
 phases of deployment, such as the early Internet, is expedient.  Applying the
