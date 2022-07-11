@@ -119,10 +119,10 @@ The guidance in this document is intended for protocols that are deployed to the
 Internet. There are some situations in which this guidance might not apply to a
 protocol due to conditions on its implementation or deployment.
 
-In particular, this guidance depends on an ability to update and
-deploy implementations. Being able to update implementations that are deployed
-to the Internet is an essential part of managing security risk. In practice, not
-all protocol deployments are continuously maintained.
+In particular, this guidance depends on an ability to update and deploy
+implementations. Being able to update implementations that are deployed to the
+Internet is an essential part of managing security risk. In practice, not all
+protocol deployments are continuously maintained.
 
 Where implementations are not updated, there is no opportunity to apply the
 practices that this document recommends. In particular, some practices - such as
