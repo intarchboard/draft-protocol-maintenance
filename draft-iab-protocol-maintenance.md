@@ -112,6 +112,25 @@ their extension mechanisms and implementations complying with the requirements
 of those specifications.
 
 
+## Applicability
+
+The guidance in this document is intended for protocols that are deployed to the
+Internet. There are some situations in which this guidance might not apply to a
+protocol due to conditions on its implementation or deployment.
+
+In particular, this guidance depends on an ability to update and deploy
+implementations. Being able to update implementations that are deployed to the
+Internet is an essential part of managing security risk. In practice, not all
+protocol deployments are continuously maintained.
+
+Where implementations are not updated, there is no opportunity to apply the
+practices that this document recommends. In particular, some practices - such as
+those described in {{intolerance}} - only exist to support the development of
+protocol maintenance and evolution. Employing this guidance is therefore only
+applicable where there is the possibility of improving deployments through
+updates of their implementations.
+
+
 # Fallibility of Specifications
 
 The context from which the robustness principle was developed provides valuable
