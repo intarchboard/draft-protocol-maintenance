@@ -50,20 +50,43 @@ informative:
 
 --- abstract
 
-The robustness principle, often phrased as "be conservative in what you send,
-and liberal in what you accept", has long guided the design and implementation
-of Internet protocols.  The posture this statement advocates promotes
-interoperability in the short term, but can negatively affect the protocol
-ecosystem over time.  For a protocol that is actively maintained, the robustness
-principle can, and should, be avoided.
+This document argues that active maintenance of protocols as well as
+protocol implementations is foremost important for interoperability. Active
+maintenance aims to detect and resolve interoperability problems quickly and
+as such retains flexibility and supports evolvability of the protocol. 
+In contrast, the robustness principle, often phrased as "be conservative in what you send,
+and liberal in what you accept", promotes
+interoperability by bypassing failure, e.g. due to limitation in the specification or 
+implementation shortcomings, but can negatively affect the protocol
+ecosystem over time as it can lead to ossification around the status-quo.
+For a protocol that is actively maintained, the robustness
+principle does not need to be applied or can even hinder fast resolution
+of interoperability problems.
 
 
 --- middle
 
 # Introduction
 
-The robustness principle has been hugely influential in shaping the design of
-the Internet. As stated in the IAB document on Architectural Principles of the
+There is good evidence to suggest that many important protocols are routinely
+maintained beyond their inception.  In particular, a sizeable proportion of IETF
+activity is dedicated to the stewardship of existing protocols.  
+Based on the most recent experience in this process, this document
+offers a strategy for handling interoperability
+problems in deployments by actively maintaining the protocol. 
+Further, it discusses hazards in applying the robustness principle
+too broadly which has in the past been sometimes used as an excuse
+to sidestep active maintenance.
+
+Active protocol maintenance is
+where a community of protocol designers, implementers, and deployers work
+together to continuously improve and evolve protocol specifications alongside
+implementations and deployments of those protocols.  Recent experience has shown
+that a community that takes an
+active role in the maintenance of protocols will no longer need to rely on the
+robustness principle to avoid interoperability issues.
+
+As stated in the IAB document on Architectural Principles of the
 Internet {{?RFC1958}}, the robustness principle advises to:
 
 > Be strict when sending and tolerant when receiving.  Implementations must
@@ -73,33 +96,18 @@ Internet {{?RFC1958}}, the robustness principle advises to:
   specification.
 
 This simple statement captures a significant concept in the design of
-interoperable systems.  Many consider the application of the robustness
+interoperable systems. Many consider the application of the robustness
 principle to be instrumental in the success of the Internet as well as the
 design of interoperable protocols in general.
 
 Time and experience shows that negative consequences to interoperability
-accumulate over time if implementations apply the robustness principle.  This
-problem originates from an assumption implicit in the principle that it is not
+accumulate over time as implementations do not get updated and fixed.  This
+problem originates from an assumption implicit in the robustness principle that it is not
 possible to effect change in a system the size of the Internet.  It assumes
 that once a protocol specification is published, changes that might
 require existing implementations to change are not feasible.
 
-Many problems that the robustness principle was intended to solve can instead
-be better addressed by active maintenance.  Active protocol maintenance is
-where a community of protocol designers, implementers, and deployers work
-together to continuously improve and evolve protocol specifications alongside
-implementations and deployments of those protocols.  A community that takes an
-active role in the maintenance of protocols will no longer need to rely on the
-robustness principle to avoid interoperability issues.
-
-There is good evidence to suggest that many important protocols are routinely
-maintained beyond their inception.  In particular, a sizeable proportion of IETF
-activity is dedicated to the stewardship of existing protocols.  This document
-serves primarily as a record of the hazards in applying the robustness principle
-too broadly, and offers an alternative strategy for handling interoperability
-problems in deployments.
-
-Ideally, protocol implementations can be actively maintained and never have
+Ideally, protocol implementations can be actively maintained and do not even have
 to apply the robustness principle.  The robustness principle may still need
 to used as a short-term mitigation for deployments that cannot yet be easily
 updated and do not yet have documented specifications for workarounds, but
@@ -164,8 +172,10 @@ than on technical excellence. Timely publication of protocol specifications,
 even with the potential for flaws, likely contributed significantly to the
 eventual success of the Internet.
 
-This premise that specifications will be imperfect is correct.  However, the
-robustness principle is almost always the incorrect solution to the problem.
+This premise that specifications will be imperfect is correct, therefore
+active maintainance is foremost important to resolve bug or other
+interoperability issues quickly and retain the flexibily of the protocols
+as itended in the protocol design.
 
 
 # Protocol Decay {#decay}
