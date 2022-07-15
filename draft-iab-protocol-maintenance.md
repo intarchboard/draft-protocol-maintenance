@@ -53,10 +53,10 @@ informative:
 This document argues that active maintenance of protocols as well as
 protocol implementations is foremost important for interoperability. Active
 maintenance aims to detect and resolve interoperability problems quickly and
-as such retains flexibility and supports evolvability of the protocol. 
+as such retains flexibility and supports evolvability of the protocol.
 In contrast, the robustness principle, often phrased as "be conservative in what you send,
 and liberal in what you accept", promotes
-interoperability by bypassing failure, e.g. due to limitation in the specification or 
+interoperability by bypassing failure, e.g. due to limitation in the specification or
 implementation shortcomings, but can negatively affect the protocol
 ecosystem over time as it can lead to ossification around the status-quo.
 For a protocol that is actively maintained, the robustness
@@ -70,10 +70,10 @@ of interoperability problems.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  In particular, a sizeable proportion of IETF
-activity is dedicated to the stewardship of existing protocols.  
+activity is dedicated to the stewardship of existing protocols.
 Based on the most recent experience in this process, this document
 offers a strategy for handling interoperability
-problems in deployments by actively maintaining the protocol. 
+problems in deployments by actively maintaining the protocol.
 Further, it discusses hazards in applying the robustness principle
 too broadly which has in the past been sometimes used as an excuse
 to sidestep active maintenance.
