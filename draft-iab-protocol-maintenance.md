@@ -80,9 +80,9 @@ design of interoperable protocols in general.
 Time and experience shows that negative consequences to interoperability
 accumulate over time if implementations apply the robustness principle.  This
 problem originates from an assumption implicit in the principle that it is not
-possible to effect change in a system the size of the Internet.  It assumes
-that once a protocol specification is published, changes that might
-require existing implementations to change are not feasible.
+possible to effect change in a system the size of the Internet.  Application of
+the robustness principle first requires an assumption that changes to existing
+implementations are not presently feasible.
 
 Many problems that the robustness principle was intended to solve can instead
 be better addressed by active maintenance.  Active protocol maintenance is
