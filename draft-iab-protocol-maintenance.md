@@ -30,13 +30,6 @@ author:
     email: dschinazi.ietf@gmail.com
 
 informative:
-  ECMA262:
-    title: "ECMAScript(R) 2018 Language Specification"
-    date: 2018-06
-    seriesinfo:
-      ECMA-262: 9th Edition
-    target: "https://www.ecma-international.org/publications/standards/Ecma-262.htm"
-
   HTML:
     title: "HTML"
     date: 2019-03-08
@@ -217,18 +210,6 @@ implementations terminated connections if they encountered a TLS ClientHello
 message that ends with an empty extension.  To maintain interoperability, client
 implementations were required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
-
-The original JSON specification {{?RFC4627}} demonstrates the effect of
-specification shortcomings: it did not tightly specify some important
-details including Unicode handling, ordering and duplication of object members,
-and number encoding.  Consequently, a range of interpretations were used by
-implementations.  An updated JSON specification {{?RFC7159}} did not correct
-these errors, concentrating instead on identifying the interoperable subset of
-JSON.  I-JSON {{?RFC7493}} takes that subset and defines a new format
-that prohibits the problematic parts of JSON.  Of course, that means that I-JSON
-is not fully interoperable with JSON.  Consequently, I-JSON is not widely
-implemented in parsers.  Many JSON parsers now implement the more precise
-algorithm specified in {{ECMA262}}.
 
 The robustness principle therefore encourages a chain reaction that can create
 interoperability problems over time.  In particular, the application of the robustness
