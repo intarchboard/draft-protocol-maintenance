@@ -43,12 +43,17 @@ informative:
 
 --- abstract
 
-The robustness principle, often phrased as "be conservative in what you send,
-and liberal in what you accept", has long guided the design and implementation
-of Internet protocols.  The posture this statement advocates promotes
-interoperability in the short term, but can negatively affect the protocol
-ecosystem over time.  For a protocol that is actively maintained, the robustness
-principle can, and should, be avoided.
+The main goal of the networking standards process is to enable the long term
+interoperability of protocols. The robustness principle, often phrased as "be
+conservative in what you send, and liberal in what you accept", has long guided
+the design and implementation of Internet protocols. The posture this statement
+advocates promotes interoperability in the short term, but can negatively affect
+interoperability over time.
+
+This document defines active protocol maintenance, an alternative to the
+robustness principle that allows interoperability in the long term. By evolving
+specifications and implementations, it is possible to reduce ambiguity over time
+and create a healthy ecosystem.
 
 
 --- middle
@@ -98,14 +103,8 @@ to used as a short-term mitigation for deployments that cannot yet be easily
 updated and do not yet have documented specifications for workarounds, but
 such cases need not be permanent. This is discussed further in {{active}}.
 
-Avoiding use of the robustness principle does not mean that implementations will
-be unchanging or inflexible.  As discussed in {{design}}, the ability to handle
-future extensions is better supported by specifications being very clear about
-their extension mechanisms and implementations complying with the requirements
-of those specifications.
 
-
-## Applicability
+# Applicability
 
 The guidance in this document is intended for protocols that are deployed to the
 Internet. There are some situations in which this guidance might not apply to a
@@ -124,9 +123,66 @@ protocol maintenance and evolution. Employing this guidance is therefore only
 applicable where there is the possibility of improving deployments through
 timely updates of their implementations.
 
-Problems in other implementations can create an unavoidable need to temporarily
-apply the robustness principle.  However, even temporary use carries risks,
-which are explored in {{decay}}.
+
+## Extensibility {#extensibility}
+
+Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
+cases or changes in the environment in which the protocol is deployed.
+
+The ability to extend a protocol is sometimes mistaken for an application of the
+robustness principle.  After all, if one party wants to start using a new
+feature before another party is prepared to receive it, it might be assumed that
+the receiving party is being tolerant of unexpected inputs.
+
+A well-designed extensibility mechanism establishes clear rules for the handling
+of things like new messages or parameters.  This depends on specifying the
+handling of malformed or illegal inputs so that implementations behave
+consistently in all cases that might affect interoperation.  If extension
+mechanisms and error handling are designed and implemented correctly, new
+protocol features can be deployed with confidence in the understanding of the
+effect they have on existing implementations.
+
+In contrast, relying on implementations to consistently apply the robustness
+principle is not a good strategy for extensibility.  Using undocumented or
+accidental features of a protocol as the basis of an extensibility mechanism can
+be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
+of EXT}}.
+
+
+## Flexible Protocols {#flexibility}
+
+A protocol could be designed to permit a narrow set of valid inputs, or it could
+be designed to treat a wide range of inputs as valid.
+
+A more flexible protocol is more complex to specify and implement: variations -
+especially those that are not commonly used - can create potential
+interoperability hazards.  In the absence of strong reasons to be flexible, a
+simpler protocol is more likely to successfully interoperate.
+
+Where input is provided by users, allowing flexibility might serve to make the
+protocol more accessible, especially for non-expert users.  HTML authoring
+{{HTML}} is an example of this sort of design.
+
+In protocols where there are many participants that might generate messages
+based on data from other participants some flexibility might contribute to
+resilience of the system.  A routing protocol is a good example of where this
+might be necessary.
+
+In BGP {{?BGP=RFC4271}}, a peer generates UPDATE messages based on messages it
+receives from other peers.  Peers can copy attributes without validation,
+potentially propagating invalid values.  RFC 4271 mandated a session reset for
+invalid UPDATE messages, a requirement that was not widely implemented.  In many
+deployments, peers would treat a malformed UPDATE in less stringent ways, such
+as by treating the affected route as having been withdrawn.  Ultimately, RFC
+7606 {{?BGP-REH=RFC7606}} documented this practice and provided precise rules,
+including mandatory actions for different error conditions.
+
+A protocol can explicitly allows for a range of valid expressions of the same
+semantics, with precise definitions for error handling.  This is distinct from a
+protocol that relies on the application of the robustness principle.  With the
+former, interoperation depends on specifications that capture all relevant
+details; whereas - as noted in {{ecosystem}} - interoperation in the latter
+depends more extensively on implementations making compatible decisions.
 
 
 # Fallibility of Specifications
@@ -162,7 +218,9 @@ This premise that specifications will be imperfect is correct.  However, the
 robustness principle is almost always the incorrect solution to the problem.
 
 
-# Protocol Decay {#decay}
+# Harmful Consequences of the Robustness Principle
+
+## Protocol Decay {#decay}
 
 The application of the robustness principle to any system that is in early
 phases of deployment, such as the early Internet, is expedient.  Applying the
@@ -217,7 +275,7 @@ principle is particularly deleterious for early implementations of new protocols
 as quirks in early implementations can affect all subsequent deployments.
 
 
-# Ecosystem Effects {#ecosystem}
+## Ecosystem Effects {#ecosystem}
 
 From observing widely deployed protocols, it appears there are two stable points
 on the spectrum between being strict versus permissive in the presence of
@@ -343,75 +401,7 @@ the desired form of the protocols once the need for workarounds no longer exists
 and plans for removing the workaround.
 
 
-# Design Features {#design}
-
-Protocols can allow for a range of inputs in order to support extensions or
-flexibility.  A well-specified protocol has no need to rely on the robustness
-principle in either case.
-
-
-## Extensibility {#extensibility}
-
-Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
-cases or changes in the environment in which the protocol is deployed.
-
-The ability to extend a protocol is sometimes mistaken for an application of the
-robustness principle.  After all, if one party wants to start using a new
-feature before another party is prepared to receive it, it might be assumed that
-the receiving party is being tolerant of unexpected inputs.
-
-A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters.  This depends on specifying the
-handling of malformed or illegal inputs so that implementations behave
-consistently in all cases that might affect interoperation.  If extension
-mechanisms and error handling are designed and implemented correctly, new
-protocol features can be deployed with confidence in the understanding of the
-effect they have on existing implementations.
-
-In contrast, relying on implementations to consistently apply the robustness
-principle is not a good strategy for extensibility.  Using undocumented or
-accidental features of a protocol as the basis of an extensibility mechanism can
-be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
-of EXT}}.
-
-
-## Flexible Protocols {#flexibility}
-
-A protocol could be designed to permit a narrow set of valid inputs, or it could
-be designed to treat a wide range of inputs as valid.
-
-A more flexible protocol is more complex to specify and implement: variations -
-especially those that are not commonly used - can create potential
-interoperability hazards.  In the absence of strong reasons to be flexible, a
-simpler protocol is more likely to successfully interoperate.
-
-Where input is provided by users, allowing flexibility might serve to make the
-protocol more accessible, especially for non-expert users.  HTML authoring
-{{HTML}} is an example of this sort of design.
-
-In protocols where there are many participants that might generate messages
-based on data from other participants some flexibility might contribute to
-resilience of the system.  A routing protocol is a good example of where this
-might be necessary.
-
-In BGP {{?BGP=RFC4271}}, a peer generates UPDATE messages based on messages it
-receives from other peers.  Peers can copy attributes without validation,
-potentially propagating invalid values.  RFC 4271 mandated a session reset for
-invalid UPDATE messages, a requirement that was not widely implemented.  In many
-deployments, peers would treat a malformed UPDATE in less stringent ways, such
-as by treating the affected route as having been withdrawn.  Ultimately, RFC
-7606 {{?BGP-REH=RFC7606}} documented this practice and provided precise rules,
-including mandatory actions for different error conditions.
-
-A protocol can explicitly allows for a range of valid expressions of the same
-semantics, with precise definitions for error handling.  This is distinct from a
-protocol that relies on the application of the robustness principle.  With the
-former, interoperation depends on specifications that capture all relevant
-details; whereas - as noted in {{ecosystem}} - interoperation in the latter
-depends more extensively on implementations making compatible decisions.
-
-
-# Virtuous Intolerance {#intolerance}
+## Virtuous Intolerance {#intolerance}
 
 A well-specified protocol includes rules for consistent handling of aberrant
 conditions.  This increases the chances that implementations will have
@@ -446,7 +436,7 @@ HTTP/2 {{H2}} resulted in improvements in the security of the
 deployed base.
 
 
-# Exclusion {#exclusion}
+## Exclusion {#exclusion}
 
 Any protocol participant that is affected by changes arising from maintenance
 might be excluded if they are unwilling or unable to implement or deploy changes
