@@ -50,8 +50,8 @@ the design and implementation of Internet protocols. The posture this statement
 advocates promotes interoperability in the short term, but can negatively affect
 interoperability over time.
 
-This document defines active protocol maintenance, an alternative to the
-robustness principle that allows interoperability in the long term. By evolving
+This document describes how active protocol maintenance, an alternative to the
+robustness principle, better enables interoperability in the long term. By evolving
 specifications and implementations, it is possible to reduce ambiguity over time
 and create a healthy ecosystem.
 
@@ -219,6 +219,10 @@ robustness principle is almost always the incorrect solution to the problem.
 
 
 # Harmful Consequences of the Robustness Principle
+
+Problems in other implementations can create an unavoidable need to temporarily
+apply the robustness principle.  However, even temporary use carries risks.
+
 
 ## Protocol Decay {#decay}
 
