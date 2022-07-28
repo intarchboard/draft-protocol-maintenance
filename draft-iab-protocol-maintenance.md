@@ -1,6 +1,5 @@
 ---
-title: "The Harmful Consequences of the Robustness Principle"
-abbrev: "Protocol Maintenance"
+title: "Maintaining Robust Protocols"
 docname: draft-iab-protocol-maintenance-latest
 category: info
 submissiontype: IAB
