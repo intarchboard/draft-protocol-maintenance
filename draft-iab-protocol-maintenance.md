@@ -64,6 +64,7 @@ The robustness principle has been hugely influential in shaping the design of
 the Internet. As stated in the IAB document on Architectural Principles of the
 Internet {{?RFC1958}}, the robustness principle advises to:
 
+{:quote}
 > Be strict when sending and tolerant when receiving.  Implementations must
   follow specifications precisely when sending to the network, and tolerate
   faulty input from the network.  When in doubt, discard faulty input silently,
@@ -192,6 +193,7 @@ insights into its intent and purpose. The earliest form of the principle in the
 RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
 sentence that reveals the motivation for the principle:
 
+{:quote}
 > While the goal of this specification is to be explicit about the protocol
   there is the possibility of differing interpretations.  In general, an
   implementation should be conservative in its sending behavior, and liberal in
