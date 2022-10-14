@@ -45,14 +45,14 @@ informative:
 The main goal of the networking standards process is to enable the long term
 interoperability of protocols. The robustness principle, often phrased as "be
 conservative in what you send, and liberal in what you accept", has long guided
-the design and implementation of Internet protocols. The posture this statement
-advocates promotes interoperability in the short term, but can negatively affect
-interoperability over time.
+the design and implementation of Internet protocols. Some interpretations of the
+robustness principle help ensure the health of the Internet. However, some other
+interpretations can negatively affect interoperability over time.
 
-This document describes how active protocol maintenance, an alternative to the
-robustness principle, better enables interoperability in the long term. By evolving
-specifications and implementations, it is possible to reduce ambiguity over time
-and create a healthy ecosystem.
+This document describes how active protocol maintenance, an alternative to those
+interpretations of the robustness principle, better enables interoperability in
+the long term. By evolving specifications and implementations, it is possible to
+reduce ambiguity over time and create a healthy ecosystem.
 
 
 --- middle
@@ -75,12 +75,45 @@ interoperable systems.  Many consider the application of the robustness
 principle to be instrumental in the success of the Internet as well as the
 design of interoperable protocols in general.
 
+As described above, the robustness principle can be interpreted in three
+different ways:
+
+Robustness to software defects:
+
+: No software is perfect, and failures can lead to unexpected behavior.
+Well-designed software strives to be resilient to such issues, whether they
+occur in the local software, or in other software that we are receiving from. In
+particular, it is critical for software to gracefully recover from these issues
+without aborting unrelated processing.
+
+Robustness to attacks:
+
+: Since not all actors on the Internet are benevolent, networking software needs
+to be resilient to input that is intentionally crafted to cause unexpected
+consequences. For example, software must ensure that invalid input doesn't allow
+the sender to access data that it would otherwise not be allowed to.
+
+Robustness to the unexpected:
+
+: It can be possible for an implementation to receive inputs that the
+specification did not prepare it for. This interpretation covers the scenario
+where a specific input is explicitly defined to be faulty (or if there is
+ambiguity in the specification regarding whether the input is valid), but where
+the specification does not explicitly specify how to react to that input. In
+this case, the robustness principle advocates that the implementation tolerate
+the faulty input and silently discard it.
+
+While the first two interpretations above are understood to be correct and
+beneficial, the third interpretation is no longer considered best practice in
+all scenarios. The rest of this document uses the term "robustness principle" to
+refer to this third interpretation.
+
 Time and experience shows that negative consequences to interoperability
-accumulate over time if implementations apply the robustness principle.  This
-problem originates from an assumption implicit in the principle that it is not
-possible to effect change in a system the size of the Internet.  Application of
-the robustness principle first requires an assumption that changes to existing
-implementations are not presently feasible.
+accumulate over time if implementations silently accept faulty input. This
+problem originates from an assumption implicit in the robustness principle that
+it is not possible to effect change in a system the size of the Internet.
+Application of the principle first requires an assumption that changes to
+existing implementations are not presently feasible.
 
 Many problems that the robustness principle was intended to solve can instead
 be better addressed by active maintenance.  Active protocol maintenance is
@@ -355,7 +388,11 @@ negative effects on future implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
-handling new and old problems that might arise over time.
+handling new and old problems that might arise over time. When an implementor
+discovers a scenario where a specification defines some input as faulty but does
+not define how to handle that input, the implementor can provide significant
+value to the ecosystem by reporting the issue and helping evolve the
+specification.
 
 Maintaining specifications so that they closely match deployments ensures that
 implementations are consistently interoperable and removes needless barriers for
@@ -439,6 +476,20 @@ For instance, the INADEQUATE_SECURITY error code and associated requirements in
 HTTP/2 {{H2}} resulted in improvements in the security of the
 deployed base.
 
+When the protocol involves shared state between multiple parties (often refered
+to as a connection), the fatal errors described in this section are best sent
+over the network as explicit error messages. Additionally, those error messages
+benefit from being extensible and carrying debugging information to help the
+implementor of the sender of the faulty input understand and fix the issue in
+their software. QUIC error frames {{?QUIC=RFC9000}} are an example of a fatal
+error mechanism that helped implementors improve software quality throughout the
+protocol lifecycle.
+
+Conversely, when the faulty input involves a single packet received from a
+non-authenticated sender, the associated fatal error need not be sent over the
+wire: the receiver can simply abort processing and silently discards the packet
+to avoid denial-of-service and amplification attacks.
+
 
 ## Exclusion {#exclusion}
 
@@ -495,4 +546,4 @@ Constructive feedback on this document has been provided by a surprising number
 of people including, but not limited to: {{{Bernard Aboba}}}, {{{Brian
 Carpenter}}}, {{{Stuart Cheshire}}}, {{{Mark Nottingham}}}, {{{Russ Housley}}},
 {{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}}, {{{Robert
-Sparks}}}, {{{Brian Trammell}}}, and {{{Anne Van Kesteren}}}.
+Sparks}}}, {{{Brian Trammell}}}, {{{Dave Thaler}}}, and {{{Anne Van Kesteren}}}.
