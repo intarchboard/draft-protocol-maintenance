@@ -333,9 +333,10 @@ protocol errors:
   deployments are tolerant of the same non-compliant behavior.
 
 This happens because interoperability requirements for protocol implementations
-are set by other deployments. The IETF does not create nor mandate conformance
-test suites for protocols, causing established implementations to become
-de-facto conformance test suites used by new implementations.
+are set by other deployments. Specifications and - where they exist -
+conformance test suites might guide the initial development of implementations,
+but implementations ultimately need to interoperate with deployed
+implementations.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few.  The cost of
