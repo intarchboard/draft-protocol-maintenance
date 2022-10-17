@@ -96,14 +96,13 @@ the sender to access data that it would otherwise not be allowed to.
 Robustness to the unexpected:
 
 : It can be possible for an implementation to receive inputs that the
-specification did not prepare it for. This interpretation excludes covers those
-cases where a the specification explicitly defines how a faulty message is
-handled.  Instead, this refers to cases where handling is not defined or where
-there is some ambiguity in the specification. In
-this case, some the robustness principle advocate that the implementation
-tolerate the faulty input and silently discard it. Some interpretations even
-suggest that a faulty or ambiguous message be processed according to the
-inferred intent of the sender.
+specification did not prepare it for. This interpretation excludes those cases
+where a the specification explicitly defines how a faulty message is handled.
+Instead, this refers to cases where handling is not defined or where there is
+some ambiguity in the specification. In this case, some interpretations of the
+robustness principle advocate that the implementation tolerate the faulty input
+and silently discard it. Some interpretations even suggest that a faulty or
+ambiguous message be processed according to the inferred intent of the sender.
 
 These first two interpretations above are understood to be necessary guiding
 principles for the design and implementation of networked systems.  However,
@@ -390,10 +389,10 @@ negative effects on future implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
-handling new and old problems that might arise over time. When an implementor
-discovers a scenario where a specification defines some input as faulty but does
-not define how to handle that input, the implementor can provide significant
-value to the ecosystem by reporting the issue and helping evolve the
+handling new and old problems that might arise over time. For example, when an
+implementor discovers a scenario where a specification defines some input as
+faulty but does not define how to handle that input, the implementor can provide
+significant value to the ecosystem by reporting the issue and helping evolve the
 specification.
 
 Maintaining specifications so that they closely match deployments ensures that
@@ -478,13 +477,12 @@ For instance, the INADEQUATE_SECURITY error code and associated requirements in
 HTTP/2 {{H2}} resulted in improvements in the security of the
 deployed base.
 
-A notification for a fatal error is best as explicit error messages to the entity that
-made the error. Error messages
-benefit from being able to carry arbitrary information that might help the
-implementor of the sender of the faulty input understand and fix the issue in
-their software. QUIC error frames {{?QUIC=RFC9000}} are an example of a fatal
-error mechanism that helped implementors improve software quality throughout the
-protocol lifecycle.
+A notification for a fatal error is best sent as explicit error messages to the
+entity that made the error. Error messages benefit from being able to carry
+arbitrary information that might help the implementor of the sender of the
+faulty input understand and fix the issue in their software. QUIC error frames
+{{?QUIC=RFC9000}} are an example of a fatal error mechanism that helped
+implementors improve software quality throughout the protocol lifecycle.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
 respond with an error messages in response to every message that is received
