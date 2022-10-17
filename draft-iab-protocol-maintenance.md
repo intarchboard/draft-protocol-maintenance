@@ -82,7 +82,7 @@ Robustness to software defects:
 
 : No software is perfect, and failures can lead to unexpected behavior.
 Well-designed software strives to be resilient to such issues, whether they
-occur in the local software, or in other software that we are receiving from. In
+occur in the local software, or in software that it communicates with. In
 particular, it is critical for software to gracefully recover from these issues
 without aborting unrelated processing.
 
@@ -96,17 +96,19 @@ the sender to access data that it would otherwise not be allowed to.
 Robustness to the unexpected:
 
 : It can be possible for an implementation to receive inputs that the
-specification did not prepare it for. This interpretation covers the scenario
-where a specific input is explicitly defined to be faulty (or if there is
-ambiguity in the specification regarding whether the input is valid), but where
-the specification does not explicitly specify how to react to that input. In
-this case, the robustness principle advocates that the implementation tolerate
-the faulty input and silently discard it.
+specification did not prepare it for. This interpretation excludes covers those
+cases where a the specification explicitly defines how a faulty message is
+handled.  Instead, this refers to cases where handling is not defined or where
+there is some ambiguity in the specification. In
+this case, some the robustness principle advocate that the implementation
+tolerate the faulty input and silently discard it. Some interpretations even
+suggest that a faulty or ambiguous message be processed according to the
+inferred intent of the sender.
 
-While the first two interpretations above are understood to be correct and
-beneficial, the third interpretation is no longer considered best practice in
-all scenarios. The rest of this document uses the term "robustness principle" to
-refer to this third interpretation.
+These first two interpretations above are understood to be necessary guiding
+principles for the design and implementation of networked systems.  However,
+the third interpretation is no longer considered best practice in
+all scenarios.
 
 Time and experience shows that negative consequences to interoperability
 accumulate over time if implementations silently accept faulty input. This
@@ -476,19 +478,18 @@ For instance, the INADEQUATE_SECURITY error code and associated requirements in
 HTTP/2 {{H2}} resulted in improvements in the security of the
 deployed base.
 
-When the protocol involves shared state between multiple parties (often refered
-to as a connection), the fatal errors described in this section are best sent
-over the network as explicit error messages. Additionally, those error messages
-benefit from being extensible and carrying debugging information to help the
+A notification for a fatal error is best as explicit error messages to the entity that
+made the error. Error messages
+benefit from being able to carry arbitrary information that might help the
 implementor of the sender of the faulty input understand and fix the issue in
 their software. QUIC error frames {{?QUIC=RFC9000}} are an example of a fatal
 error mechanism that helped implementors improve software quality throughout the
 protocol lifecycle.
 
-Conversely, when the faulty input involves a single packet received from a
-non-authenticated sender, the associated fatal error need not be sent over the
-wire: the receiver can simply abort processing and silently discards the packet
-to avoid denial-of-service and amplification attacks.
+Stateless protocol endpoints might generate denial-of-service attacks if they
+respond with an error messages in response to every message that is received
+from an unauthenticated sender.  These implementations might need to silently
+discard these messages.
 
 
 ## Exclusion {#exclusion}
