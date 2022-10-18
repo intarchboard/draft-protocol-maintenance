@@ -385,12 +385,11 @@ of an immutable specification, the only way for an implementation to remain
 interoperable is to be tolerant of differences in interpretation and
 implementation errors.
 
-Tolerating unexpected inputs from another implementation is logical, even
-necessary, if it is assumed that the implementation cannot change.  But that
-conclusion relies on an assumption that existing specifications and
-implementations cannot change.  Applying the robustness principle in this way
-disproportionately values short-term gains over the negative effects on future
-implementations and the protocol as a whole.
+Tolerating unexpected inputs from another implementation might seem logical,
+even necessary.  But that conclusion relies on an assumption that existing
+specifications and implementations cannot change.  Applying the robustness
+principle in this way disproportionately values short-term gains over the
+negative effects on future implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
