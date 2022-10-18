@@ -104,10 +104,10 @@ robustness principle advocate that the implementation tolerate the faulty input
 and silently discard it. Some interpretations even suggest that a faulty or
 ambiguous message be processed according to the inferred intent of the sender.
 
-These first two interpretations above are understood to be necessary guiding
-principles for the design and implementation of networked systems.  However,
-the third interpretation is no longer considered best practice in
-all scenarios.
+These interpretations that protect against defects or attack are understood to
+be necessary guiding principles for the design and implementation of networked
+systems.  However, an interpretation that advocates for tolerating unexpected
+inputs is no longer considered best practice in all scenarios.
 
 Time and experience shows that negative consequences to interoperability
 accumulate over time if implementations silently accept faulty input. This
@@ -116,13 +116,14 @@ it is not possible to effect change in a system the size of the Internet.
 Application of the principle first requires an assumption that changes to
 existing implementations are not presently feasible.
 
-Many problems that the robustness principle was intended to solve can instead
-be better addressed by active maintenance.  Active protocol maintenance is
-where a community of protocol designers, implementers, and deployers work
-together to continuously improve and evolve protocol specifications alongside
-implementations and deployments of those protocols.  A community that takes an
-active role in the maintenance of protocols will no longer need to rely on the
-robustness principle to avoid interoperability issues.
+Many problems that this third aspect of the robustness principle was intended to
+solve can instead be better addressed by active maintenance.  Active protocol
+maintenance is where a community of protocol designers, implementers, and
+deployers work together to continuously improve and evolve protocol
+specifications alongside implementations and deployments of those protocols.  A
+community that takes an active role in the maintenance of protocols will no
+longer need to rely on the robustness principle to avoid interoperability
+issues.
 
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception.  In particular, a sizeable proportion of IETF
@@ -131,11 +132,11 @@ serves primarily as a record of the hazards in applying the robustness principle
 too broadly, and offers an alternative strategy for handling interoperability
 problems in deployments.
 
-Ideally, protocol implementations can be actively maintained and never have
-to apply the robustness principle.  The robustness principle may still need
-to used as a short-term mitigation for deployments that cannot yet be easily
-updated and do not yet have documented specifications for workarounds, but
-such cases need not be permanent. This is discussed further in {{active}}.
+Ideally, protocol implementations can be actively maintained so that unexpected
+conditions are proactively identified and resolved.  Some deployments might
+still need to apply short-term mitigations for deployments that cannot be easily
+updated, but such cases need not be permanent. This is discussed further in
+{{active}}.
 
 
 # Applicability
@@ -164,9 +165,10 @@ Good extensibility {{?EXT=RFC6709}} can make it easier to respond to new use
 cases or changes in the environment in which the protocol is deployed.
 
 The ability to extend a protocol is sometimes mistaken for an application of the
-robustness principle.  After all, if one party wants to start using a new
-feature before another party is prepared to receive it, it might be assumed that
-the receiving party is being tolerant of unexpected inputs.
+third aspect of the robustness principle.  After all, if one party wants to
+start using a new feature before another party is prepared to receive it, it
+might be assumed that the receiving party is being tolerant of unexpected
+inputs.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
 of things like new messages or parameters.  This depends on specifying the
@@ -249,22 +251,23 @@ than on technical excellence. Timely publication of protocol specifications,
 even with the potential for flaws, likely contributed significantly to the
 eventual success of the Internet.
 
-This premise that specifications will be imperfect is correct.  However, the
-robustness principle is almost always the incorrect solution to the problem.
+This premise that specifications will be imperfect is correct.  However,
+ignoring faulty or ambiguous input is almost always the incorrect solution to
+the problem.
 
 
-# Harmful Consequences of the Robustness Principle
+# Harmful Consequences of Tolerating the Unexpected
 
 Problems in other implementations can create an unavoidable need to temporarily
-apply the robustness principle.  However, even temporary use carries risks.
+tolerate unexpected inputs.  However, even temporary use carries risks.
 
 
 ## Protocol Decay {#decay}
 
-The application of the robustness principle to any system that is in early
-phases of deployment, such as the early Internet, is expedient.  Applying the
-principle defers the effort of dealing with interoperability problems and
-prioritizes progress.  However, this deferral can amplify the ultimate cost
+Tolerating unexpected input might be an expedient tool for systems in early
+phases of deployment, such as was the case for the early Internet.  Being
+lenient in this way defers the effort of dealing with interoperability problems
+and prioritizes progress.  However, this deferral can amplify the ultimate cost
 of handling interoperability problems.
 
 Divergent implementations of a specification emerge over time.  When variations
@@ -296,7 +299,7 @@ robustness principle enters a pathological feedback cycle.  Over time:
 
 A flaw can become entrenched as a de facto standard.  Any implementation of the
 protocol is required to replicate the aberrant behavior, or it is not
-interoperable.  This is both a consequence of applying the robustness principle,
+interoperable.  This is both a consequence of tolerating the unexpected,
 and a product of a natural reluctance to avoid fatal error conditions.  Ensuring
 interoperability in this environment is often referred to as aiming to be "bug
 for bug compatible".
@@ -309,8 +312,8 @@ implementations were required to be aware of this bug and ensure that a
 ClientHello message ends in a non-empty extension.
 
 The robustness principle therefore encourages a chain reaction that can create
-interoperability problems over time.  In particular, the application of the robustness
-principle is particularly deleterious for early implementations of new protocols
+interoperability problems over time.  In particular, tolerating unexpected
+behavior is particularly deleterious for early implementations of new protocols
 as quirks in early implementations can affect all subsequent deployments.
 
 
@@ -367,8 +370,8 @@ Protocol Extension Mechanisms {{?RFC9170}}).
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design.  A community that is willing to make changes to the
 protocol, by revising or extending it, makes the protocol better in the process.
-Applying the robustness principle instead conceals problems, making it harder,
-or even impossible, to fix them later.
+Tolerating unexpected input instead conceals problems, making it harder, if not
+impossible, to fix them later.
 
 
 # Active Protocol Maintenance {#active}
@@ -381,12 +384,12 @@ of an immutable specification, the only way for an implementation to remain
 interoperable is to be tolerant of differences in interpretation and
 implementation errors.
 
-From this perspective, application of the robustness principle to the
-implementation of a protocol specification that does not change is logical, even
-necessary.  But that conclusion relies on an assumption that existing
-specifications and implementations cannot change.  Applying the robustness
-principle in this way disproportionately values short-term gains over the
-negative effects on future implementations and the protocol as a whole.
+Tolerating unexpected inputs from another implementation is logical, even
+necessary, if it is assumed that the implementation cannot change.  But that
+conclusion relies on an assumption that existing specifications and
+implementations cannot change.  Applying the robustness principle in this way
+disproportionately values short-term gains over the negative effects on future
+implementations and the protocol as a whole.
 
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
@@ -511,8 +514,8 @@ Exclusion is a direct goal when choosing to be intolerant of errors (see
 of protecting future interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
-protocol system that could be more harmful than any divergence resulting from
-following the robustness principle. The IAB document on Uncoordinated Protocol
+protocol system that could be more harmful than any divergence that might arise
+from tolerating the unexpected. The IAB document on Uncoordinated Protocol
 Development Considered Harmful {{?RFC5704}} describes how conflict or
 competition in the maintenance of protocols can lead to similar problems.
 
