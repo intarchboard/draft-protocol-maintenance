@@ -36,7 +36,7 @@ informative:
       WHATWG: Living Standard
     target: "https://html.spec.whatwg.org/"
   H2:
-    =: RFC7540
+    =: RFC9113
     display: HTTP/2
 
 
@@ -430,7 +430,7 @@ Restoring the protocol to a state where it can be maintained involves first
 discovering the properties of the protocol as it is deployed, rather than the
 protocol as it was originally documented. This can be difficult and
 time-consuming, particularly if the protocol has a diverse set of
-implementations. Such a process was undertaken for HTTP {{?HTTP=RFC7230}} after
+implementations. Such a process was undertaken for HTTP {{?HTTP=RFC9110}} after
 a period of minimal maintenance. Restoring HTTP specifications to relevance took
 significant effort.
 
