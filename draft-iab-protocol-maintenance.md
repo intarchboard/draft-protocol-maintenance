@@ -336,10 +336,10 @@ protocol errors:
   deployments are tolerant of the same non-compliant behavior.
 
 This happens because interoperability requirements for protocol implementations
-are set by other deployments. Specifications and - where they exist -
-conformance test suites might guide the initial development of implementations,
-but implementations ultimately need to interoperate with deployed
-implementations, making them de facto conformance test suites.
+are set by other deployments. Specifications and - where they exist - test
+suites can guide the initial development of implementations.  Ultimately, the
+need to interoperate with deployed implementations is a de facto conformance
+test suite that can supersede any formal protocol definition.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few. The cost of
