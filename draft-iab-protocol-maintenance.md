@@ -167,16 +167,17 @@ cases or changes in the environment in which the protocol is deployed.
 The ability to extend a protocol is sometimes mistaken for an application of the
 third aspect of the robustness principle.  After all, if one party wants to
 start using a new feature before another party is prepared to receive it, it
-might be assumed that the receiving party is being tolerant of unexpected
-inputs.
+might be assumed that the receiving party is being tolerant of new types of
+input.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
 of things like new messages or parameters.  This depends on specifying the
 handling of malformed or illegal inputs so that implementations behave
-consistently in all cases that might affect interoperation.  If extension
-mechanisms and error handling are designed and implemented correctly, new
-protocol features can be deployed with confidence in the understanding of the
-effect they have on existing implementations.
+consistently in all cases that might affect interoperation.  New messages or
+parameters thereby become entirely expected.  If extension mechanisms and error
+handling are designed and implemented correctly, new protocol features can be
+deployed with confidence in the understanding of the effect they have on
+existing implementations.
 
 In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility.  Using undocumented or
