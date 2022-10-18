@@ -53,7 +53,7 @@ and liberal in what you accept", has long guided the design and implementation
 of Internet protocols. However, it has been interpreted in a variety of ways.
 While some interpretations help ensure the health of the Internet, others can
 negatively affect interoperability over time. When a protocol is actively
-maintained, protocol designers and implementers to avoid these pitfalls.
+maintained, protocol designers and implementers can avoid these pitfalls.
 
 
 --- middle
