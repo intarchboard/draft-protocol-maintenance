@@ -487,9 +487,9 @@ faulty input understand and fix the issue in their software. QUIC error frames
 implementers improve software quality throughout the protocol lifecycle.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
-respond with an error messages in response to every message that is received
-from an unauthenticated sender. These implementations might need to silently
-discard these messages.
+send an error messages in response to every message that is received from an
+unauthenticated sender. These implementations might need to silently discard
+these messages.
 
 
 ## Exclusion {#exclusion}
