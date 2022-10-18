@@ -148,8 +148,8 @@ protocol due to conditions on its implementation or deployment.
 In particular, this guidance depends on an ability to update and deploy
 implementations. Being able to rapidly update implementations that are deployed
 to the Internet helps managing security risk but in reality some software
-deployments have life-cycles that make software updates either rare or
-altogether impossible.
+deployments have lifecycles that make software updates either rare or altogether
+impossible.
 
 Where implementations are not updated, there is no opportunity to apply the
 practices that this document recommends. In particular, some practices - such as
