@@ -392,8 +392,8 @@ negative effects on future implementations and the protocol as a whole.
 For a protocol to have sustained viability, it is necessary for both
 specifications and implementations to be responsive to changes, in addition to
 handling new and old problems that might arise over time. For example, when an
-implementor discovers a scenario where a specification defines some input as
-faulty but does not define how to handle that input, the implementor can provide
+implementer discovers a scenario where a specification defines some input as
+faulty but does not define how to handle that input, the implementer can provide
 significant value to the ecosystem by reporting the issue and helping evolve the
 specification.
 
@@ -481,10 +481,10 @@ deployed base.
 
 A notification for a fatal error is best sent as explicit error messages to the
 entity that made the error. Error messages benefit from being able to carry
-arbitrary information that might help the implementor of the sender of the
+arbitrary information that might help the implementer of the sender of the
 faulty input understand and fix the issue in their software. QUIC error frames
 {{?QUIC=RFC9000}} are an example of a fatal error mechanism that helped
-implementors improve software quality throughout the protocol lifecycle.
+implementers improve software quality throughout the protocol lifecycle.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
 respond with an error messages in response to every message that is received
