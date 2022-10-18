@@ -520,10 +520,11 @@ competition in the maintenance of protocols can lead to similar problems.
 
 # Security Considerations
 
-Sloppy implementations, lax interpretations of specifications, and uncoordinated
-extrapolation of requirements to cover gaps in specification can result in
-security problems. Hiding the consequences of protocol variations encourages the
-hiding of issues, which can conceal bugs and make them difficult to discover.
+Careless implementations, lax interpretations of specifications, and
+uncoordinated extrapolation of requirements to cover gaps in specification can
+result in security problems. Hiding the consequences of protocol variations
+encourages the hiding of issues, which can conceal bugs and make them difficult
+to discover.
 
 The consequences of the problems described in this document are especially acute
 for any protocol where security depends on agreement about semantics of protocol
