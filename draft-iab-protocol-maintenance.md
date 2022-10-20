@@ -213,7 +213,7 @@ as by treating the affected route as having been withdrawn. Ultimately, RFC 7606
 {{?BGP-REH=RFC7606}} documented this practice and provided precise rules,
 including mandatory actions for different error conditions.
 
-A protocol can explicitly allows for a range of valid expressions of the same
+A protocol can explicitly allow for a range of valid expressions of the same
 semantics, with precise definitions for error handling. This is distinct from a
 protocol that relies on the application of the robustness principle. With the
 former, interoperation depends on specifications that capture all relevant
