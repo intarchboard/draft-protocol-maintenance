@@ -397,19 +397,21 @@ faulty but does not define how to handle that input, the implementer can provide
 significant value to the ecosystem by reporting the issue and helping evolve the
 specification.
 
-Maintaining specifications so that they closely match deployments ensures that
-implementations are consistently interoperable and removes needless barriers for
-new implementations. Maintenance also enables continued improvement of the
-protocol. New use cases are an indicator that the protocol could be successful
-{{RFC5218}}.
+When a discrepancy is found between a specification and its implementation, a
+maintenance discussion inside the standards process allows reaching consensus on
+how best to evolve the specification. This in turns can lead to updated
+implementations, with a stable state of specifications matching implementations.
+This ensures that implementations are consistently interoperable and removes
+needless barriers for new implementations. Maintenance also enables continued
+improvement of the protocol. New use cases are an indicator that the protocol
+could be successful {{RFC5218}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocol specifications beyond their initial inception and definition. This
 might require the development of revised specifications, extensions, or other
-supporting material that documents the current state of the protocol.
-Involvement of those who implement and deploy the protocol is a critical part of
-this process, as they provide input on their experience with how the protocol is
-used.
+supporting material that evolves in concert with implementations. Involvement of
+those who implement and deploy the protocol is a critical part of this process,
+as they provide input on their experience with how the protocol is used.
 
 Most interoperability problems do not require revision of protocols or protocol
 specifications. For instance, the most effective means of dealing with a
@@ -500,12 +502,12 @@ that are made to the protocol.
 
 Deliberate exclusion of problematic implementations is an important tool that
 can ensure that the interoperability of a protocol remains viable. While
-compatible changes are always preferable to incompatible ones, it is not always
-possible to produce a design that protects the ability of all current and future
-protocol participants to interoperate. Developing and deploying changes that
-risk exclusion of previously interoperating implementations requires some care,
-but changes to a protocol should not be blocked on the grounds of the risk of
-exclusion alone.
+backward compatible changes are always preferable to incompatible ones, it is
+not always possible to produce a design that protects the ability of all current
+and future protocol participants to interoperate. Developing and deploying
+changes that risk exclusion of previously interoperating implementations
+requires some care, but changes to a specification should not be blocked on the
+grounds of the risk of exclusion alone.
 
 Exclusion is a direct goal when choosing to be intolerant of errors (see
 {{intolerance}}). Exclusionary actions are employed with the deliberate intent
