@@ -399,11 +399,11 @@ specification.
 
 When a discrepancy is found between a specification and its implementation, a
 maintenance discussion inside the standards process allows reaching consensus on
-how best to evolve the specification. Updating implementations
-to match specifications ensures that implementations are consistently interoperable and removes
-needless barriers for new implementations. Maintenance also enables continued
-improvement of the protocol. New use cases are an indicator that the protocol
-could be successful {{RFC5218}}.
+how best to evolve the specification. Subsequently updating implementations to
+match evolved specifications ensures that implementations are consistently
+interoperable and removes needless barriers for new implementations. Maintenance
+also enables continued improvement of the protocol. New use cases are an
+indicator that the protocol could be successful {{RFC5218}}.
 
 Protocol designers are strongly encouraged to continue to maintain and evolve
 protocol specifications beyond their initial inception and definition. This
