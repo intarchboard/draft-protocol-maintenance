@@ -226,7 +226,7 @@ depends more extensively on implementations making compatible decisions.
 The context from which the robustness principle was developed provides valuable
 insights into its intent and purpose. The earliest form of the principle in the
 RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
-sentence that reveals the motivation for the principle:
+sentence that reveals a motivation for the principle:
 
 {:quote}
 > While the goal of this specification is to be explicit about the protocol
