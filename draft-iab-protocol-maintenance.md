@@ -323,11 +323,12 @@ From observing widely deployed protocols, it appears there are two stable points
 on the spectrum between being strict versus permissive in the presence of
 protocol errors:
 
-* If implementations predominantly enforce strict compliance with
+* If continually updating implementations predominantly enforce strict compliance with
   specifications, newer implementations will experience failures if they do not
   comply with protocol requirements. Newer implementations need to fix
   compliance issues in order to be successfully deployed. This ensures that most
-  deployments are compliant.
+  deployments are compliant over time.  This is especially true for
+  implementations that have expected rapid update cycles (for example web browsers).
 
 * Conversely, if non-compliance is tolerated by existing implementations,
   non-compliant implementations can be deployed successfully. Newer
