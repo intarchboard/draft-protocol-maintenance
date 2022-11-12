@@ -135,7 +135,9 @@ problems in deployments.
 Ideally, protocol implementations can be actively maintained so that unexpected
 conditions are proactively identified and resolved. Some deployments might still
 need to apply short-term mitigations for deployments that cannot be easily
-updated, but such cases need not be permanent. This is discussed further in
+updated, but the permanence of these mitigations depend on the
+deployment environments of the protocol which ideally should support
+rapid protocol implementation updates. This is discussed further in
 {{active}}.
 
 
