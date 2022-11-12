@@ -372,6 +372,26 @@ by revising or extending it, makes the protocol better in the process.
 Tolerating unexpected input instead conceals problems, making it harder, if not
 impossible, to fix them later.
 
+## Intentionally harmful ecosystems
+
+Vendors that have captured a significant portion of a protocol
+marketplace have been known to accidentally or intentionally create
+forks in defacto protocol standards.  These approaches, known as
+"embrace and extend" (or - worse - "embrace and deviate") have caused
+significant challenges in wide-scale interoperable deployment.
+Sometimes these have been rectified over time as a market dominant
+deviation has been brought back into interoperable standards
+specifications, such as the case with the deviation in the kerberos
+GSS API {{?GSS=RFC1964}}. [TODO: need to the RFC that microsoft's
+deviation later came to convergence with] At other times these have
+rectified over time through obsolesce of an implementation, such as is
+the case with early deployments of differing HTTP and HTML
+specifications that required complex web server configurations to
+detect which web browser a client was using before returning differing
+responses.  Other times these result in unfortunate permanent
+deviations in a protocol or language, such as the SQL language that
+must be carefully tailored to the database server in use.
+
 
 # Active Protocol Maintenance {#active}
 
