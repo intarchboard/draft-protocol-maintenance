@@ -308,13 +308,19 @@ and can be added to messages in any order. However, some server implementations
 terminated connections if they encountered a TLS ClientHello message that ends
 with an empty extension. To maintain interoperability, client implementations
 were required to be aware of this bug and ensure that a ClientHello message ends
-in a non-empty extension.
+in a non-empty extension.  Because TLS implementations are numerous,
+widely deployed and not always easily updatable this "fix" has unfortunately
+become a new undocumented implementation requirement.
 
-Overapplication of the robustness principle therefore encourages a chain
-reaction that can create interoperability problems over time. In particular,
-tolerating unexpected behavior is particularly deleterious for early
-implementations of new protocols as quirks in early implementations can affect
-all subsequent deployments.
+Overapplication of the robustness principle therefore encourages a
+chain reaction that can create interoperability problems over time. In
+particular, tolerating unexpected behavior is particularly deleterious
+for early implementations of new protocols as quirks in early
+implementations can affect all subsequent deployments.  If the TLS
+extension bug had been caught early enough through connection
+rejections, the bug itself (and its fix) would not have been so widely
+deployed into devices that are unable to update their TLS
+implementation quickly.
 
 
 ## Ecosystem Effects {#ecosystem}
