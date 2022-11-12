@@ -156,7 +156,9 @@ practices that this document recommends. In particular, some practices - such as
 those described in {{intolerance}} - only exist to support the development of
 protocol maintenance and evolution. Employing this guidance is therefore only
 applicable where there is the possibility of improving deployments through
-timely updates of their implementations.
+timely updates of their implementations.  When this is impossible,
+following the original interpretation of the robustness principle may
+still be a better path to follow.
 
 
 ## Extensibility {#extensibility}
