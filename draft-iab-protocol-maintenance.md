@@ -334,6 +334,13 @@ protocol errors:
   implementations then have strong incentive to tolerate any existing
   non-compliance in order to be successfully deployed. This ensures that most
   deployments are tolerant of the same non-compliant behavior.
+  Unfortunately, following the robustness principal results in this
+  protocol evolution behavior but is required in implementations that
+  expect rare updates to the protocol implementation deployments, such
+  as routers in the core internet infrastructure that can have uptimes
+  on the order of 5-10 years.  New implementations have no alternative
+  in these scenarios but to accommodate the implementation choices
+  and bugs found in existing deployments.
 
 This happens because interoperability requirements for protocol implementations
 are set by other deployments. Specifications and - where they exist - test
