@@ -458,7 +458,9 @@ intolerance can be harnessed to reduce occurrences of aberrant implementations.
 Intolerance toward violations of specification improves feedback for new
 implementations in particular. When a new implementation encounters a peer that
 is intolerant of an error, it receives strong feedback that allows the problem
-to be discovered quickly.
+to be discovered quickly.  Note that user-facing clients will likely discover
+interoperability problems more quickly than servers, and because of
+this have greater motivation for fixing interoperability concerns more rapidly.
 
 To be effective, intolerant implementations need to be sufficiently widely
 deployed that they are encountered by new implementations with high probability.
