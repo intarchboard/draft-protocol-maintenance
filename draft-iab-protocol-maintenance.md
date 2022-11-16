@@ -382,7 +382,7 @@ errors accumulates over time. Indeed, when faced with divergent interpretations
 of an immutable specification, the only way for an implementation to remain
 interoperable is to be tolerant of differences in interpretation and
 implementation errors. However, when official specifications fail to be
-updated, deployed implementations - including their quirks - can become
+updated then deployed implementations - including their quirks - often become
 a substitute standard.
 
 Tolerating unexpected inputs from another implementation might seem logical,
