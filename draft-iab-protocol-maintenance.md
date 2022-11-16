@@ -381,7 +381,9 @@ remains unchanged for an extended period of time, incentive to be tolerant of
 errors accumulates over time. Indeed, when faced with divergent interpretations
 of an immutable specification, the only way for an implementation to remain
 interoperable is to be tolerant of differences in interpretation and
-implementation errors.
+implementation errors. When official specifications fail to be updated
+due to lack of maintenance, the implementations (and their potential
+oddities) become a replacement de facto standard.
 
 Tolerating unexpected inputs from another implementation might seem logical,
 even necessary. But that conclusion relies on an assumption that existing
