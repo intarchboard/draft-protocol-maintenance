@@ -397,8 +397,8 @@ faulty but does not define how to handle that input, the implementer can provide
 significant value to the ecosystem by reporting the issue and helping evolve the
 specification.
 
-Maintaining specifications and all implementations
-so that they closely match all deployments ensures that
+Maintaining specifications and implementations
+so that they closely match deployments ensures that
 implementations are consistently interoperable and removes needless barriers for
 new implementations. Maintenance also enables continued improvement of the
 protocol. New use cases are an indicator that the protocol could be successful
