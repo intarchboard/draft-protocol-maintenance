@@ -306,7 +306,8 @@ for bug compatible".
 For example, in TLS {{?TLS=RFC8446}}, extensions use a tag-length-value format
 and can be added to messages in any order. However, some server implementations
 terminated connections if they encountered a TLS ClientHello message that ends
-with an empty extension. To maintain interoperability, client implementations
+with an empty extension. To maintain interoperability with these servers,
+which were widely deployed, client implementations
 were required to be aware of this bug and ensure that a ClientHello message ends
 in a non-empty extension.  Because TLS implementations are numerous,
 widely deployed and not always easily updatable this "fix" has unfortunately
