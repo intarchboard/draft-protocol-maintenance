@@ -469,6 +469,11 @@ To be effective, intolerant implementations need to be sufficiently widely
 deployed that they are encountered by new implementations with high probability.
 This could depend on multiple implementations deploying strict checks.
 
+Interoperability problems also need to be made known to those in a position to
+address them. In particular, systems with human operators, such as user-facing
+clients, are ideally suited to surfacing errors.  Other systems might need to
+use less direct means of making errors known.
+
 This does not mean that intolerance of errors in early deployments of protocols
 has the effect of preventing interoperability. On the contrary, when existing
 implementations follow clearly-specified error handling, new implementations or
