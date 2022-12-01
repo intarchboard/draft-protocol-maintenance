@@ -368,7 +368,8 @@ Protocol Extension Mechanisms {{?RFC9170}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design. A community that is willing to make changes to the protocol,
-by revising or extending it, makes the protocol better in the process.
+by revising or extending specifications and then deploying those changes,
+makes the protocol better.
 Tolerating unexpected input instead conceals problems, making it harder, if not
 impossible, to fix them later.
 
