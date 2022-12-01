@@ -182,7 +182,8 @@ In contrast, relying on implementations to consistently apply the robustness
 principle is not a good strategy for extensibility. Using undocumented or
 accidental features of a protocol as the basis of an extensibility mechanism can
 be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
-of EXT}}.
+of EXT}}.  It is better and easier to design a protocol for extensibility
+initially than to retrofit the capability (see also {{?EDNS0=RFC2671}}).
 
 
 ## Flexible Protocols {#flexibility}
