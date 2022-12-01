@@ -91,7 +91,7 @@ Robustness to attacks:
 : Since not all actors on the Internet are benevolent, networking software needs
 to be resilient to input that is intentionally crafted to cause unexpected
 consequences. For example, software must ensure that invalid input doesn't allow
-the sender to access data that it would otherwise not be allowed to.
+the sender to access data, change data, or perform actions that it would otherwise not be allowed to.
 
 Robustness to the unexpected:
 
