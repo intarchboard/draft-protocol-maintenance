@@ -328,7 +328,7 @@ protocol errors:
   specifications, newer implementations will experience failures if they do not
   comply with protocol requirements. Newer implementations need to fix
   compliance issues in order to be successfully deployed. This ensures that most
-  deployments are compliant.
+  deployments are compliant over time.
 
 * Conversely, if non-compliance is tolerated by existing implementations,
   non-compliant implementations can be deployed successfully. Newer
