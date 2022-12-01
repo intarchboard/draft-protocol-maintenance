@@ -336,8 +336,8 @@ protocol errors:
   deployments are tolerant of the same non-compliant behavior.
 
 This happens because interoperability requirements for protocol implementations
-are set by other deployments. Specifications and - where they exist - test
-suites can guide the initial development of implementations.  Ultimately, the
+are set by other deployments. Specifications and test suites - where they exist -
+can guide the initial development of implementations.  Ultimately, the
 need to interoperate with deployed implementations is a de facto conformance
 test suite that can supersede any formal protocol definition.
 
