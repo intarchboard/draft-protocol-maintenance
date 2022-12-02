@@ -417,7 +417,8 @@ those who implement and deploy the protocol is a critical part of this process,
 as they provide input on their experience with how the protocol is used.
 
 Most interoperability problems do not require revision of protocols or protocol
-specifications. For instance, the most effective means of dealing with a
+specifications, as software defects can happen even when the specification is
+unambiguous. For instance, the most effective means of dealing with a
 defective implementation in a peer could be to contact the developer
 responsible. It is far more efficient in the long term to fix one isolated bug
 than it is to deal with the consequences of workarounds.
