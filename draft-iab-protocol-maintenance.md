@@ -170,7 +170,7 @@ before another party is prepared to receive it, it might be assumed that the
 receiving party is being tolerant of new types of input.
 
 A well-designed extensibility mechanism establishes clear rules for the handling
-of things like new messages or parameters. This depends on specifying the
+of elements like new messages or parameters. This depends on specifying the
 handling of malformed or illegal inputs so that implementations behave
 consistently in all cases that might affect interoperation. New messages or
 parameters thereby become entirely expected. If extension mechanisms and error
@@ -207,12 +207,12 @@ might be necessary.
 
 In BGP {{?BGP=RFC4271}}, a peer generates UPDATE messages based on messages it
 receives from other peers. Peers can copy attributes without validation,
-potentially propagating invalid values. RFC 4271 mandated a session reset for
-invalid UPDATE messages, a requirement that was not widely implemented. In many
-deployments, peers would treat a malformed UPDATE in less stringent ways, such
-as by treating the affected route as having been withdrawn. Ultimately, RFC 7606
-{{?BGP-REH=RFC7606}} documented this practice and provided precise rules,
-including mandatory actions for different error conditions.
+potentially propagating invalid values. RFC 4271 {{BGP}} mandated a session
+reset for invalid UPDATE messages, a requirement that was not widely
+implemented. In many deployments, peers would treat a malformed UPDATE in less
+stringent ways, such as by treating the affected route as having been withdrawn.
+Ultimately, RFC 7606 {{?BGP-REH=RFC7606}} documented this practice and provided
+precise rules, including mandatory actions for different error conditions.
 
 A protocol can explicitly allow for a range of valid expressions of the same
 semantics, with precise definitions for error handling. This is distinct from a
