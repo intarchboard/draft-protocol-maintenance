@@ -515,10 +515,18 @@ Deliberate exclusion of problematic implementations is an important tool that
 can ensure that the interoperability of a protocol remains viable. While
 backward compatible changes are always preferable to incompatible ones, it is
 not always possible to produce a design that protects the ability of all current
-and future protocol participants to interoperate. Developing and deploying
-changes that risk exclusion of previously interoperating implementations
-requires some care, but changes to a specification should not be blocked on the
-grounds of the risk of exclusion alone.
+and future protocol participants to interoperate.
+
+Accidentally excluding unexpected participants is not usually a good outcome.
+When developing and deploying changes it is best to first understand the extent
+to which the change affects existing deployments.  This ensures that any
+exclusion that occurs is intentional.
+
+In some cases, existing deployments might need to change in order to avoid being
+excluded.  Though it might be preferable to avoid forcing deployments to change,
+this might be considered necessary.  To avoid unnecessarily excluding
+deployments that might take time to change, developing a migration plan can be
+prudent.
 
 Exclusion is a direct goal when choosing to be intolerant of errors (see
 {{intolerance}}). Exclusionary actions are employed with the deliberate intent
