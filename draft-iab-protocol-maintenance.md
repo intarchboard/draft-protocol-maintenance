@@ -565,7 +565,8 @@ This document has no IANA actions.
 {:numbered="false"}
 
 Constructive feedback on this document has been provided by a surprising number
-of people including, but not limited to: {{{Bernard Aboba}}}, {{{Brian
-Carpenter}}}, {{{Stuart Cheshire}}}, {{{Mark Nottingham}}}, {{{Russ Housley}}},
-{{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}}, {{{Robert
-Sparks}}}, {{{Brian Trammell}}}, {{{Dave Thaler}}}, and {{{Anne Van Kesteren}}}.
+of people including, but not limited to: {{{Bernard Aboba}}},
+{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Joel Halpern}}},
+{{{Russ Housley}}}, {{{Mark Nottingham}}}, {{{Eric Rescorla}}},
+{{{Henning Schulzrinne}}}, {{{Job Snijders}}}, {{{Robert Sparks}}},
+{{{Dave Thaler}}}, {{{Brian Trammell}}}, and {{{Anne Van Kesteren}}}.
