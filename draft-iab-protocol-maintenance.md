@@ -518,7 +518,7 @@ not always possible to produce a design that protects the ability of all current
 and future protocol participants to interoperate.
 
 Accidentally excluding unexpected participants is not usually a good outcome.
-When developing and deploying changes it is best to first understand the extent
+When developing and deploying changes, it is best to first understand the extent
 to which the change affects existing deployments.  This ensures that any
 exclusion that occurs is intentional.
 
