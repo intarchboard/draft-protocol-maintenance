@@ -570,3 +570,5 @@ of people including, but not limited to: {{{Bernard Aboba}}},
 {{{Russ Housley}}}, {{{Mark Nottingham}}}, {{{Eric Rescorla}}},
 {{{Henning Schulzrinne}}}, {{{Job Snijders}}}, {{{Robert Sparks}}},
 {{{Dave Thaler}}}, {{{Brian Trammell}}}, and {{{Anne Van Kesteren}}}.
+Some of the properties of protocols described in this document were observed
+by {{{Marshall Rose}}} in {{Section 4.5 of ?RFC3117}}.
