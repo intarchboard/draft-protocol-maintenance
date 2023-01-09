@@ -1,7 +1,7 @@
-#  The Harmful Consequences of the Robustness Principle
+#  Maintaining Robust Protocols
 
-This is the working area for the IAB Internet-Draft, "The Harmful Consequences
-of the Robustness Principle", formerly draft-thomson-postel-was-wrong.
+This is the working area for the IAB Internet-Draft, "Maintaining RobustProtocols",
+formerly draft-thomson-postel-was-wrong.
 
 * [Editor's Copy](https://intarchboard.github.io/draft-protocol-maintenance/draft-iab-protocol-maintenance.html)
 * [IAB Draft](https://datatracker.ietf.org/doc/draft-iab-protocol-maintenance/)
