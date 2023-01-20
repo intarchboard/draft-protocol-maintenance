@@ -69,7 +69,7 @@ healthy ecosystem.
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception. In particular, a sizeable proportion of IETF
 activity is dedicated to the stewardship of existing protocols. This document
-fisrt discusses hazards in applying the robustness principle too broadly in 
+first discusses hazards in applying the robustness principle too broadly in
 section {{robustness}}, and offers an alternative strategy for handling interoperability
 problems in deployments in section {{active}}.
 
@@ -128,12 +128,12 @@ ambiguous message be processed according to the inferred intent of the sender.
 The facets of the robustness principle that protect against defects or attack
 are understood to be necessary guiding principles for the design and
 implementation of networked systems. However, an interpretation that advocates
-for tolerating unexpected inputs is no longer recommended in this document, 
+for tolerating unexpected inputs is no longer recommended in this document,
 instead whereever possible active maintenance to enable quic updates should
 be applied.
 
 Time and experience shows that negative consequences to interoperability
-accumulate over time if implementations silently accept faulty input. 
+accumulate over time if implementations silently accept faulty input.
 This problem is discussed in more detail in section {{decay}}. Deployments
 where this problem is obsevered are often based an implicit assumption that it is not possible to effect
 change in a system the size of the Internet. When one assumes that changes to
@@ -265,7 +265,7 @@ timely updates of their implementations.
 
 
 
-# Harmful Consequences of Tolerating the Unexpected 
+# Harmful Consequences of Tolerating the Unexpected
 
 Problems in other implementations can create an unavoidable need to temporarily
 tolerate unexpected inputs. However, this course of action carries risks.
