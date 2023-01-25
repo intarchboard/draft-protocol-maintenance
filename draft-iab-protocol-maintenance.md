@@ -63,9 +63,9 @@ maintained, protocol designers and implementers can avoid these pitfalls.
 There is good evidence to suggest that many important protocols are routinely
 maintained beyond their inception. In particular, a sizeable proportion of IETF
 activity is dedicated to the stewardship of existing protocols. This document
-serves primarily as a record of the hazards in applying the robustness principle
-too broadly, and offers an alternative strategy for handling interoperability
-problems in deployments.
+first discusses hazards in applying the robustness principle too broadly (see
+{{robustness}}), and offers an alternative strategy for handling interoperability
+problems in deployments (see {{active}}).
 
 Ideally, protocol implementations can be actively maintained so that unexpected
 conditions are proactively identified and resolved. Some deployments might still
@@ -92,7 +92,7 @@ interoperable systems.  Many consider the application of the robustness
 principle to be instrumental in the success of the Internet as well as the
 design of interoperable protocols in general.
 
-As described above, the robustness principle covers three scenarios:
+There are three main aspects to the robustness principle:
 
 Robustness to software defects:
 
@@ -195,8 +195,8 @@ handling are designed and implemented correctly, new protocol features can be
 deployed with confidence in the understanding of the effect they have on
 existing implementations.
 
-In contrast, relying on implementations to consistently apply the robustness
-principle is not a good strategy for extensibility. Using undocumented or
+In contrast, relying on implementations to consistently handle unexpected input
+is not a good strategy for extensibility. Using undocumented or
 accidental features of a protocol as the basis of an extensibility mechanism can
 be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
 of EXT}}.  It is better and easier to design a protocol for extensibility
