@@ -569,10 +569,11 @@ This document has no IANA actions.
 
 Constructive feedback on this document has been provided by a surprising number
 of people including, but not limited to: {{{Bernard Aboba}}},
-{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Joel Halpern}}},
-{{{Russ Housley}}}, {{{Cullen Jennings}}}, {{{Mallory Knodel}}},
-{{{Mirja Kühlewind}}}, {{{Mark Nottingham}}}, {{{Eric Rescorla}}},
-{{{Henning Schulzrinne}}}, {{{Job Snijders}}}, {{{Robert Sparks}}},
-{{{Dave Thaler}}}, {{{Brian Trammell}}}, and {{{Anne Van Kesteren}}}.
+{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Wes Hardaker}}},
+{{{Joel Halpern}}}, {{{Russ Housley}}}, {{{Cullen Jennings}}},
+{{{Mallory Knodel}}}, {{{Mirja Kühlewind}}}, {{{Mark Nottingham}}},
+{{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}},
+{{{Robert Sparks}}}, {{{Dave Thaler}}}, {{{Brian Trammell}}},
+and {{{Anne van Kesteren}}}.
 Some of the properties of protocols described in {{decay}} were observed
 by {{{Marshall Rose}}} in {{Section 4.5 of ?RFC3117}}.
