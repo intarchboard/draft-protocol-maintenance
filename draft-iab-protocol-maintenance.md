@@ -60,6 +60,22 @@ maintained, protocol designers and implementers can avoid these pitfalls.
 
 # Introduction
 
+There is good evidence to suggest that many important protocols are routinely
+maintained beyond their inception. In particular, a sizeable proportion of IETF
+activity is dedicated to the stewardship of existing protocols. This document
+first discusses hazards in applying the robustness principle too broadly (see
+{{robustness}}), and offers an alternative strategy for handling interoperability
+problems in deployments (see {{active}}).
+
+Ideally, protocol implementations can be actively maintained so that unexpected
+conditions are proactively identified and resolved. Some deployments might still
+need to apply short-term mitigations for deployments that cannot be easily
+updated, but such cases need not be permanent. This is discussed further in
+{{active}}.
+
+
+# Protocol Robustness {#robustness}
+
 The robustness principle has been hugely influential in shaping the design of
 the Internet. As stated in the IAB document on Architectural Principles of the
 Internet {{?RFC1958}}, the robustness principle advises to:
@@ -76,7 +92,7 @@ interoperable systems.  Many consider the application of the robustness
 principle to be instrumental in the success of the Internet as well as the
 design of interoperable protocols in general.
 
-As described above, the robustness principle covers three scenarios:
+There are three main aspects to the robustness principle:
 
 Robustness to software defects:
 
@@ -125,38 +141,39 @@ specifications alongside implementations and deployments of those protocols. A
 community that takes an active role in the maintenance of protocols will no
 longer need to rely on the robustness principle to avoid interoperability issues.
 
-There is good evidence to suggest that many important protocols are routinely
-maintained beyond their inception. In particular, a sizeable proportion of IETF
-activity is dedicated to the stewardship of existing protocols. This document
-serves primarily as a record of the hazards in applying the robustness principle
-too broadly, and offers an alternative strategy for handling interoperability
-problems in deployments.
 
-Ideally, protocol implementations can be actively maintained so that unexpected
-conditions are proactively identified and resolved. Some deployments might still
-need to apply short-term mitigations for deployments that cannot be easily
-updated, but such cases need not be permanent. This is discussed further in
-{{active}}.
+## Fallibility of Specifications
 
+The context from which the robustness principle was developed provides valuable
+insights into its intent and purpose. The earliest form of the principle in the
+RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
+sentence that reveals a motivation for the principle:
 
-# Applicability
+{:quote}
+> While the goal of this specification is to be explicit about the protocol
+  there is the possibility of differing interpretations.  In general, an
+  implementation should be conservative in its sending behavior, and liberal in
+  its receiving behavior.
 
-The guidance in this document is intended for protocols that are deployed to the
-Internet. There are some situations in which this guidance might not apply to a
-protocol due to conditions on its implementation or deployment.
+This formulation of the principle expressly recognizes the possibility that the
+specification could be imperfect. This contextualizes the principle in an
+important way.
 
-In particular, this guidance depends on an ability to update and deploy
-implementations. Being able to rapidly update implementations that are deployed
-to the Internet helps managing security risk but in reality some software
-deployments have lifecycles that make software updates either rare or altogether
-impossible.
+Imperfect specifications are unavoidable, largely because it is more important
+to proceed to implementation and deployment than it is to perfect a
+specification. A protocol benefits greatly from experience with its use. A
+deployed protocol is immeasurably more useful than a perfect protocol
+specification. This is particularly true in early phases of system design, to
+which the robustness principle is best suited.
 
-Where implementations are not updated, there is no opportunity to apply the
-practices that this document recommends. In particular, some practices - such as
-those described in {{intolerance}} - only exist to support the development of
-protocol maintenance and evolution. Employing this guidance is therefore only
-applicable where there is the possibility of improving deployments through
-timely updates of their implementations.
+As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
+success or failure of a protocol depends far more on factors like usefulness
+than on technical excellence. Timely publication of protocol specifications,
+even with the potential for flaws, likely contributed significantly to the
+eventual success of the Internet.
+
+This premise that specifications will be imperfect is correct. However, ignoring
+faulty or ambiguous input is almost always the incorrect solution to the problem.
 
 
 ## Extensibility {#extensibility}
@@ -178,8 +195,8 @@ handling are designed and implemented correctly, new protocol features can be
 deployed with confidence in the understanding of the effect they have on
 existing implementations.
 
-In contrast, relying on implementations to consistently apply the robustness
-principle is not a good strategy for extensibility. Using undocumented or
+In contrast, relying on implementations to consistently handle unexpected input
+is not a good strategy for extensibility. Using undocumented or
 accidental features of a protocol as the basis of an extensibility mechanism can
 be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
 of EXT}}.  It is better and easier to design a protocol for extensibility
@@ -222,38 +239,24 @@ details; whereas - as noted in {{ecosystem}} - interoperation in the latter
 depends more extensively on implementations making compatible decisions.
 
 
-# Fallibility of Specifications
+# Applicability
 
-The context from which the robustness principle was developed provides valuable
-insights into its intent and purpose. The earliest form of the principle in the
-RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
-sentence that reveals a motivation for the principle:
+The guidance in this document is intended for protocols that are deployed to the
+Internet. There are some situations in which this guidance might not apply to a
+protocol due to conditions on its implementation or deployment.
 
-{:quote}
-> While the goal of this specification is to be explicit about the protocol
-  there is the possibility of differing interpretations.  In general, an
-  implementation should be conservative in its sending behavior, and liberal in
-  its receiving behavior.
+In particular, this guidance depends on an ability to update and deploy
+implementations. Being able to rapidly update implementations that are deployed
+to the Internet helps managing security risk but in reality some software
+deployments have lifecycles that make software updates either rare or altogether
+impossible.
 
-This formulation of the principle expressly recognizes the possibility that the
-specification could be imperfect. This contextualizes the principle in an
-important way.
-
-Imperfect specifications are unavoidable, largely because it is more important
-to proceed to implementation and deployment than it is to perfect a
-specification. A protocol benefits greatly from experience with its use. A
-deployed protocol is immeasurably more useful than a perfect protocol
-specification. This is particularly true in early phases of system design, to
-which the robustness principle is best suited.
-
-As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
-success or failure of a protocol depends far more on factors like usefulness
-than on technical excellence. Timely publication of protocol specifications,
-even with the potential for flaws, likely contributed significantly to the
-eventual success of the Internet.
-
-This premise that specifications will be imperfect is correct. However, ignoring
-faulty or ambiguous input is almost always the incorrect solution to the problem.
+Where implementations are not updated, there is no opportunity to apply the
+practices that this document recommends. In particular, some practices - such as
+those described in {{intolerance}} - only exist to support the development of
+protocol maintenance and evolution. Employing this guidance is therefore only
+applicable where there is the possibility of improving deployments through
+timely updates of their implementations.
 
 
 # Harmful Consequences of Tolerating the Unexpected
