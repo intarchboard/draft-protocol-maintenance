@@ -74,7 +74,7 @@ updated, but such cases need not be permanent. This is discussed further in
 {{active}}.
 
 
-# Protocol Robustness
+# Protocol Robustness {#robustness}
 
 The robustness principle has been hugely influential in shaping the design of
 the Internet. As stated in the IAB document on Architectural Principles of the
