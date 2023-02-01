@@ -16,16 +16,9 @@ venue:
 author:
  -
     name: Martin Thomson
-    org: Mozilla
     email: mt@lowentropy.net
  -
     name: David Schinazi
-    org: Google LLC
-    street: 1600 Amphitheatre Parkway
-    city: Mountain View
-    region: CA
-    code: 94043
-    country: United States of America
     email: dschinazi.ietf@gmail.com
 
 informative:
@@ -560,6 +553,30 @@ This document has no IANA actions.
 
 
 --- back
+
+# IAB Members at the Time of Approval
+{:numbered="false"}
+
+Internet Architecture Board members at the time this document was approved
+for publication were:
+
+* Jari Arkko
+* Deborah Brungard
+* Lars Eggert
+* Wes Hardaker
+* Cullen Jennings
+* Mallory Knodel
+* Mirja Kühlewind
+* Zhenbin Li
+* Tommy Pauly
+* David Schinazi
+* Russ White
+* Qin Wu
+* Jiankang Yao
+
+The document had broad but not unanimous approval within the IAB, reflecting
+that while the guidance is valid, concerns were expressed in the IETF community
+about how broadly it applies in all situations.
 
 # Acknowledgments
 {:numbered="false"}
