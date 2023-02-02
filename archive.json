@@ -1,0 +1,412 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2021-07-13T00:34:34.298182+00:00",
+  "repo": "intarchboard/draft-protocol-maintenance",
+  "labels": [
+    {
+      "name": "bug",
+      "description": null,
+      "color": "fc2929"
+    },
+    {
+      "name": "duplicate",
+      "description": null,
+      "color": "cccccc"
+    },
+    {
+      "name": "enhancement",
+      "description": null,
+      "color": "84b6eb"
+    },
+    {
+      "name": "help wanted",
+      "description": null,
+      "color": "159818"
+    },
+    {
+      "name": "invalid",
+      "description": null,
+      "color": "e6e6e6"
+    },
+    {
+      "name": "question",
+      "description": null,
+      "color": "cc317c"
+    },
+    {
+      "name": "wontfix",
+      "description": null,
+      "color": "ffffff"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "MDU6SXNzdWU5NjYwNjcyNA==",
+      "title": "Commentary",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/1",
+      "state": "CLOSED",
+      "author": "zackw",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I wrote a public commentary on this I-D at https://readings.owlfolio.org/2015/postel-was-wrong/ .\n\nI would like to draw your attention particularly to the list of \"real-world situations from the last couple decades of Internet protocol design that the author may or may not have considered.\"  These are all cases where (it seems to me) your proposed strictness principle may be incompatible with other desirable engineering goals, e.g. incremental deployment of extensions, author ergonomics, and security.  Explicit consideration of such cases would, IMHO, make your proposal stronger.  I'll summarize them here, but you may want to click through for the footnotes and so on:\n- Reserved bits in TCP/IP packet headers, treated as must-be-zero by some routers, preventing incremental deployment of ECN\n- TLS version intolerance (again, strictness versus incremental deployment)\n- Padding oracles (in which fail-fast leads to a complete breach of confidentiality)\n- The mandated error recovery behavior in both HTML5 and CSS\n",
+      "createdAt": "2015-07-22T16:15:51Z",
+      "updatedAt": "2018-05-14T05:59:59Z",
+      "closedAt": "2018-05-03T05:58:29Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think that the recent version takes a view that is more compatible with these cases, but I think you have a different problem here, at least for some of these example.  \r\n\r\nApparently ECN - as a mere 4 bit protocol - is remarkable in that it has been screwed up more than 16 different ways.  ECN failures and TLS version intolerance are prime examples of how lack of end-to-end protection of critical protocol signals can make what we now call \"ossification\" in the network possible.  The IAB has a [draft statement](https://datatracker.ietf.org/doc/html/draft-hardie-path-signals) on the principles that we believe apply in those cases.  Those same principles are driving the design of QUIC.\r\n\r\nI spoke with Anne at some length about the error recovery part, and I think that the error in the previous versions of the draft was in being too binary about how errors are handled.  The error recovery in HTML5 and CSS is a core design feature.  The draft is now clearer about focusing on undefined behaviour - things that the specifications fails to address - more than it is about detecting errors.  The padding oracle thing is addressed as a consequence of that.",
+          "createdAt": "2018-05-03T05:58:29Z",
+          "updatedAt": "2018-05-03T05:58:29Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "MDU6SXNzdWUyMzU5Mzg2NTA=",
+      "title": "Spec lifecycle and specified permissiveness",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/2",
+      "state": "CLOSED",
+      "author": "mnot",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Two thoughts that might be worth considering integrating --\r\n\r\n1) Many protocol development efforts, at their start, are under fairly extreme circumstances. There's a certain amount of hype about the \"new thing\", and yet reluctance to invest *too* much into it, in case it fails. At the same time, there's a rush to complete, so as to beat potential competitors to market, and to assure that sufficient resources (spec author, implementer, etc.) are available. \r\n\r\nAll of this adds up to a tendency to write things down as quickly as possible; considering every corner case and design implication is seen as unnecessary, and putting the effort at additional risk.\r\n\r\nHTTP/1.1 is an excellent example of this; RFC2616 was written down in a great rush, because the Web was \"taking off.\" The httpbis effort took so long not because we were aligning the specs with the reality of implementation (as the current draft implies), but because we had to untangle a substantial mess (we also had to more precisely define for the corner cases, because HTTP was being used for more things -- which your draft does mention, at least generally).\r\n\r\nhttpbisbis might be the one where we tighten things up more substantially....\r\n\r\nConceptually, this is \"protocol maintenance\", if you expand the definition and give some background. I think of this in terms of precision of definition, which is apt to be loose at the beginning of a protocol's lifetime (but we can adopt some practices and tools to minimise this). \r\n\r\n2) There's a substantial body of experience that -- for some protocol artefacts -- permissive consumption is still necessary. In particular, formats that are produced by a large, non-technical or semi-technical set of authors need a fair amount of \"slop.\" There are a lot of war stories in the XML community along these lines (happy to dig up some links).\r\n\r\nI don't think this is that far from the current draft's content; it could be addressed by noting that these sorts of artefacts need permissiveness \"built in\"; i.e., they benefit from detailed, precise error handling defined up front. Waving your hands and saying \"consume permissively\" isn't good enough.\r\n\r\nHappy to put some pull requests together, thought It'd be worth discussing first.",
+      "createdAt": "2017-06-14T16:32:05Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "closedAt": "2018-05-03T05:49:26Z",
+      "comments": [
+        {
+          "author": "britram",
+          "authorAssociation": "NONE",
+          "body": "A related observation occurs to me: some of the resistance to the notions in this draft are fundamentally tied to software development and deployment models that have changed dramatically, both within the Internet protocol design community (especially at the application layer and above), as well as in the wider industry. \"Production\" protocols today run with development cycles than would be considered faster than \"experimental\" in the waterfall-happy mid-1990s. It may be useful to note this explicitly.\r\n",
+          "createdAt": "2017-06-16T11:40:56Z",
+          "updatedAt": "2017-06-16T11:40:56Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This was good feedback.  I was unhappy with the fail noisily thesis and this helped crystalize a thought that I had in #3.  I've recast the problem in #5.\r\n\r\nI see the \"slop\" thing as a necessary part of a specification of that nature - it is firmly in the design space.  The problem is not with tolerance in general, but with tolerance in reaction to shortcomings in the specification.  I think that I've made progress toward capturing that.",
+          "createdAt": "2017-10-26T05:32:39Z",
+          "updatedAt": "2017-10-26T05:32:39Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I've gotten good feedback about the current form of the draft thus far, thanks both for your input, it was a big help.",
+          "createdAt": "2018-05-03T05:49:26Z",
+          "updatedAt": "2018-05-03T05:49:26Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "MDU6SXNzdWUyMzY3NTMxODk=",
+      "title": "Consequence of open-loop development process",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/3",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "An earlier version of the draft included text to the effect that the maxim was less advice and more a reflection on the entropic decay of a protocol ecosystem.  The these of the draft is that, over time, implementations are strongly motivated to be more and more tolerant of rubbish.  If we create a feedback loop, and are prepared to maintain a protocol, then this sort of decay is much less likely to occur.\r\n\r\nThis is related to the comments in #2, which talks about how development processes have evolved over time.",
+      "createdAt": "2017-06-18T23:42:52Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "closedAt": "2017-10-27T09:47:33Z",
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "MDU6SXNzdWUyNjIzNjkzNjE=",
+      "title": "A New Design Principle",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/4",
+      "state": "CLOSED",
+      "author": "annevk",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I think https://www.w3.org/TR/html-design-principles/#interoperability is much preferable to this principle (though maybe not the exact words used).\r\n\r\n1. \"Undefined inputs\" is a problem in the sense that the format/protocol should have an answer for all inputs. (That also gives you an extensibility story.)\r\n2. \"Fail noisily\" is problematic as we don't necessarily want to expose end users to failures. And consider legacy clients encountering a new feature (undefined input?) should not necessarily fail or throw either.\r\n\r\nTo elaborate on 1, not dealing with erroneous/undefined inputs is common in IETF documents and causes all sorts of problems for:\r\n\r\n* Text encodings (now largely solved by https://encoding.spec.whatwg.org/)\r\n* URLs (see https://url.spec.whatwg.org/ for a solution)\r\n* HTTP (see https://github.com/httpwg/http11bis/issues)\r\n* MIME types (see https://github.com/whatwg/mimesniff/issues/30)\r\n\r\nThat has been far more harmful than \"be liberal\" has ever been. After all, you cannot even be liberal if all inputs have defined behavior.",
+      "createdAt": "2017-10-03T09:58:04Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "closedAt": "2018-05-03T05:48:34Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The latest draft is a more fundamental statement about the robustness principle, that I think is now compatible with the HTML design principles.  One thing that I think is exemplified in the WHATWG specifications you cite here is that they are actively maintained.  A lot less is said about error reporting, though I still believe it to be critical in understanding where things went off the rails.",
+          "createdAt": "2018-05-03T05:48:33Z",
+          "updatedAt": "2018-05-03T05:48:33Z"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "MDU6SXNzdWUyNzAyMDQ0NDA=",
+      "title": "Shift emphasis",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/6",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There is a lot more emphasis on fatal error handling now than is necessary to support the thesis.  Trim that text back.  The draft only needs to talk about the importance of collecting feedback from the implementation, deployment, and use of protocols and that error reporting mechanisms are critical to that process.  Then a brief paragraph on the importance of compliance checks in maintaining a healthy ecosystem should do it.\r\n\r\nThe notion of tolerance as a goal probably needs more text.  Tolerance of varying input is costly (both in terms of specification for accuracy and completeness, and in terms of implementation and testing), so it has to be properly justified by other design goals.  \r\n\r\nFor instance, HTML justifies its tolerance by recognizing that documents are frequently authored by humans, who make mistakes.  If HTML were to punish mistakes as a strict XML or SGML parser would, then many documents would not render: the handling of syntax errors in XML is brutal and very hard to diagnose.",
+      "createdAt": "2017-11-01T06:06:00Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "closedAt": "2018-03-05T05:04:51Z",
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "MDU6SXNzdWUzMTk4MDE4OTc=",
+      "title": "Extensibility",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/7",
+      "state": "CLOSED",
+      "author": "annevk",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I still think it's worth touching on extensibility in the error handling section. E.g., if HTTP clients all rejected responses with status codes that are not registered rather than falling back to the default for the range, it'd be much harder to introduce a new status code.",
+      "createdAt": "2018-05-03T06:35:10Z",
+      "updatedAt": "2019-03-11T00:28:25Z",
+      "closedAt": "2019-03-11T00:28:25Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "But that is precisely defined in the HTTP spec, and so isn't at all unspecified or unusual.  What would be unusual would be a 765 status code or a status code of \"octopus\".  Those likely fall into the general bucket of things that a client implementation might do in the name of \"message handling robustness.  Or, as suggested here, errors.",
+          "createdAt": "2018-05-03T09:27:52Z",
+          "updatedAt": "2018-05-03T09:27:52Z"
+        },
+        {
+          "author": "annevk",
+          "authorAssociation": "NONE",
+          "body": "Well, e.g., 450 might gain some additional meaning going forward. So producers best avoid it until such a time it actually is specified and implemented and until then it'd be considered an error of sorts for them to generate it. Consumers best handle it identically to 400 until such a time it's defined as that's more forward-compatible than hard failing.",
+          "createdAt": "2018-05-03T09:35:38Z",
+          "updatedAt": "2018-05-03T09:35:38Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Hmm, that doesn't seem like an application of the robustness principle, just following the general rule of don't send something that you don't know the meaning of.",
+          "createdAt": "2018-05-04T07:16:06Z",
+          "updatedAt": "2018-05-04T07:16:06Z"
+        },
+        {
+          "author": "annevk",
+          "authorAssociation": "NONE",
+          "body": "The main reason I'm raising it is because these classes of errors are often conflated and different standardization communities also them differently.\r\n\r\nAnd it's not just about the producer, it's about legacy receivers too. I'm more comfortable sending 450 if I know it won't result in a consumer error for older consumers.\r\n\r\nOr if you have some JSON format it's often better to ignore unknown fields than to validate the entire JSON structure and reject on unknowns. Assuming you want to extend in a way that is backwards compatible and degrades gracefully.\r\n\r\nThat nuance is often missing when folks complain about things not being \"strict\".",
+          "createdAt": "2018-05-04T07:32:28Z",
+          "updatedAt": "2018-05-04T07:32:28Z"
+        },
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think that I got this one.",
+          "createdAt": "2019-03-11T00:28:25Z",
+          "updatedAt": "2019-03-11T00:28:25Z"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "MDU6SXNzdWUzMjA2NTgzNzA=",
+      "title": "RjS has some experience with broken test suites",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/8",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "These can cause a lot of problems.",
+      "createdAt": "2018-05-07T02:53:27Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "MDU6SXNzdWU0NDUzNDQ5NTU=",
+      "title": "equilibrium points",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/9",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The equilibria thing that ekr raised on the list has hit a nerve.  The document should address that and make the point that the protocol lifecycle has different points in the strictness-postel continuum.  Related to this, the stasis point for different implementations might depend on their relative market position.",
+      "createdAt": "2019-05-17T09:17:37Z",
+      "updatedAt": "2019-05-17T09:17:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 10,
+      "id": "MDU6SXNzdWU0NDUzNDkwNjc=",
+      "title": "bgp example",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/10",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "BGP used to be very strict.  After some collaboration (maintenance), the community found a few ways in which leniency could be specified, making the protocol better.",
+      "createdAt": "2019-05-17T09:26:59Z",
+      "updatedAt": "2019-05-17T09:26:59Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "MDU6SXNzdWU0NDUzNTAyOTY=",
+      "title": "deployments that can't change",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/11",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Say something about deployments where systems are not changeable, or very difficult to update.",
+      "createdAt": "2019-05-17T09:29:46Z",
+      "updatedAt": "2019-11-05T08:42:54Z",
+      "closedAt": "2019-11-05T08:42:54Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In the latest revision.  That text might suffice for #13 also.",
+          "createdAt": "2019-11-05T08:42:54Z",
+          "updatedAt": "2019-11-05T08:42:54Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "MDU6SXNzdWU0NDUzNTY0MzU=",
+      "title": "expunge the last Postel references",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/12",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is talking about the principle, not the person.",
+      "createdAt": "2019-05-17T09:44:15Z",
+      "updatedAt": "2019-11-05T08:42:26Z",
+      "closedAt": "2019-11-05T08:42:26Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In the latest revision.",
+          "createdAt": "2019-11-05T08:42:26Z",
+          "updatedAt": "2019-11-05T08:42:26Z"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "MDU6SXNzdWU0NDUzNTc5NTA=",
+      "title": "be explicit about software development model assumptions",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/13",
+      "state": "CLOSED",
+      "author": "britram",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "quoting myself from email:\r\n\r\n> This document has always very clearly had a specific set of development and deployment properties in mind.\r\n> One of these properties is that there is an effective communications path with short turnaround time between those responsible for operating a protocol (for a fuzzy value of \"operating\") and those responsible for implementing it. Another is that failures in the protocol are observable and actionable, whether by the operators or the implementors.\r\n\r\nBeing explicit about this (preferably without saying \"DevOps\" would be useful in scoping the document.\r\n\r\n",
+      "createdAt": "2019-05-17T09:47:45Z",
+      "updatedAt": "2021-07-12T06:02:39Z",
+      "closedAt": "2021-07-12T06:02:38Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think that text for #11 added in recent versions will suffice.\r\n\r\n> Maintenance is most effective if it is responsive, which is greatly affected by\r\nhow rapidly protocol changes can be deployed.  For protocol deployments that\r\noperate on longer time scales, temporary workarounds following the spirit of the\r\nrobustness principle might be necessary.  If specifications can be updated more\r\nreadily than deployments, details of the workaround can be documented, including\r\nthe desired form of the protocols once the need for workarounds no longer exists\r\nand plans for removing the workaround.\r\n\r\nThis is not specifically about a particular deployment model, though it is certainly informed by the advantages of a shorter feedback loop.  I was just investigating the EDNS compatibility mess and it seems like that worked well enough...over a 20 year period.  The protocol was defined in 1999, the workaround was documented in 2013, and removed from many deployments in 2019.  We might hope for a shorter cycle than that, but it worked just as described.",
+          "createdAt": "2021-07-12T06:02:38Z",
+          "updatedAt": "2021-07-12T06:02:38Z"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "MDU6SXNzdWU0NzA4MDEyOTA=",
+      "title": "Lookaside validation for DNSSEC",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/15",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Because you couldn't get all the way to the root with DNSSEC, you could jump to a side channel service.\r\n\r\nThis was important in getting the DNSSEC thing bootstrapped, but it was also important to turn this off once it was no longer necessary.\r\n\r\nIs this an example of where the Robustness Principle might have been useful.  This was a workaround on the *design* side that was employed rather than an implementation/deployment workaround.",
+      "createdAt": "2019-07-21T16:49:04Z",
+      "updatedAt": "2021-07-12T01:52:39Z",
+      "closedAt": "2021-07-12T01:52:38Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "With the benefit of time, I don't think that this is a useful expansion of the scope of the work.  This is a transitional technology question more than it is a protocol robustness one.  The core design of DNSSEC conveniently allows for different means of communication than the DNS protocol, which might be good design, but it doesn't necessarily read on the core problems this document addresses.",
+          "createdAt": "2021-07-12T01:52:38Z",
+          "updatedAt": "2021-07-12T01:52:38Z"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "MDU6SXNzdWU0NzA4MDIwODk=",
+      "title": "Acknowledge more fully the deployment model",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/issues/16",
+      "state": "CLOSED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "When we are flying by the seat of our pants, there is some value in playing fast and loose in the early stages of deployments.  That might get something off the ground faster as a result, but we should not be blind to the longer term costs.",
+      "createdAt": "2019-07-21T16:58:22Z",
+      "updatedAt": "2019-11-05T08:41:46Z",
+      "closedAt": "2019-11-05T08:41:46Z",
+      "comments": [
+        {
+          "author": "martinthomson",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Decided not to do anything about this based on feedback from other places.  Fast and loose only works during development, not once the design starts being finalized.  And fast and loose tends to hide problems.  Early implementations have a greater influence on the entire system than others as they effectively define interoperability for later implementations.  If they are not correct and if they do not insist upon correctness from new entrants, things can rot badly.",
+          "createdAt": "2019-11-05T08:41:45Z",
+          "updatedAt": "2019-11-05T08:41:45Z"
+        }
+      ]
+    }
+  ],
+  "pulls": [
+    {
+      "number": 5,
+      "id": "MDExOlB1bGxSZXF1ZXN0MTQ4ODQxODUx",
+      "title": "Draw a different conclusion",
+      "url": "https://github.com/intarchboard/draft-protocol-maintenance/pull/5",
+      "state": "MERGED",
+      "author": "martinthomson",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Shifting the emphasis to error reporting was a mistake.  Failure tolerance\r\nisn't inherently bad, it's only bad when it is necessarily outside of the\r\nproscribed space defined by specification.  Indeed, some specifications\r\n(notably HTML) value tolerance of errors and provide specific guidance about\r\nthat tolerance.  That type of design ensures that fault tolerance is clearly\r\nspecified.\r\n\r\nWhere fault tolerance comes in is where it forms part of a feedback loop.  As\r\nmaintainers of protocols (as distinct from mere authors who discarge their\r\nresponsibility when the specification is \"published\"), the ability to continue\r\nmaintenace depends greatly on the amount and quality of feedback from\r\nimplementations and deployments.  Reporting faults is merely a part of that.\r\n\r\nCloses #3, #2.",
+      "createdAt": "2017-10-26T05:33:19Z",
+      "updatedAt": "2018-05-14T06:00:00Z",
+      "baseRepository": "intarchboard/draft-protocol-maintenance",
+      "baseRefName": "master",
+      "baseRefOid": "c1fbdc8a42d4d35e8f04ed890dc832185331066a",
+      "headRepository": "intarchboard/draft-protocol-maintenance",
+      "headRefName": "maintenance",
+      "headRefOid": "042581409935624739f6ade22e802dbc19ae0f70",
+      "closedAt": "2017-10-27T09:47:33Z",
+      "mergedAt": "2017-10-27T09:47:32Z",
+      "mergedBy": "martinthomson",
+      "mergeCommit": {
+        "oid": "042581409935624739f6ade22e802dbc19ae0f70"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
