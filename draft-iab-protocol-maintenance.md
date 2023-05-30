@@ -587,8 +587,8 @@ about how broadly it applies in all situations.
 
 Constructive feedback on this document has been provided by a surprising number
 of people including, but not limited to: {{{Bernard Aboba}}},
-{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Wes Hardaker}}},
-{{{Joel Halpern}}}, {{{Russ Housley}}}, {{{Cullen Jennings}}},
+{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Joel Halpern}}},
+{{{Wes Hardaker}}}, {{{Russ Housley}}}, {{{Cullen Jennings}}},
 {{{Mallory Knodel}}}, {{{Mirja Kühlewind}}}, {{{Mark Nottingham}}},
 {{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}},
 {{{Robert Sparks}}}, {{{Dave Thaler}}}, {{{Brian Trammell}}},
