@@ -497,7 +497,7 @@ Similarly, the use of Extended DNS Errors {{?EDE=RFC8914}} has been
 effective in providing better descriptions of DNS resolution errors to clients.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
-send an error messages in response to every message that is received from an
+send error messages in response to every message that is received from an
 unauthenticated sender. These implementations might need to silently discard
 these messages.
 
