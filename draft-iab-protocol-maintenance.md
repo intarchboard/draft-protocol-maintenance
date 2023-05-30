@@ -546,9 +546,9 @@ to discover.
 
 The consequences of the problems described in this document are especially acute
 for any protocol where security depends on agreement about semantics of protocol
-elements. For instance, use of unsafe security mechanisms, such as weak
-primitives {{?MD5=RFC6151}} or obsolete mechanisms {{?SSL3=RFC7568}}, are good
-examples of where forcing exclusion ({{exclusion}}) can be desirable.
+elements. For instance, weak primitives {{?MD5=RFC6151}} and obsolete mechanisms
+{{?SSL3=RFC7568}} are good examples of the use of unsafe security practices
+where forcing exclusion ({{exclusion}}) can be desirable.
 
 
 # IANA Considerations
