@@ -71,8 +71,8 @@ updated, but such cases need not be permanent. This is discussed further in
 # Protocol Robustness {#robustness}
 
 The robustness principle has been hugely influential in shaping the design of
-the Internet. As stated in the IAB document on Architectural Principles of the
-Internet {{?RFC1958}}, the robustness principle advises to:
+the Internet. As stated in the IAB document "Architectural Principles of the
+Internet" {{?RFC1958}}, the robustness principle advises to:
 
 {:quote}
 > Be strict when sending and tolerant when receiving.  Implementations must
@@ -160,11 +160,11 @@ deployed protocol is immeasurably more useful than a perfect protocol
 specification. This is particularly true in early phases of system design, to
 which the robustness principle is best suited.
 
-As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
-success or failure of a protocol depends far more on factors like usefulness
-than on technical excellence. Timely publication of protocol specifications,
-even with the potential for flaws, likely contributed significantly to the
-eventual success of the Internet.
+As demonstrated by the IAB document "What Makes for a Successful Protocol?"
+{{?RFC5218}}, success or failure of a protocol depends far more on factors like
+usefulness than on technical excellence. Timely publication of protocol
+specifications, even with the potential for flaws, likely contributed
+significantly to the eventual success of the Internet.
 
 This premise that specifications will be imperfect is correct. However, ignoring
 faulty or ambiguous input is almost always the incorrect solution to the problem.
@@ -361,8 +361,8 @@ the origin of features and capabilities that can be of benefit to existing users
 The need to work around interoperability problems also reduces the ability of
 established implementations to change. An accumulation of mitigations for
 interoperability issues makes implementations more difficult to maintain and can
-constrain extensibility (see also the IAB document on the Long-Term Viability of
-Protocol Extension Mechanisms {{?RFC9170}}).
+constrain extensibility (see also the IAB document "Long-Term Viability of
+Protocol Extension Mechanisms" {{?RFC9170}}).
 
 Sometimes what appear to be interoperability problems are symptomatic of issues
 in protocol design. A community that is willing to make changes to the protocol,
@@ -531,8 +531,8 @@ of protecting future interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
 protocol system that could be more harmful than any divergence that might arise
-from tolerating the unexpected. The IAB document on Uncoordinated Protocol
-Development Considered Harmful {{?RFC5704}} describes how conflict or
+from tolerating the unexpected. The IAB document "Uncoordinated Protocol
+Development Considered Harmful" {{?RFC5704}} describes how conflict or
 competition in the maintenance of protocols can lead to similar problems.
 
 
