@@ -2,6 +2,7 @@
 title: "Maintaining Robust Protocols"
 docname: draft-iab-protocol-maintenance-latest
 category: info
+number: 9413
 submissiontype: IAB
 consensus: true
 v: 3
@@ -25,7 +26,6 @@ author:
 informative:
   HTML:
     title: "HTML"
-    date: 2019-03-08
     seriesinfo:
       WHATWG: Living Standard
     target: "https://html.spec.whatwg.org/"
