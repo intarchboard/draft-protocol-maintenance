@@ -493,7 +493,7 @@ arbitrary information that might help the implementer of the sender of the
 faulty input understand and fix the issue in their software. QUIC error frames
 {{?QUIC=RFC9000}} are an example of a fatal error mechanism that helped
 implementers improve software quality throughout the protocol lifecycle.
-Similarly, Extended DNS Errors {{?EDE=RFC8914}} has recently been
+Similarly, the use of Extended DNS Errors {{?EDE=RFC8914}} has been
 effective in providing better descriptions of DNS resolution errors to clients.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
