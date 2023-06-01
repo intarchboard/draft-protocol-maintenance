@@ -19,6 +19,7 @@ keyword:
   - postel
   - principle
   - law
+  - tolerance
   - wrong
 
 author:
