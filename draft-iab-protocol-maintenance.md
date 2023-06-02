@@ -3,6 +3,7 @@ title: "Maintaining Robust Protocols"
 docname: draft-iab-protocol-maintenance-latest
 category: info
 number: 9413
+date: 2023-06
 submissiontype: IAB
 consensus: true
 v: 3
