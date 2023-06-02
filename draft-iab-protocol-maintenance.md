@@ -168,10 +168,10 @@ deployed protocol is immeasurably more useful than a perfect protocol
 specification. This is particularly true in early phases of system design, to
 which the robustness principle is best suited.
 
-As demonstrated by the IAB document "What Makes for a Successful Protocol?"
-{{?RFC5218}}, success or failure of a protocol depends far more on factors like
-usefulness than on technical excellence. Timely publication of protocol
-specifications, even with the potential for flaws, likely contributed
+As demonstrated by the IAB document "What Makes for a Successful
+Protocol?"&nbsp;{{?RFC5218}}, success or failure of a protocol depends far more
+on factors like usefulness than on technical excellence. Timely publication of
+protocol specifications, even with the potential for flaws, likely contributed
 significantly to the eventual success of the Internet.
 
 This premise that specifications will be imperfect is correct. However, ignoring
@@ -573,7 +573,7 @@ This document has no IANA actions.
 Internet Architecture Board members at the time this document was approved
 for publication were:
 
-<ul empty="true" spacing="compact">
+<ul empty="true" spacing="compact" bare="false" indent="3">
 <li><t><contact fullname="Jari Arkko"/></t></li>
 <li><t><contact fullname="Deborah Brungard"/></t></li>
 <li><t><contact fullname="Lars Eggert"/></t></li>
