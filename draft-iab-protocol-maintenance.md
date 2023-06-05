@@ -2,6 +2,8 @@
 title: "Maintaining Robust Protocols"
 docname: draft-iab-protocol-maintenance-latest
 category: info
+number: 9413
+date: 2023-06
 submissiontype: IAB
 consensus: true
 v: 3
@@ -13,6 +15,13 @@ venue:
   arch: https://www.iab.org/mailman/listinfo/edm
   repo: https://github.com/intarchboard/draft-protocol-maintenance
   latest: https://intarchboard.github.io/draft-protocol-maintenance/draft-iab-protocol-maintenance.html
+keyword:
+  - robustness
+  - postel
+  - principle
+  - law
+  - tolerance
+  - wrong
 
 author:
  -
@@ -25,7 +34,6 @@ author:
 informative:
   HTML:
     title: "HTML"
-    date: 2019-03-08
     seriesinfo:
       WHATWG: Living Standard
     target: "https://html.spec.whatwg.org/"
@@ -36,7 +44,7 @@ informative:
 
 --- abstract
 
-The main goal of the networking standards process is to enable the long term
+The main goal of the networking standards process is to enable the long-term
 interoperability of protocols. This document describes active protocol
 maintenance, a means to accomplish that goal. By evolving specifications and
 implementations, it is possible to reduce ambiguity over time and create a
@@ -55,10 +63,10 @@ maintained, protocol designers and implementers can avoid these pitfalls.
 # Introduction
 
 There is good evidence to suggest that many important protocols are routinely
-maintained beyond their inception. In particular, a sizeable proportion of IETF
+maintained beyond their inception. In particular, a sizable proportion of IETF
 activity is dedicated to the stewardship of existing protocols. This document
 first discusses hazards in applying the robustness principle too broadly (see
-{{robustness}}), and offers an alternative strategy for handling interoperability
+{{robustness}}) and offers an alternative strategy for handling interoperability
 problems in deployments (see {{active}}).
 
 Ideally, protocol implementations can be actively maintained so that unexpected
@@ -71,8 +79,8 @@ updated, but such cases need not be permanent. This is discussed further in
 # Protocol Robustness {#robustness}
 
 The robustness principle has been hugely influential in shaping the design of
-the Internet. As stated in the IAB document on Architectural Principles of the
-Internet {{?RFC1958}}, the robustness principle advises to:
+the Internet. As stated in the IAB document "Architectural Principles of the
+Internet" {{?RFC1958}}, the robustness principle advises to:
 
 {:quote}
 > Be strict when sending and tolerant when receiving.  Implementations must
@@ -92,7 +100,7 @@ Robustness to software defects:
 
 : No software is perfect, and failures can lead to unexpected behavior.
 Well-designed software strives to be resilient to such issues, whether they
-occur in the local software, or in software that it communicates with. In
+occur in the local software or in software that it communicates with. In
 particular, it is critical for software to gracefully recover from these issues
 without aborting unrelated processing.
 
@@ -114,13 +122,13 @@ robustness principle advocate that the implementation tolerate the faulty input
 and silently discard it. Some interpretations even suggest that a faulty or
 ambiguous message be processed according to the inferred intent of the sender.
 
-The facets of the robustness principle that protect against defects or attack
+The facets of the robustness principle that protect against defects or attacks
 are understood to be necessary guiding principles for the design and
 implementation of networked systems. However, an interpretation that advocates
 for tolerating unexpected inputs is no longer considered best practice in all
 scenarios.
 
-Time and experience shows that negative consequences to interoperability
+Time and experience show that negative consequences to interoperability
 accumulate over time if implementations silently accept faulty input. This
 problem originates from an implicit assumption that it is not possible to effect
 change in a system the size of the Internet. When one assumes that changes to
@@ -140,7 +148,7 @@ longer need to rely on the robustness principle to avoid interoperability issues
 
 The context from which the robustness principle was developed provides valuable
 insights into its intent and purpose. The earliest form of the principle in the
-RFC series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
+RFC Series (the Internet Protocol specification {{?RFC0760}}) is preceded by a
 sentence that reveals a motivation for the principle:
 
 {:quote}
@@ -160,11 +168,11 @@ deployed protocol is immeasurably more useful than a perfect protocol
 specification. This is particularly true in early phases of system design, to
 which the robustness principle is best suited.
 
-As demonstrated by the IAB document on Successful Protocols {{?RFC5218}},
-success or failure of a protocol depends far more on factors like usefulness
-than on technical excellence. Timely publication of protocol specifications,
-even with the potential for flaws, likely contributed significantly to the
-eventual success of the Internet.
+As demonstrated by the IAB document "What Makes for a Successful
+Protocol?"&nbsp;{{?RFC5218}}, success or failure of a protocol depends far more
+on factors like usefulness than on technical excellence. Timely publication of
+protocol specifications, even with the potential for flaws, likely contributed
+significantly to the eventual success of the Internet.
 
 This premise that specifications will be imperfect is correct. However, ignoring
 faulty or ambiguous input is almost always the incorrect solution to the problem.
@@ -194,7 +202,7 @@ is not a good strategy for extensibility. Using undocumented or
 accidental features of a protocol as the basis of an extensibility mechanism can
 be extremely difficult, as is demonstrated by the case study in {{Appendix A.3
 of EXT}}.  It is better and easier to design a protocol for extensibility
-initially than to retrofit the capability (see also {{?EDNS0=RFC2671}}).
+initially than to retrofit the capability (see also {{?EDNS0=RFC6891}}).
 
 
 ## Flexible Protocols {#flexibility}
@@ -202,8 +210,8 @@ initially than to retrofit the capability (see also {{?EDNS0=RFC2671}}).
 A protocol could be designed to permit a narrow set of valid inputs, or it could
 be designed to treat a wide range of inputs as valid.
 
-A more flexible protocol is more complex to specify and implement: variations -
-especially those that are not commonly used - can create potential
+A more flexible protocol is more complex to specify and implement; variations,
+especially those that are not commonly used, can create potential
 interoperability hazards. In the absence of strong reasons to be flexible, a
 simpler protocol is more likely to successfully interoperate.
 
@@ -212,7 +220,7 @@ protocol more accessible, especially for non-expert users. HTML authoring
 {{HTML}} is an example of this sort of design.
 
 In protocols where there are many participants that might generate messages
-based on data from other participants some flexibility might contribute to
+based on data from other participants, some flexibility might contribute to
 resilience of the system. A routing protocol is a good example of where this
 might be necessary.
 
@@ -229,8 +237,8 @@ A protocol can explicitly allow for a range of valid expressions of the same
 semantics, with precise definitions for error handling. This is distinct from a
 protocol that relies on the application of the robustness principle. With the
 former, interoperation depends on specifications that capture all relevant
-details; whereas - as noted in {{ecosystem}} - interoperation in the latter
-depends more extensively on implementations making compatible decisions.
+details, whereas interoperation in the latter depends more extensively on
+implementations making compatible decisions, as noted in {{ecosystem}}.
 
 
 # Applicability
@@ -241,14 +249,14 @@ protocol due to conditions on its implementation or deployment.
 
 In particular, this guidance depends on an ability to update and deploy
 implementations. Being able to rapidly update implementations that are deployed
-to the Internet helps managing security risk but in reality some software
+to the Internet helps manage security risks, but in reality, some software
 deployments have lifecycles that make software updates either rare or altogether
 impossible.
 
 Where implementations are not updated, there is no opportunity to apply the
-practices that this document recommends. In particular, some practices - such as
-those described in {{intolerance}} - only exist to support the development of
-protocol maintenance and evolution. Employing this guidance is therefore only
+practices that this document recommends. In particular, some practices -- such
+as those described in {{intolerance}} -- only exist to support the development
+of protocol maintenance and evolution. Employing this guidance is therefore only
 applicable where there is the possibility of improving deployments through
 timely updates of their implementations.
 
@@ -262,7 +270,7 @@ tolerate unexpected inputs. However, this course of action carries risks.
 ## Protocol Decay {#decay}
 
 Tolerating unexpected input might be an expedient tool for systems in early
-phases of deployment, such as was the case for the early Internet. Being lenient
+phases of deployment, which was the case for the early Internet. Being lenient
 in this way defers the effort of dealing with interoperability problems and
 prioritizes progress. However, this deferral can amplify the ultimate cost of
 handling interoperability problems.
@@ -273,7 +281,7 @@ implementations cease to be perfectly interoperable.
 
 Implementation bugs are often identified as the cause of variation, though it is
 often a combination of factors. Using a protocol in ways that were not
-anticipated in the original design, or ambiguities and errors in the
+anticipated in the original design or ambiguities and errors in the
 specification are often contributing factors. Disagreements on the
 interpretation of specifications should be expected over the lifetime of a
 protocol.
@@ -285,7 +293,7 @@ trade correctness for interoperability indefinitely.
 An implementation that reacts to variations in the manner recommended in the
 robustness principle enters a pathological feedback cycle. Over time:
 
-* Implementations progressively add logic to constrain how data is transmitted,
+* Implementations progressively add logic to constrain how data is transmitted
   or to permit variations in what is received.
 
 * Errors in implementations or confusion about semantics are permitted or
@@ -296,10 +304,10 @@ robustness principle enters a pathological feedback cycle. Over time:
 
 A flaw can become entrenched as a de facto standard. Any implementation of the
 protocol is required to replicate the aberrant behavior, or it is not
-interoperable. This is both a consequence of tolerating the unexpected, and a
+interoperable. This is both a consequence of tolerating the unexpected and a
 product of a natural reluctance to avoid fatal error conditions. Ensuring
-interoperability in this environment is often referred to as aiming to be "bug
-for bug compatible".
+interoperability in this environment is often referred to as aiming to be
+"bug-for-bug compatible".
 
 For example, in TLS {{?TLS=RFC8446}}, extensions use a tag-length-value format
 and can be added to messages in any order. However, some server implementations
@@ -311,7 +319,7 @@ bug and ensure that a ClientHello message ends in a non-empty extension.
 Overapplication of the robustness principle therefore encourages a chain
 reaction that can create interoperability problems over time. In particular,
 tolerating unexpected behavior is particularly deleterious for early
-implementations of new protocols as quirks in early implementations can affect
+implementations of new protocols, as quirks in early implementations can affect
 all subsequent deployments.
 
 
@@ -329,15 +337,15 @@ protocol errors:
 
 * Conversely, if non-compliance is tolerated by existing implementations,
   non-compliant implementations can be deployed successfully. Newer
-  implementations then have strong incentive to tolerate any existing
+  implementations then have a strong incentive to tolerate any existing
   non-compliance in order to be successfully deployed. This ensures that most
   deployments are tolerant of the same non-compliant behavior.
 
 This happens because interoperability requirements for protocol implementations
-are set by other deployments. Specifications and test suites - where they exist -
-can guide the initial development of implementations.  Ultimately, the
-need to interoperate with deployed implementations is a de facto conformance
-test suite that can supersede any formal protocol definition.
+are set by other deployments. Specifications and test suites -- where they exist
+-- can guide the initial development of implementations.  Ultimately, the need
+to interoperate with deployed implementations is a de facto conformance test
+suite that can supersede any formal protocol definition.
 
 For widely used protocols, the massive scale of the Internet makes large-scale
 interoperability testing infeasible for all but a privileged few. The cost of
@@ -361,10 +369,10 @@ the origin of features and capabilities that can be of benefit to existing users
 The need to work around interoperability problems also reduces the ability of
 established implementations to change. An accumulation of mitigations for
 interoperability issues makes implementations more difficult to maintain and can
-constrain extensibility (see also the IAB document on the Long-Term Viability of
-Protocol Extension Mechanisms {{?RFC9170}}).
+constrain extensibility (see also the IAB document "Long-Term Viability of
+Protocol Extension Mechanisms" {{?RFC9170}}).
 
-Sometimes what appear to be interoperability problems are symptomatic of issues
+Sometimes, what appear to be interoperability problems are symptomatic of issues
 in protocol design. A community that is willing to make changes to the protocol,
 by revising or extending specifications and then deploying those changes,
 makes the protocol better.
@@ -376,16 +384,16 @@ impossible, to fix them later.
 
 The robustness principle can be highly effective in safeguarding against flaws
 in the implementation of a protocol by peers. Especially when a specification
-remains unchanged for an extended period of time, incentive to be tolerant of
-errors accumulates over time. Indeed, when faced with divergent interpretations
-of an immutable specification, the only way for an implementation to remain
-interoperable is to be tolerant of differences in interpretation and
-implementation errors. However, when official specifications fail to be
-updated then deployed implementations - including their quirks - often become
-a substitute standard.
+remains unchanged for an extended period of time, the incentive to be tolerant
+of errors accumulates over time. Indeed, when faced with divergent
+interpretations of an immutable specification, the only way for an
+implementation to remain interoperable is to be tolerant of differences in
+interpretation and implementation errors. However, when official specifications
+fail to be updated, then deployed implementations -- including their quirks --
+often become a substitute standard.
 
 Tolerating unexpected inputs from another implementation might seem logical,
-even necessary. But that conclusion relies on an assumption that existing
+even necessary. However, that conclusion relies on an assumption that existing
 specifications and implementations cannot change. Applying the robustness
 principle in this way disproportionately values short-term gains over the
 negative effects on future implementations and the protocol as a whole.
@@ -395,12 +403,12 @@ specifications and implementations to be responsive to changes, in addition to
 handling new and old problems that might arise over time. For example, when an
 implementer discovers a scenario where a specification defines some input as
 faulty but does not define how to handle that input, the implementer can provide
-significant value to the ecosystem by reporting the issue and helping evolve the
-specification.
+significant value to the ecosystem by reporting the issue and helping to evolve
+the specification.
 
 When a discrepancy is found between a specification and its implementation, a
 maintenance discussion inside the standards process allows reaching consensus on
-how best to evolve the specification. Subsequently updating implementations to
+how best to evolve the specification. Subsequently, updating implementations to
 match evolved specifications ensures that implementations are consistently
 interoperable and removes needless barriers for new implementations. Maintenance
 also enables continued improvement of the protocol. New use cases are an
@@ -421,7 +429,7 @@ responsible. It is far more efficient in the long term to fix one isolated bug
 than it is to deal with the consequences of workarounds.
 
 Early implementations of protocols have a stronger obligation to closely follow
-specifications as their behavior will affect all subsequent implementations. In
+specifications, as their behavior will affect all subsequent implementations. In
 addition to specifications, later implementations will be guided by what
 existing deployments accept. Tolerance of errors in early deployments is most
 likely to result in problems. Protocol specifications might need more frequent
@@ -430,7 +438,7 @@ deployment.
 
 Neglect can quickly produce the negative consequences this document describes.
 Restoring the protocol to a state where it can be maintained involves first
-discovering the properties of the protocol as it is deployed, rather than the
+discovering the properties of the protocol as it is deployed rather than the
 protocol as it was originally documented. This can be difficult and
 time-consuming, particularly if the protocol has a diverse set of
 implementations. Such a process was undertaken for HTTP {{?HTTP=RFC9110}} after
@@ -464,8 +472,9 @@ is intolerant of an error, it receives strong feedback that allows the problem
 to be discovered quickly.
 
 To be effective, intolerant implementations need to be sufficiently widely
-deployed that they are encountered by new implementations with high probability.
-This could depend on multiple implementations deploying strict checks.
+deployed so that they are encountered by new implementations with high
+probability.  This could depend on multiple implementations deploying strict
+checks.
 
 Interoperability problems also need to be made known to those in a position to
 address them. In particular, systems with human operators, such as user-facing
@@ -474,13 +483,13 @@ use less direct means of making errors known.
 
 This does not mean that intolerance of errors in early deployments of protocols
 has the effect of preventing interoperability. On the contrary, when existing
-implementations follow clearly-specified error handling, new implementations or
-features can be introduced more readily as the effect on existing
+implementations follow clearly specified error handling, new implementations or
+features can be introduced more readily, as the effect on existing
 implementations can be easily predicted; see also {{extensibility}}.
 
-Any intolerance also needs to be strongly supported by specifications, otherwise
+Any intolerance also needs to be strongly supported by specifications; otherwise,
 they encourage fracturing of the protocol community or proliferation of
-workarounds; see {{exclusion}}.
+workarounds.  See {{exclusion}}.
 
 Intolerance can be used to motivate compliance with any protocol requirement.
 For instance, the INADEQUATE_SECURITY error code and associated requirements in
@@ -493,11 +502,11 @@ arbitrary information that might help the implementer of the sender of the
 faulty input understand and fix the issue in their software. QUIC error frames
 {{?QUIC=RFC9000}} are an example of a fatal error mechanism that helped
 implementers improve software quality throughout the protocol lifecycle.
-Similarly, Extended DNS Errors {{?EDE=RFC8914}} has recently been
+Similarly, the use of Extended DNS Errors {{?EDE=RFC8914}} has been
 effective in providing better descriptions of DNS resolution errors to clients.
 
 Stateless protocol endpoints might generate denial-of-service attacks if they
-send an error messages in response to every message that is received from an
+send an error message in response to every message that is received from an
 unauthenticated sender. These implementations might need to silently discard
 these messages.
 
@@ -510,7 +519,7 @@ that are made to the protocol.
 
 Deliberate exclusion of problematic implementations is an important tool that
 can ensure that the interoperability of a protocol remains viable. While
-backward compatible changes are always preferable to incompatible ones, it is
+backward-compatible changes are always preferable to incompatible ones, it is
 not always possible to produce a design that protects the ability of all current
 and future protocol participants to interoperate.
 
@@ -531,8 +540,8 @@ of protecting future interoperability.
 
 Excluding implementations or deployments can lead to a fracturing of the
 protocol system that could be more harmful than any divergence that might arise
-from tolerating the unexpected. The IAB document on Uncoordinated Protocol
-Development Considered Harmful {{?RFC5704}} describes how conflict or
+from tolerating the unexpected. The IAB document "Uncoordinated Protocol
+Development Considered Harmful" {{?RFC5704}} describes how conflict or
 competition in the maintenance of protocols can lead to similar problems.
 
 
@@ -546,9 +555,9 @@ to discover.
 
 The consequences of the problems described in this document are especially acute
 for any protocol where security depends on agreement about semantics of protocol
-elements. For instance, use of unsafe security mechanisms, such as weak
-primitives {{?MD5=RFC6151}} or obsolete mechanisms {{?SSL3=RFC7568}}, are good
-examples of where forcing exclusion ({{exclusion}}) can be desirable.
+elements. For instance, weak primitives {{?MD5=RFC6151}} and obsolete mechanisms
+{{?SSL3=RFC7568}} are good examples of the use of unsafe security practices
+where forcing exclusion ({{exclusion}}) can be desirable.
 
 
 # IANA Considerations
@@ -564,19 +573,21 @@ This document has no IANA actions.
 Internet Architecture Board members at the time this document was approved
 for publication were:
 
-* Jari Arkko
-* Deborah Brungard
-* Lars Eggert
-* Wes Hardaker
-* Cullen Jennings
-* Mallory Knodel
-* Mirja Kühlewind
-* Zhenbin Li
-* Tommy Pauly
-* David Schinazi
-* Russ White
-* Qin Wu
-* Jiankang Yao
+<ul empty="true" spacing="compact" bare="false" indent="3">
+<li><t><contact fullname="Jari Arkko"/></t></li>
+<li><t><contact fullname="Deborah Brungard"/></t></li>
+<li><t><contact fullname="Lars Eggert"/></t></li>
+<li><t><contact fullname="Wes Hardaker"/></t></li>
+<li><t><contact fullname="Cullen Jennings"/></t></li>
+<li><t><contact fullname="Mallory Knodel"/></t></li>
+<li><t><contact fullname="Mirja Kühlewind"/></t></li>
+<li><t><contact fullname="Zhenbin Li"/></t></li>
+<li><t><contact fullname="Tommy Pauly"/></t></li>
+<li><t><contact fullname="David Schinazi"/></t></li>
+<li><t><contact fullname="Russ White"/></t></li>
+<li><t><contact fullname="Qin Wu"/></t></li>
+<li><t><contact fullname="Jiankang Yao"/></t></li>
+</ul>
 
 The document had broad but not unanimous approval within the IAB, reflecting
 that while the guidance is valid, concerns were expressed in the IETF community
@@ -586,9 +597,9 @@ about how broadly it applies in all situations.
 {:numbered="false"}
 
 Constructive feedback on this document has been provided by a surprising number
-of people including, but not limited to: {{{Bernard Aboba}}},
-{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Wes Hardaker}}},
-{{{Joel Halpern}}}, {{{Russ Housley}}}, {{{Cullen Jennings}}},
+of people including, but not limited to, the following: {{{Bernard Aboba}}},
+{{{Brian Carpenter}}}, {{{Stuart Cheshire}}}, {{{Joel Halpern}}},
+{{{Wes Hardaker}}}, {{{Russ Housley}}}, {{{Cullen Jennings}}},
 {{{Mallory Knodel}}}, {{{Mirja Kühlewind}}}, {{{Mark Nottingham}}},
 {{{Eric Rescorla}}}, {{{Henning Schulzrinne}}}, {{{Job Snijders}}},
 {{{Robert Sparks}}}, {{{Dave Thaler}}}, {{{Brian Trammell}}},
