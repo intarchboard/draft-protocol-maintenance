@@ -573,7 +573,7 @@ This document has no IANA actions.
 Internet Architecture Board members at the time this document was approved
 for publication were:
 
-<ul empty="true" spacing="compact" bare="false" indent="3">
+<ul empty="true" spacing="compact">
 <li><t><contact fullname="Jari Arkko"/></t></li>
 <li><t><contact fullname="Deborah Brungard"/></t></li>
 <li><t><contact fullname="Lars Eggert"/></t></li>
